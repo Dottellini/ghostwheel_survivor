@@ -23,13 +23,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpt6k"]
 size = Vector2(124, 124)
 
+[sub_resource type="Curve2D" id="Curve2D_77scw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -628, -356, 0, 0, 0, 0, 631, -365, 0, 0, 0, 0, 624, 366, 0, 0, 0, 0, -627, 364, 0, 0, 0, 0, -628, -356)
+}
+point_count = 5
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_umwlv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_iaxgc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_vpt6k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -41,4 +49,11 @@ offset_right = 3.0
 offset_bottom = 88.0
 text = "Health: "
 
-[node name="CanvasLayer" parent="." instance=ExtResource("3_ti7xd")]
+[node name="Enemy_Spawn_Area" type="Path2D" parent="."]
+curve = SubResource("Curve2D_77scw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemy_Spawn_Area"]
+position = Vector2(-628, -356)
+rotation = -0.00714841
+
+[node name="Marker2D" type="Marker2D" parent="Enemy_Spawn_Area/PathFollow2D"]
