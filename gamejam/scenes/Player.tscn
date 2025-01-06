@@ -32,3 +32,10 @@ sprite_frames = SubResource("SpriteFrames_iaxgc")
 shape = SubResource("RectangleShape2D_vpt6k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HealthText" type="Label" parent="."]
+offset_left = -57.0
+offset_top = 65.0
+offset_right = 3.0
+offset_bottom = 88.0
+text = "Health: "
