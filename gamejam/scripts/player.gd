@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 200.0
+@export var HEALTH = 1000.0
 
 func _physics_process(delta: float) -> void:
 	var direction_x = Input.get_axis("ui_left", "ui_right")
@@ -17,6 +18,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
 	move_and_slide()
+	
+	
+func take_damage(damage: int) -> void:
+	HEALTH -= damage
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,4 +30,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$HealthText.text = str("Health: ", HEALTH)
 	pass
