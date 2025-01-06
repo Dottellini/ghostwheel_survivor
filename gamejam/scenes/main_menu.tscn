@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhpfpqvlc70vi"]
+
+[ext_resource type="Texture2D" uid="uid://dlww2febgc55m" path="res://assets/menu_background.webp" id="1_b7m14"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_jf4qk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3rt4"]
+bg_color = Color(0.703829, 0.0884444, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g616"]
+bg_color = Color(0.566458, 0.0624764, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tw26"]
+bg_color = Color(0.79763, 0.105527, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhspn"]
+bg_color = Color(0.431373, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8gkg"]
+bg_color = Color(0.21888, 1.77482e-07, 4.81308e-08, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkk0c"]
+bg_color = Color(0.796078, 0.105882, 0, 1)
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_jf4qk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.892756, 0.892756, 0.892756, 1)
+offset_right = 1148.0
+offset_bottom = 656.0
+texture = ExtResource("1_b7m14")
+expand_mode = 1
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 144.0
+offset_top = 368.0
+offset_right = 304.0
+offset_bottom = 448.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_q3rt4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7g616")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1tw26")
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 144.0
+offset_top = 464.0
+offset_right = 304.0
+offset_bottom = 544.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_uhspn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g8gkg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkk0c")
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
