@@ -155,5 +155,8 @@ shape = SubResource("CapsuleShape2D_6lmwg")
 shape = SubResource("CircleShape2D_p12sv")
 
 [node name="Hit_Timer" type="Timer" parent="."]
+wait_time = 0.5
 
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="Hit_Timer" to="." method="_on_hit_timer_timeout"]
