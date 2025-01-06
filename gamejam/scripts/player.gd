@@ -30,8 +30,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$HealthText.text = str("Health: ", HEALTH)
-	pass
-
-func player():
-	pass
+	$Healthtext.text = str("Health: ", HEALTH)
