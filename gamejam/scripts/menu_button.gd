@@ -8,9 +8,9 @@ enum ItemId {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$".".get_popup().add_item("Test1", ItemId.LEVEL1)
-	$".".get_popup().add_item("Test2", ItemId.LEVEL2)
-	$".".get_popup().add_item("Test3", ItemId.LEVEL3)
+	$".".get_popup().add_item("Restart", ItemId.LEVEL1)
+	$".".get_popup().add_item("To Main Menu", ItemId.LEVEL2)
+	$".".get_popup().add_item("Quit", ItemId.LEVEL3)
 	$".".get_popup().id_pressed.connect(_on_item_menu_pressed)
 
 func _on_item_menu_pressed(id: int):
