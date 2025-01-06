@@ -7,7 +7,7 @@
 
 [node name="TimerText" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.00694444
+anchor_left = -0.00260417
 anchor_right = -0.00260417
 offset_left = 536.0
 offset_top = 8.0
