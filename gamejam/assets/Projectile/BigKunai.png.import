@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4n5mjlffu2xs"
-path="res://.godot/imported/BigKunai.png-cc8f8e778d4d27bb34888f28e2ed1f2e.ctex"
+path="res://.godot/imported/BigKunai.png-8bc3bf8e61c5bce18f85ee437a03807b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ninja Adventure - Asset Pack/FX/Projectile/BigKunai.png"
-dest_files=["res://.godot/imported/BigKunai.png-cc8f8e778d4d27bb34888f28e2ed1f2e.ctex"]
+source_file="res://assets/Projectile/BigKunai.png"
+dest_files=["res://.godot/imported/BigKunai.png-8bc3bf8e61c5bce18f85ee437a03807b.ctex"]
 
 [params]
 
