@@ -3,6 +3,8 @@ extends CharacterBody2D
 const SPEED = 200.0
 @export var HEALTH = 1000.0
 
+var projectile_scene: PackedScene 
+
 func _physics_process(delta: float) -> void:
 	var direction_x = Input.get_axis("ui_left", "ui_right")
 	var direction_y = Input.get_axis("ui_up", "ui_down")
@@ -25,7 +27,25 @@ func take_damage(damage: int) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	projectile_scene = preload("res://scenes/projectile_one.tscn")
+	shoot_projectile()
+	#var instance = projectile_scene.instantiate()
+	#instance.get_node("Timer").start()
+	#projectile_scene.pre_timer()
+	$Timer.start()
+
+func shoot_projectile() -> void:
+	if projectile_scene:
+		var projectile = projectile_scene.instantiate()
+		if projectile:
+			projectile.global_position = self.global_position  # Assuming this script is on a Node2D
+			projectile.set_direction(Vector2(0, -1))  # Ensure 'velocity' is defined
+			get_tree().current_scene.add_child(projectile)
+			#move_and_slide()
+		else:
+			print("Failed to instantiate projectile.")
+	else:
+		print("Projectile scene is not assigned.")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,3 +55,8 @@ func _process(delta: float) -> void:
 
 func player():
 	pass
+
+
+func _on_timer_timeout() -> void:
+	shoot_projectile()
+	$Timer.start()

@@ -1,6 +1,8 @@
 extends Area2D
-@export var damage: int = 10
+@export var damage: int = 90
 @export var speed: float = 300.0
+var player: PackedScene = preload("res://scenes/Player.tscn")
+
 var direction: Vector2 = Vector2.ZERO
 
 func _process(delta: float) -> void:
@@ -19,8 +21,16 @@ func _on_body_exited(body: Node2D) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy") or body.has_method("enemy"):  # Beispiel: prüfe, ob das Projektil einen Feind trifft.
 		body.take_damage(damage)  # Rufe eine Funktion im Feindobjekt auf.
-		queue_free()  # Entferne das Projektil.
+		#queue_free()  # Entferne das Projektil.
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+
+
+
+#func _on_timer_timeout() -> void:
+	#print("Timer")
+	#var instance = player.instantiate()
+	#instance.shoot_projectile()
+	#$Timer.start()

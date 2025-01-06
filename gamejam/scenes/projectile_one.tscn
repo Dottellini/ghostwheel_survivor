@@ -1,27 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdlpxejb86a6c"]
+[gd_scene load_steps=7 format=3 uid="uid://cdlpxejb86a6c"]
 
 [ext_resource type="Script" path="res://scripts/melee_projectile.gd" id="1_qs8vc"]
-[ext_resource type="Texture2D" path="res://assets/Projectile/BigShuriken.png" id="4_1qslt"]
+[ext_resource type="Texture2D" uid="uid://d1xctopuumvh1" path="res://assets/Projectile/BigShuriken.png" id="4_1qslt"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhg5c"]
-height = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0mm5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ot0il"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3enb1"]
 atlas = ExtResource("4_1qslt")
 region = Rect2(0, 0, 23, 23)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nhc7a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8y3k"]
 atlas = ExtResource("4_1qslt")
 region = Rect2(23, 0, 23, 23)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yke8s"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4dllh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ot0il")
+"texture": SubResource("AtlasTexture_3enb1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nhc7a")
+"texture": SubResource("AtlasTexture_w8y3k")
 }],
 "loop": true,
 "name": &"default",
@@ -32,7 +31,12 @@ animations = [{
 script = ExtResource("1_qs8vc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_l0mm5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4dllh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
