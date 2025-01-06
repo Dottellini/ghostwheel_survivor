@@ -32,3 +32,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$HealthText.text = str("Health: ", HEALTH)
 	pass
+
+func player():
+	pass
