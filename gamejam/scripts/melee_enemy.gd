@@ -18,5 +18,5 @@ func enemy():
 	pass
 
 
-func _on_hit_timer_timeout() -> void:
+func _on_punch_shoot_timer_timeout() -> void:
 	pass # Replace with function body.

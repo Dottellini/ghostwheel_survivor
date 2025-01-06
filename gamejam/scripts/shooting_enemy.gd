@@ -11,6 +11,3 @@ func shoot_projectile() -> void:
 
 func _on_hit_timer_timeout() -> void:
 	pass # Replace with function body.
-
-func x():
-	pass
