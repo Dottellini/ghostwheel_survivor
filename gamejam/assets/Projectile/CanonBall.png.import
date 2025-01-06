@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cq35xjj2eg6in"
-path="res://.godot/imported/CanonBall.png-07877db333d52d26fce22c5199d964c5.ctex"
+path="res://.godot/imported/CanonBall.png-8384bfc7eb49f7564769bbe953ab9821.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ninja Adventure - Asset Pack/FX/Projectile/CanonBall.png"
-dest_files=["res://.godot/imported/CanonBall.png-07877db333d52d26fce22c5199d964c5.ctex"]
+source_file="res://assets/Projectile/CanonBall.png"
+dest_files=["res://.godot/imported/CanonBall.png-8384bfc7eb49f7564769bbe953ab9821.ctex"]
 
 [params]
 
