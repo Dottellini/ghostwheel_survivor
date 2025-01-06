@@ -1,5 +1,5 @@
 extends Area2D
-@export var damage: int
+@export var damage: int = 10
 @export var speed: float = 300.0
 var direction: Vector2 = Vector2.ZERO
 
@@ -17,7 +17,7 @@ func _on_body_exited(body: Node2D) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("players") or body.has_method("player"):  # Beispiel: prüfe, ob das Projektil einen Feind trifft.
+	if body.is_in_group("enemy") or body.has_method("enemy"):  # Beispiel: prüfe, ob das Projektil einen Feind trifft.
 		body.take_damage(damage)  # Rufe eine Funktion im Feindobjekt auf.
 		queue_free()  # Entferne das Projektil.
 

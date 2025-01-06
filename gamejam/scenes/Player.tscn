@@ -32,9 +32,11 @@ point_count = 5
 script = ExtResource("1_umwlv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_iaxgc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_vpt6k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
