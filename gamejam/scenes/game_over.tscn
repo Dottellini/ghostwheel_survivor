@@ -1,23 +1,63 @@
-[gd_scene format=3 uid="uid://c1bko18nbnibw"]
+[gd_scene load_steps=4 format=3 uid="uid://c1bko18nbnibw"]
+
+[ext_resource type="Texture2D" uid="uid://sjprbd5ry8si" path="res://assets/GameOver/frame_0_delay-0.27s.png" id="1_k2x74"]
+[ext_resource type="Texture2D" uid="uid://b1r3kgm27jpe" path="res://assets/GameOver/frame_1_delay-0.27s.png" id="2_k1tu4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tff45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k2x74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_k1tu4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Game_over" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 5.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(575, 329)
+scale = Vector2(2.19429, 1.5494)
+sprite_frames = SubResource("SpriteFrames_tff45")
 
-[node name="new_round" type="Button" parent="HBoxContainer"]
-layout_mode = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -261.133
+offset_top = 100.684
+offset_right = -263.133
+offset_bottom = -283.316
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="exit" type="Button" parent="HBoxContainer"]
+[node name="new_round" type="Button" parent="AnimatedSprite2D/HBoxContainer"]
 layout_mode = 2
+text = "new round"
 
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer"]
+[node name="exit" type="Button" parent="AnimatedSprite2D/HBoxContainer"]
 layout_mode = 2
+text = "Exit"
+
+[node name="TextEdit" type="TextEdit" parent="AnimatedSprite2D/HBoxContainer"]
+layout_mode = 2
+text = "Time of my life
+"
+placeholder_text = "Time
+"
+
+[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
