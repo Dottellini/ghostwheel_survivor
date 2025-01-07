@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyhg5ajt25yb2"]
+[gd_scene load_steps=9 format=3 uid="uid://dyhg5ajt25yb2"]
 
 [ext_resource type="Texture2D" uid="uid://6n7fkxtrw5we" path="res://icon.svg" id="1_l181h"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_umwlv"]
 [ext_resource type="PackedScene" uid="uid://dka7irgxdwi72" path="res://scenes/UserInterface.tscn" id="3_ti7xd"]
 [ext_resource type="PackedScene" uid="uid://r3g5iskx00f" path="res://scenes/game_over.tscn" id="4_lm08u"]
+[ext_resource type="PackedScene" uid="uid://b7pdtr22euuev" path="res://scenes/weapons/fireball/fireball.tscn" id="5_ltn07"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iaxgc"]
 animations = [{
@@ -66,5 +67,9 @@ rotation = -0.00714841
 [node name="Game_over" parent="." instance=ExtResource("4_lm08u")]
 process_mode = 2
 visible = false
+
+[node name="Fireball" parent="." instance=ExtResource("5_ltn07")]
+show_behind_parent = true
+num_projectiles = 8
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
