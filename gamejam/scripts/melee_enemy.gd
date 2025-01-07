@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var damage = 100
 
 var is_attacking = false
+var is_damaged = false
+var in_range = false
 var player_body
 
 func _physics_process(delta: float) -> void:
@@ -19,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 	
 	# move to Player
-	if target:
+	if target and !in_range:
 		velocity = global_position.direction_to(target.global_position)
 		if velocity.x < 0:
 			$AnimatedSprite2D.flip_h = true
