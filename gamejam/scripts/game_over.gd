@@ -21,7 +21,7 @@ func _show_screen():
 	time = get_parent().get_node("UI/TimerText").time_elapsed
 	
 	scoreLabel.text = "Score: %d" % score
-	timeLabel.text = "Time left: %02d:%02d" % [time / 60, fmod(time, 60)]
+	timeLabel.text = "Time survived: %02d:%02d:%02d" % [time / 60 / 60, fmod(time / 60,  60), fmod(time, 60)]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

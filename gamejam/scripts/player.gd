@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 const SPEED = 200.0
-@export var SCORE: int = 0
+@export var SCORE: int = 10
 @export var HEALTH = 1000.0
 
 signal _on_death
