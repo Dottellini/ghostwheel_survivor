@@ -31,7 +31,7 @@ _data = {
 }
 point_count = 5
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_umwlv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

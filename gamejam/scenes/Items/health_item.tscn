@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://dyflhl1hguc0y"]
+[gd_scene load_steps=4 format=3 uid="uid://dyflhl1hguc0y"]
+
+[ext_resource type="Texture2D" uid="uid://bica0pa2hsnj3" path="res://assets/items/healing_potion.png" id="1_woyj5"]
+[ext_resource type="Script" path="res://scripts/items/health_item.gd" id="1_x24u5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qbb7"]
+size = Vector2(120, 144)
 
 [node name="HealthItem" type="Area2D"]
+script = ExtResource("1_x24u5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.38419e-07, 0)
+scale = Vector2(0.21, 0.21)
+shape = SubResource("RectangleShape2D_8qbb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("1_woyj5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

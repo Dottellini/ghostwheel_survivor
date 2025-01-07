@@ -27,6 +27,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="gamejam"
 
+[global_group]
+
+player=""
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
