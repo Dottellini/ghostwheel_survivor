@@ -1,63 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://r3g5iskx00f"]
+[gd_scene load_steps=2 format=3 uid="uid://r3g5iskx00f"]
 
-[ext_resource type="Texture2D" uid="uid://sjprbd5ry8si" path="res://assets/GameOver/frame_0_delay-0.27s.png" id="1_k2x74"]
-[ext_resource type="Texture2D" uid="uid://b1r3kgm27jpe" path="res://assets/GameOver/frame_1_delay-0.27s.png" id="2_k1tu4"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_wv83e"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tff45"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_k2x74")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_k1tu4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
-}]
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_wv83e")
 
-[node name="Game_over" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 2.0
-offset_right = 5.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.301961)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(575, 329)
-scale = Vector2(2.19429, 1.5494)
-sprite_frames = SubResource("SpriteFrames_tff45")
+[node name="Restart" type="Button" parent="."]
+offset_left = 504.0
+offset_top = 248.0
+offset_right = 648.0
+offset_bottom = 311.0
+theme_override_font_sizes/font_size = 20
+text = "Restart"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AnimatedSprite2D"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -261.133
-offset_top = 100.684
-offset_right = -263.133
-offset_bottom = -283.316
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MainMenu" type="Button" parent="."]
+offset_left = 504.0
+offset_top = 328.0
+offset_right = 648.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
 
-[node name="new_round" type="Button" parent="AnimatedSprite2D/HBoxContainer"]
-layout_mode = 2
-text = "new round"
-
-[node name="exit" type="Button" parent="AnimatedSprite2D/HBoxContainer"]
-layout_mode = 2
+[node name="Quit" type="Button" parent="."]
+offset_left = 504.0
+offset_top = 408.0
+offset_right = 648.0
+offset_bottom = 472.0
+theme_override_font_sizes/font_size = 20
 text = "Exit"
 
-[node name="TextEdit" type="TextEdit" parent="AnimatedSprite2D/HBoxContainer"]
-layout_mode = 2
-text = "Time of my life
-"
-placeholder_text = "Time
-"
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 488.0
+offset_top = 128.0
+offset_right = 664.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 20
+text = "Score: 000"
+horizontal_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
+[node name="TimeLabel" type="Label" parent="."]
+offset_left = 488.0
+offset_top = 176.0
+offset_right = 664.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 20
+text = "Time left: 00:00:00"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
