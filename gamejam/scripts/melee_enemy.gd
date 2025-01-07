@@ -44,7 +44,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		is_attacking = false
 		player_body = body
 		body.take_damage(damage)
-		$Hit_Timer.start()
+		
 
 # cooldown for hitting of the enemy
 func _on_hit_timer_timeout() -> void:

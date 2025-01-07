@@ -1,13 +1,17 @@
 extends CharacterBody2D
-
+var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 const SPEED = 200.0
 @export var HEALTH = 1000.0
 
 var projectile_scene: PackedScene 
 
 func _physics_process(delta: float) -> void:
+	if HEALTH<=0:
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	var direction_x = Input.get_axis("ui_left", "ui_right")
 	var direction_y = Input.get_axis("ui_up", "ui_down")
+	if Input.get_axis("ui_left", "ui_right") != 0  or Input.get_axis("ui_up", "ui_down") !=0:
+		dir=Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 	
 	if direction_x:
 		velocity.x = direction_x * SPEED
@@ -39,7 +43,7 @@ func shoot_projectile() -> void:
 		var projectile = projectile_scene.instantiate()
 		if projectile:
 			projectile.global_position = self.global_position  # Assuming this script is on a Node2D
-			projectile.set_direction(Vector2(0, -1))  # Ensure 'velocity' is defined
+			projectile.set_direction(dir)  # Ensure 'velocity' is defined
 			get_tree().current_scene.add_child(projectile)
 			#move_and_slide()
 		else:
