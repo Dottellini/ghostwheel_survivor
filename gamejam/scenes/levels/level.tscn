@@ -1,8 +1,11 @@
+
 [gd_scene load_steps=11 format=4 uid="uid://bskmjffj2qv7x"]
 
 [ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_5ga0r"]
 [ext_resource type="PackedScene" uid="uid://dyhg5ajt25yb2" path="res://scenes/Player.tscn" id="2_ssus4"]
 [ext_resource type="Texture2D" uid="uid://dgbe61k7s0rft" path="res://assets/16x16 Pixel Cave/Separated/GroundTileset.png" id="3_2uo5l"]
+
+[ext_resource type="PackedScene" uid="uid://dyflhl1hguc0y" path="res://scenes/Items/health_item.tscn" id="4_4loui"]
 [ext_resource type="PackedScene" uid="uid://dyvdo1vxfmu6l" path="res://scenes/wheel_of_fortune.tscn" id="3_m3o8b"]
 [ext_resource type="PackedScene" uid="uid://bn7jxy2gpcpev" path="res://scenes/gambling_pickup.tscn" id="4_0hyij"]
 
@@ -212,7 +215,12 @@ tile_set = SubResource("TileSet_o3xb2")
 [node name="Enemy_Spawn_Timer" type="Timer" parent="."]
 autostart = true
 
+<<<<<<< gamejam/scenes/levels/level.tscn
+[node name="HealthItem" parent="." instance=ExtResource("4_4loui")]
+position = Vector2(336, 208)
+=======
 [node name="gambling_pickup" parent="." instance=ExtResource("4_0hyij")]
 position = Vector2(396, 228)
+>>>>>>> gamejam/scenes/levels/level.tscn
 
 [connection signal="timeout" from="Enemy_Spawn_Timer" to="." method="_on_enemy_spawn_timer_timeout"]

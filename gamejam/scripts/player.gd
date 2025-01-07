@@ -38,6 +38,9 @@ func player_death() -> void:
 
 func take_damage(damage: int) -> void:
 	HEALTH -= damage
+	
+func add_health(added_health: int) -> void:
+	HEALTH += added_health
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
