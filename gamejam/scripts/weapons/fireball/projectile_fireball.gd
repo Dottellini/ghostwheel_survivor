@@ -48,8 +48,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if !alive: return
 	if body.is_in_group("enemy") or body.has_method("enemy"):  # Beispiel: prüfe, ob das Projektil einen Feind trifft.
 		body.take_damage(damage)  # Rufe eine Funktion im Feindobjekt auf.
-		#queue_free()  # Entferne das Projektil.
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
+		queue_free()  # Entferne das Projektil.

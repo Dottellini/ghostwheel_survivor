@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbxs0jwlevepa"]
+[gd_scene load_steps=21 format=3 uid="uid://dhrwe777ludb0"]
 
 [ext_resource type="Script" path="res://scripts/melee_enemy.gd" id="1_4ahg2"]
 [ext_resource type="Texture2D" uid="uid://d3s2c8dnvonq2" path="res://assets/16x16 Pixel Cave/Separated/BatNoShadow.png" id="2_ibe37"]

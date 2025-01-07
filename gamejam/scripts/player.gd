@@ -9,8 +9,7 @@ var projectile_scene: PackedScene
 signal _on_death
 
 func _physics_process(delta: float) -> void:
-	if HEALTH<=0:
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	if HEALTH <= 0:
 		HEALTH = 0.0
 		player_death()
 	var direction_x = Input.get_axis("ui_left", "ui_right")

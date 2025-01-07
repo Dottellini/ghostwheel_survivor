@@ -34,6 +34,8 @@ script = ExtResource("1_ekoq4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n7edy")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
 sprite_frames = SubResource("SpriteFrames_06jsj")
 frame_progress = 0.0212401
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
