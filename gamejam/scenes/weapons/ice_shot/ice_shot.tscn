@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://d0dek4m0clbbo"]
 
-[ext_resource type="Script" path="res://scenes/radius_explosion_projectile.gd" id="1_0r4be"]
+[ext_resource type="Script" path="res://scripts/weapons/radius_explosion_projectile.gd" id="1_0r4be"]
 [ext_resource type="Texture2D" uid="uid://ogg1drnyjht8" path="res://assets/Projectile/IceSpike.png" id="1_pnvml"]
 [ext_resource type="Texture2D" uid="uid://cil5eql3x8bfl" path="res://assets/Explosion_sprites/Explosion_5/Explosion_1.png" id="2_3ck3e"]
 [ext_resource type="Texture2D" uid="uid://2uirjkujwsfp" path="res://assets/Explosion_sprites/Explosion_5/Explosion_2.png" id="3_0korc"]

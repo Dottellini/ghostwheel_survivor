@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://ceo2g6rbb2re3"]
 
 [ext_resource type="Texture2D" uid="uid://73nskpj6tjg0" path="res://assets/mage/mage_guardian-blue.png" id="1_282m3"]
-[ext_resource type="Script" path="res://scripts/shooting_enemy.gd" id="1_hdpjg"]
+[ext_resource type="Script" path="res://scripts/enemies/shooting_enemy.gd" id="1_hdpjg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipowe"]
 atlas = ExtResource("1_282m3")

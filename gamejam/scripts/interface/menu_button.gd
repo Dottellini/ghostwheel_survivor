@@ -18,9 +18,9 @@ func _ready() -> void:
 func _on_item_menu_pressed(id: int):
 	match id:
 		ItemId.LEVEL1:
-			get_tree().change_scene_to_file("res://scenes/level.tscn")
+			get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
 		ItemId.LEVEL2:
-			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+			get_tree().change_scene_to_file("res://scenes/interface/main_menu.tscn")
 		ItemId.LEVEL3:
 			get_tree().quit()
 		

@@ -1,6 +1,6 @@
-extends "res://scripts/melee_enemy.gd"
+extends "res://scripts/enemies/melee_enemy.gd"
 
-var projectile_scene = preload("res://scenes/projectile_one.tscn")
+var projectile_scene = preload("res://scenes/weapons/shuriken/shuriken.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
