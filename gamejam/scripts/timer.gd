@@ -1,6 +1,6 @@
 extends Label
 
-var time_elapsed = 0.0
+@export var time_elapsed = 0.0
 var timer_stopped = false
 
 func reset() -> void:
@@ -20,4 +20,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !timer_stopped:
 		time_elapsed += delta
-		$".".text = "%02d:%02d" % [time_elapsed / 60, fmod(time_elapsed, 60)]
+		$".".text = "%02d:%02d:%02d" % [time_elapsed / 60 / 60, fmod(time_elapsed / 60,  60), fmod(time_elapsed, 60)]
