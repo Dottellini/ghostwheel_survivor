@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 const SPEED = 200.0
+const gambling = preload("res://scenes/wheel_of_fortune.tscn")
 @export var SCORE: int = 10
 @export var HEALTH = 1000.0
 
@@ -72,3 +73,31 @@ func player():
 func _on_timer_timeout() -> void:
 	shoot_projectile()
 	$Timer.start()
+
+func _on_gambling_pickup(): # shows the wheel of fortune and pauses the game
+	$wheel_of_fortune.visible = true
+	get_tree().paused = true
+
+func _on_gambling_hit(index: int):
+	print(index)
+	await get_tree().create_timer(3.0).timeout
+	#TODO insert logic for giving the player new skins in the cases below
+	match index:
+		1:
+			pass
+		2:
+			pass
+		3:
+			pass
+		4:
+			pass
+		5:
+			pass
+		6:
+			pass
+		7:
+			pass
+		8:
+			pass
+	$wheel_of_fortune.visible = false
+	get_tree().paused = false
