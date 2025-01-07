@@ -1,66 +1,50 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbej5n10qoe1u"]
+[gd_scene load_steps=20 format=3 uid="uid://dbej5n10qoe1u"]
 
 [ext_resource type="Script" path="res://scripts/enemies/melee_enemy.gd" id="1_4ahg2"]
-[ext_resource type="Texture2D" uid="uid://d3s2c8dnvonq2" path="res://assets/16x16 Pixel Cave/Separated/BatNoShadow.png" id="2_ibe37"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxhav"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6dd6"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tw3rv"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0psvv"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45i6d"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oa6j0"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vlc7e"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hlk61"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lislb"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0rrl"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qkg4x"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnn4q"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pnbgn"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fddxg"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6v2f1"]
-atlas = ExtResource("2_ibe37")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btwo8"]

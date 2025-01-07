@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 const SPEED = 200.0
-const gambling = preload("res://scenes/wheel_of_fortune.tscn")
+const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 @export var SCORE: int = 10
 @export var HEALTH = 1000.0
 

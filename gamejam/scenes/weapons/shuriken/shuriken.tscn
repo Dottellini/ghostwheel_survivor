@@ -1,16 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdlpxejb86a6c"]
+[gd_scene load_steps=6 format=3 uid="uid://cdlpxejb86a6c"]
 
 [ext_resource type="Script" path="res://scripts/weapons/melee_projectile.gd" id="1_ybam4"]
-[ext_resource type="Texture2D" uid="uid://d1xctopuumvh1" path="res://assets/Projectile/BigShuriken.png" id="2_0opnl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0mm5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3enb1"]
-atlas = ExtResource("2_0opnl")
 region = Rect2(0, 0, 23, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8y3k"]
-atlas = ExtResource("2_0opnl")
 region = Rect2(23, 0, 23, 23)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4dllh"]

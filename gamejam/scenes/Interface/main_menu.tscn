@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dhpfpqvlc70vi"]
 
-[ext_resource type="Texture2D" uid="uid://dlww2febgc55m" path="res://assets/menu_background.webp" id="1_b7m14"]
 [ext_resource type="Script" path="res://scripts/interface/main_menu.gd" id="1_jf4qk"]
+[ext_resource type="Texture2D" uid="uid://dlww2febgc55m" path="res://assets/menu_background.webp" id="2_17rub"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3rt4"]
 bg_color = Color(0.703829, 0.0884444, 0, 1)
@@ -29,7 +29,7 @@ script = ExtResource("1_jf4qk")
 self_modulate = Color(0.892756, 0.892756, 0.892756, 1)
 offset_right = 1148.0
 offset_bottom = 656.0
-texture = ExtResource("1_b7m14")
+texture = ExtResource("2_17rub")
 expand_mode = 1
 
 [node name="PlayButton" type="Button" parent="."]
