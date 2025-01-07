@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://cn6bw58c8mkk6"]
+
+[ext_resource type="Texture2D" uid="uid://cvmxfhao3tc1b" path="res://assets/Projectile/EnergyBall.png" id="1_3wgy4"]
+[ext_resource type="Script" path="res://scripts/weapons/enemy_weapon/melee_weapon_enemy.gd" id="1_r10q2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjlyx"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5vxj"]
+atlas = ExtResource("1_3wgy4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k71fb"]
+atlas = ExtResource("1_3wgy4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgqc3"]
+atlas = ExtResource("1_3wgy4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0dcc"]
+atlas = ExtResource("1_3wgy4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wny86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5vxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k71fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgqc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0dcc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_r10q2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qjlyx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wny86")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
