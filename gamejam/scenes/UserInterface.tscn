@@ -28,8 +28,11 @@ offset_bottom = 31.0
 text = "Score: 0"
 
 [node name="MenuButton" type="MenuButton" parent="."]
+process_mode = 3
 offset_left = 1040.0
 offset_right = 1152.0
 offset_bottom = 40.0
 text = "MENU"
 script = ExtResource("2_8kdwc")
+
+[connection signal="toggled" from="MenuButton" to="." method="_on_menu_button_toggled"]
