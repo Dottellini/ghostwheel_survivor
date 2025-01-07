@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=3 uid="uid://bn7jxy2gpcpev"]
+
+[ext_resource type="Script" path="res://scripts/gambling/gambling_pickup.gd" id="1_pd8an"]
+[ext_resource type="Texture2D" uid="uid://cf0r4w0ofro4m" path="res://assets/wheel_of_fortune/Animated Chests/Chests.png" id="2_4e0bi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjxcg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpvuc"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(0, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adrqx"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(48, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_410il"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(96, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwaww"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(144, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciccj"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(192, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch3it"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(0, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5bl6"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(48, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow2g2"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(96, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2l0k"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(144, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65rwd"]
+atlas = ExtResource("2_4e0bi")
+region = Rect2(192, 160, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cf0nr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpvuc")
+}],
+"loop": true,
+"name": &"chest_idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adrqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_410il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwaww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciccj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch3it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5bl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow2g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2l0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65rwd")
+}],
+"loop": true,
+"name": &"chest_open",
+"speed": 8.0
+}]
+
+[node name="gambling_pickup" type="Node2D"]
+script = ExtResource("1_pd8an")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fjxcg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+process_mode = 2
+position = Vector2(9, -6)
+sprite_frames = SubResource("SpriteFrames_cf0nr")
+animation = &"chest_open"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

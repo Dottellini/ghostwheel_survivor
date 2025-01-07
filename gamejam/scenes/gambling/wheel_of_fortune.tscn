@@ -1,0 +1,170 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyvdo1vxfmu6l"]
+
+[ext_resource type="Script" path="res://scripts/gambling/wheel.gd" id="1_yefkf"]
+[ext_resource type="Texture2D" uid="uid://i0qouph1xsbu" path="res://assets/wheel_of_fortune/SimpleHealth1.png" id="2_okaxc"]
+[ext_resource type="Texture2D" uid="uid://dgn5gnc8lh1j8" path="res://assets/wheel_of_fortune/pointer.png" id="3_mij07"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3glne"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rru7h"]
+radius = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_42k6y"]
+
+[node name="wheel_of_fortune" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchor_right = 0.308
+anchor_bottom = 0.673
+offset_right = 0.18396
+offset_bottom = -0.104034
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = -180.0
+offset_top = -197.0
+offset_right = -119.0
+offset_bottom = -122.0
+scale = Vector2(5.7992, 5.7992)
+script = ExtResource("1_yefkf")
+
+[node name="wheel" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 11.2084
+offset_top = 10.6911
+offset_right = 51.2084
+offset_bottom = 50.6911
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("2_okaxc")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="wheel_body" type="Area2D" parent="Panel/wheel"]
+
+[node name="first area" type="Area2D" parent="Panel/wheel/wheel_body"]
+collision_priority = 10.0
+priority = 10
+
+[node name="first" type="CollisionPolygon2D" parent="Panel/wheel/wheel_body/first area"]
+polygon = PackedVector2Array(7, 7, 20, 20, 20, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/first area"]
+
+[node name="second area" type="Area2D" parent="Panel/wheel/wheel_body"]
+collision_layer = 2
+collision_mask = 2
+collision_priority = 10.0
+
+[node name="second" type="CollisionPolygon2D" parent="Panel/wheel/wheel_body/second area"]
+polygon = PackedVector2Array(20, 1, 20, 20, 33, 7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/second area"]
+
+[node name="third area" type="Area2D" parent="Panel/wheel/wheel_body"]
+collision_layer = 4
+collision_mask = 4
+collision_priority = 10.0
+
+[node name="third" type="CollisionPolygon2D" parent="Panel/wheel/wheel_body/third area"]
+polygon = PackedVector2Array(20, 20, 33, 7, 38, 20)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/third area"]
+
+[node name="fourth area" type="Area2D" parent="Panel/wheel/wheel_body"]
+collision_layer = 8
+collision_mask = 8
+collision_priority = 10.0
+
+[node name="fourth" type="CollisionPolygon2D" parent="Panel/wheel/wheel_body/fourth area"]
+polygon = PackedVector2Array(20, 20, 38, 20, 33, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/fourth area"]
+
+[node name="fifth area" type="Area2D" parent="Panel/wheel/wheel_body"]
+collision_layer = 16
+collision_mask = 16
+collision_priority = 10.0
+
+[node name="fifth" type="CollisionPolygon2D" parent="Panel/wheel/wheel_body/fifth area"]
+polygon = PackedVector2Array(20, 20, 20, 38, 33, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/fifth area"]
+
+[node name="sixth area" type="Area2D" parent="Panel/wheel/wheel_body"]
+collision_layer = 32
+collision_mask = 32
+collision_priority = 10.0
+
+[node name="sixth" type="CollisionPolygon2D" parent="Panel/wheel/wheel_body/sixth area"]
+polygon = PackedVector2Array(20, 20, 7, 33, 20, 38)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/sixth area"]
+
+[node name="seventh area" type="Area2D" parent="Panel/wheel/wheel_body"]
+collision_layer = 64
+collision_mask = 64
+collision_priority = 10.0
+
+[node name="seventh" type="CollisionPolygon2D" parent="Panel/wheel/wheel_body/seventh area"]
+polygon = PackedVector2Array(20, 20, 2, 20, 7, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/seventh area"]
+
+[node name="eighth area" type="Area2D" parent="Panel/wheel/wheel_body"]
+collision_layer = 128
+collision_mask = 128
+collision_priority = 10.0
+
+[node name="eighth" type="CollisionPolygon2D" parent="Panel/wheel/wheel_body/eighth area"]
+polygon = PackedVector2Array(20, 20, 7, 7, 2, 20)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/eighth area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/wheel/wheel_body"]
+position = Vector2(19.8304, 20.3477)
+shape = SubResource("CircleShape2D_3glne")
+
+[node name="pointer" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.516
+anchor_top = 0.226
+anchor_right = 0.516
+anchor_bottom = 0.226
+offset_left = -8.02449
+offset_top = -14.3634
+offset_right = 7.97551
+offset_bottom = 1.63656
+texture = ExtResource("3_mij07")
+metadata/_edit_use_anchors_ = true
+
+[node name="pointer_body" type="Area2D" parent="Panel/pointer"]
+position = Vector2(7.93213, 14.4848)
+collision_layer = 255
+collision_mask = 255
+collision_priority = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/pointer/pointer_body"]
+position = Vector2(-0.344875, 0.689751)
+shape = SubResource("CircleShape2D_rru7h")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 56.0
+offset_right = 48.0
+offset_bottom = 68.0
+
+[node name="Label" type="Label" parent="Panel/Button"]
+layout_mode = 0
+offset_left = 3.58863
+offset_top = -2.19947
+offset_right = 44.5886
+offset_bottom = 20.8005
+scale = Vector2(0.67876, 0.691474)
+text = "SPIN!"
+label_settings = SubResource("LabelSettings_42k6y")
+horizontal_alignment = 1
+vertical_alignment = 1
