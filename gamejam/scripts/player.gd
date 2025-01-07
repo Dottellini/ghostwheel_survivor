@@ -32,15 +32,14 @@ func take_damage(damage: int) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	projectile_scene = preload("res://scenes/projectile_one.tscn")
+	#Globaly.scene_list.append(projectile_scene)
+	Globaly.scene_list.append(preload("res://scenes/projectile_two.tscn"))
 	shoot_projectile()
-	#var instance = projectile_scene.instantiate()
-	#instance.get_node("Timer").start()
-	#projectile_scene.pre_timer()
 	$Timer.start()
 
 func shoot_projectile() -> void:
-	if projectile_scene:
-		var projectile = projectile_scene.instantiate()
+	for i in Globaly.scene_list:
+		var projectile = i.instantiate()
 		if projectile:
 			projectile.global_position = self.global_position  # Assuming this script is on a Node2D
 			projectile.set_direction(dir)  # Ensure 'velocity' is defined
@@ -48,8 +47,7 @@ func shoot_projectile() -> void:
 			#move_and_slide()
 		else:
 			print("Failed to instantiate projectile.")
-	else:
-		print("Projectile scene is not assigned.")
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
