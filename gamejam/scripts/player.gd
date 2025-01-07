@@ -40,9 +40,9 @@ func take_damage(damage: int) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	projectile_scene = load("res://scenes/projectile_one.tscn")
+	projectile_scene = load("res://scenes/weapons/shuriken/shuriken.tscn")
 	#Globaly.scene_list.append(projectile_scene)
-	Globaly.scene_list.append(preload("res://scenes/projectile_two.tscn"))
+	Globaly.scene_list.append(preload("res://scenes/weapons/ice_shot/ice_shot.tscn"))
 	$Game_over.visible = false
 	shoot_projectile()
 	$Timer.start()
