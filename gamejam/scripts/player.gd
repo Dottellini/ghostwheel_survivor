@@ -10,7 +10,6 @@ var projectile_scene: PackedScene
 
 func _physics_process(delta: float) -> void:
 	if HEALTH<=0:
-		# TODO: Freeze game
 		HEALTH = 0.0
 		player_death()
 	var direction_x = Input.get_axis("ui_left", "ui_right")
@@ -32,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 func player_death() -> void:
+	get_tree().paused = true # freezes game
 	_on_death.emit()
 	
 	
