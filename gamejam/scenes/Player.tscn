@@ -64,5 +64,10 @@ rotation = -0.00714841
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Game_over" parent="." instance=ExtResource("4_lm08u")]
+visible = false
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
