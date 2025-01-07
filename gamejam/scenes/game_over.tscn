@@ -44,26 +44,14 @@ text = "Score: 000"
 horizontal_alignment = 1
 
 [node name="TimeLabel" type="Label" parent="."]
-<<<<<<< HEAD
 offset_left = 488.0
 offset_top = 176.0
 offset_right = 664.0
 offset_bottom = 208.0
-=======
-layout_mode = 2
-offset_left = 451.0
-offset_top = 86.0
-offset_right = 691.0
-offset_bottom = 114.0
->>>>>>> 0de221e (create game over scene)
 theme_override_font_sizes/font_size = 20
 text = "Time left: 00:00:00"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
-<<<<<<< HEAD
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
-=======
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
->>>>>>> 0de221e (create game over scene)

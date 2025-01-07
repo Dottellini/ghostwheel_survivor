@@ -3,11 +3,22 @@ extends Node
 @export var score: int
 @export var time: float
 
+var scoreLabel
+var timeLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var scoreLabel = $ScoreLabel
-	var timeLabel = $TimeLabel
+	scoreLabel = $ScoreLabel
+	timeLabel = $TimeLabel
+	
+	var player = get_parent()
+	player._on_death.connect(_show_screen)
+
+func _show_screen():
+	$".".visible = true
+	
+	score = get_parent().SCORE
+	time = get_parent().get_node("UI/TimerText").time_elapsed
 	
 	scoreLabel.text = "Score: %d" % score
 	timeLabel.text = "Time left: %02d:%02d" % [time / 60, fmod(time, 60)]
@@ -21,13 +32,9 @@ func _on_restart_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/level.tscn")
 	
 
-func _on_exit_pressed() -> void:
-	get_tree().quit()
-
-
 func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 
 func _on_quit_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().quit()

@@ -1,6 +1,6 @@
 extends Label
 
-var time_elapsed = 0.0
+@export var time_elapsed = 0.0
 var timer_stopped = false
 
 func reset() -> void:
