@@ -1,36 +1,41 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn6bw58c8mkk6"]
+[gd_scene load_steps=9 format=3 uid="uid://cn6bw58c8mkk6"]
 
 [ext_resource type="Script" path="res://scripts/weapons/enemy_weapon/melee_weapon_enemy.gd" id="1_r10q2"]
+[ext_resource type="Texture2D" uid="uid://cvmxfhao3tc1b" path="res://assets/Projectile/EnergyBall.png" id="2_j3b8c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qjlyx"]
 radius = 4.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5vxj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt2p6"]
+atlas = ExtResource("2_j3b8c")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k71fb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7emn"]
+atlas = ExtResource("2_j3b8c")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sgqc3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbu7e"]
+atlas = ExtResource("2_j3b8c")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0dcc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqqu4"]
+atlas = ExtResource("2_j3b8c")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wny86"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n5vxj")
+"texture": SubResource("AtlasTexture_xt2p6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k71fb")
+"texture": SubResource("AtlasTexture_n7emn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sgqc3")
+"texture": SubResource("AtlasTexture_nbu7e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j0dcc")
+"texture": SubResource("AtlasTexture_wqqu4")
 }],
 "loop": true,
 "name": &"default",

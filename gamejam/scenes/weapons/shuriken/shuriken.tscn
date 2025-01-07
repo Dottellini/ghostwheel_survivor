@@ -1,23 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdlpxejb86a6c"]
+[gd_scene load_steps=7 format=3 uid="uid://cdlpxejb86a6c"]
 
 [ext_resource type="Script" path="res://scripts/weapons/melee_projectile.gd" id="1_ybam4"]
+[ext_resource type="Texture2D" uid="uid://d1xctopuumvh1" path="res://assets/Projectile/BigShuriken.png" id="2_2ruog"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0mm5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3enb1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_borwd"]
+atlas = ExtResource("2_2ruog")
 region = Rect2(0, 0, 23, 23)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8y3k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_onda7"]
+atlas = ExtResource("2_2ruog")
 region = Rect2(23, 0, 23, 23)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4dllh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3enb1")
+"texture": SubResource("AtlasTexture_borwd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w8y3k")
+"texture": SubResource("AtlasTexture_onda7")
 }],
 "loop": true,
 "name": &"default",
