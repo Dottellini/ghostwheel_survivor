@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 const SPEED = 200.0
+@export var SCORE: int = 10
 @export var HEALTH = 1000.0
 
 var projectile_scene: PackedScene 
@@ -10,6 +11,8 @@ signal _on_death
 func _physics_process(delta: float) -> void:
 	if HEALTH<=0:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		HEALTH = 0.0
+		player_death()
 	var direction_x = Input.get_axis("ui_left", "ui_right")
 	var direction_y = Input.get_axis("ui_up", "ui_down")
 	if Input.get_axis("ui_left", "ui_right") != 0  or Input.get_axis("ui_up", "ui_down") !=0:
@@ -39,15 +42,15 @@ func take_damage(damage: int) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	projectile_scene = load("res://scenes/projectile_one.tscn")
+	#Globaly.scene_list.append(projectile_scene)
+	Globaly.scene_list.append(preload("res://scenes/projectile_two.tscn"))
+	$Game_over.visible = false
 	shoot_projectile()
-	#var instance = projectile_scene.instantiate()
-	#instance.get_node("Timer").start()
-	#projectile_scene.pre_timer()
 	$Timer.start()
 
 func shoot_projectile() -> void:
-	if projectile_scene:
-		var projectile = projectile_scene.instantiate()
+	for i in Globaly.scene_list:
+		var projectile = i.instantiate()
 		if projectile:
 			projectile.global_position = self.global_position  # Assuming this script is on a Node2D
 			projectile.set_direction(dir)  # Ensure 'velocity' is defined
@@ -55,8 +58,7 @@ func shoot_projectile() -> void:
 			#move_and_slide()
 		else:
 			print("Failed to instantiate projectile.")
-	else:
-		print("Projectile scene is not assigned.")
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

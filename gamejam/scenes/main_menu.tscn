@@ -22,6 +22,7 @@ bg_color = Color(0.21888, 1.77482e-07, 4.81308e-08, 1)
 bg_color = Color(0.796078, 0.105882, 0, 1)
 
 [node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_jf4qk")
 
 [node name="TextureRect" type="TextureRect" parent="."]

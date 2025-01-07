@@ -8,6 +8,7 @@ var enemy_list = []
 func _ready() -> void:
 	enemy_list.append(enemy)
 	enemy_list.append(enemy2)
+	get_tree().paused = false # makes sure game is not paused when starting level
 	randomize()
 
 

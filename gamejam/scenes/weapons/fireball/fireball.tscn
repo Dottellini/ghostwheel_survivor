@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7pdtr22euuev"]
+
+[ext_resource type="Script" path="res://scripts/weapons/fireball/fireball.gd" id="1_h7ppa"]
+[ext_resource type="PackedScene" uid="uid://ciljbb7ba8bko" path="res://scenes/weapons/fireball/projectile_fireball.tscn" id="2_a2ugb"]
+
+[node name="Fireball" type="Node2D"]
+script = ExtResource("1_h7ppa")
+projectile_scene = ExtResource("2_a2ugb")
