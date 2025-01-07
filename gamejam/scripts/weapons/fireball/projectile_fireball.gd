@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var damage: int = 90
+@export var damage: int = 200
 var angle: float = 0.0
 var radius: float = 100.0
 var angular_speed: float = 90.0
