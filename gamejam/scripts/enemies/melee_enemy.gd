@@ -16,6 +16,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("moving")
 	
 	if health <= 0:
+		$CollisionShape2D.set_deferred("monitoring",false)
 		$AnimatedSprite2D.play("dying")
 		await get_tree().create_timer(1.0).timeout 
 		queue_free()
