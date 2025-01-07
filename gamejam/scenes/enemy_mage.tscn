@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=3 uid="uid://c38o7cqd1x67i"]
+
+[ext_resource type="Texture2D" uid="uid://73nskpj6tjg0" path="res://assets/mage/mage_guardian-blue.png" id="1_282m3"]
+[ext_resource type="Script" path="res://scripts/shooting_enemy.gd" id="1_hdpjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipowe"]
+atlas = ExtResource("1_282m3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0dh3"]
+atlas = ExtResource("1_282m3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reigx"]
+atlas = ExtResource("1_282m3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdt23"]
+atlas = ExtResource("1_282m3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e2y2"]
+atlas = ExtResource("1_282m3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjisy"]
+atlas = ExtResource("1_282m3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elh3y"]
+atlas = ExtResource("1_282m3")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xi54"]
+atlas = ExtResource("1_282m3")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvfhe"]
+atlas = ExtResource("1_282m3")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywdfq"]
+atlas = ExtResource("1_282m3")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_032oj"]
+atlas = ExtResource("1_282m3")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcws3"]
+atlas = ExtResource("1_282m3")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pcoj"]
+atlas = ExtResource("1_282m3")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brar4"]
+atlas = ExtResource("1_282m3")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26jjb"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipowe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0dh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reigx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdt23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e2y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjisy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elh3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xi54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvfhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywdfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_032oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcws3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pcoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brar4")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqro5"]
+height = 54.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4su6"]
+radius = 389.005
+
+[node name="Enemy_Mage" type="CharacterBody2D"]
+script = ExtResource("1_hdpjg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_26jjb")
+animation = &"attacking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mqro5")
+
+[node name="Attack_Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Range"]
+shape = SubResource("CircleShape2D_g4su6")
+
+[node name="Shoot_Cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Attack_Range" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="Attack_Range" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="Shoot_Cooldown" to="." method="_on_shoot_cooldown_timeout"]
