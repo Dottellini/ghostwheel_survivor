@@ -6,6 +6,8 @@ enum ItemId {
 	LEVEL3
 }
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$".".get_popup().add_item("Restart", ItemId.LEVEL1)
@@ -16,8 +18,7 @@ func _ready() -> void:
 func _on_item_menu_pressed(id: int):
 	match id:
 		ItemId.LEVEL1:
-			# TODO: Add Restarting the game
-			pass
+			get_tree().change_scene_to_file("res://scenes/level.tscn")
 		ItemId.LEVEL2:
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		ItemId.LEVEL3:

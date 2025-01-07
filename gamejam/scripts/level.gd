@@ -3,6 +3,7 @@ extends Node2D
 var enemy = preload("res://scenes/enemy_one.tscn")
 
 func _ready() -> void:
+	get_tree().paused = false # makes sure game is not paused when starting level
 	randomize()
 
 

@@ -1,13 +1,17 @@
 extends CharacterBody2D
 var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 const SPEED = 200.0
+@export var SCORE: int = 10
 @export var HEALTH = 1000.0
+
+signal _on_death
 
 var projectile_scene: PackedScene 
 
 func _physics_process(delta: float) -> void:
 	if HEALTH<=0:
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		HEALTH = 0.0
+		player_death()
 	var direction_x = Input.get_axis("ui_left", "ui_right")
 	var direction_y = Input.get_axis("ui_up", "ui_down")
 	if Input.get_axis("ui_left", "ui_right") != 0  or Input.get_axis("ui_up", "ui_down") !=0:
@@ -26,6 +30,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
+func player_death() -> void:
+	get_tree().paused = true # freezes game
+	_on_death.emit()
+	
+	
 func take_damage(damage: int) -> void:
 	HEALTH -= damage
 
@@ -34,6 +43,7 @@ func _ready() -> void:
 	projectile_scene = preload("res://scenes/projectile_one.tscn")
 	#Globaly.scene_list.append(projectile_scene)
 	Globaly.scene_list.append(preload("res://scenes/projectile_two.tscn"))
+	$Game_over.visible = false
 	shoot_projectile()
 	$Timer.start()
 
