@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var damage = 100
 @export var experience = 100
 
+var is_dying = false
 var is_in_hitbox = false
 var is_attacking = false
 var is_damaged = false
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		die()
 	
 	# move to Player
-	if target and !in_range:
+	if target and !in_range && !is_dying:
 		velocity = global_position.direction_to(target.global_position)
 		if velocity.x < 0:
 			$AnimatedSprite2D.flip_h = true
@@ -36,6 +37,7 @@ func _physics_process(delta: float) -> void:
 		move_and_collide(velocity * SPEED * delta)
 
 func die():
+	is_dying = true
 	$CollisionShape2D.set_deferred("monitoring",false)
 	$AnimatedSprite2D.play("dying")
 	await get_tree().create_timer(1.0).timeout
