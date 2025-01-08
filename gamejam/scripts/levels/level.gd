@@ -3,6 +3,10 @@ extends Node2D
 var enemy = preload("res://scenes/Enemies/enemy_one.tscn")
 var enemy2 = preload("res://scenes/Enemies/enemy_mage.tscn")
 
+var enemy3 = preload("res://scenes/Enemies/enemy_kamikaze_weak.tscn")
+var enemy4 = preload("res://scenes/Enemies/enemy_kamikaze_strong.tscn")
+var boss = preload("res://scenes/Enemies/enemy_boss_tengu.tscn")
+
 # 0.5 and 50 takes 10 minutes until youre at max wave
 @export var spawn_timestep = 0.5
 @export var wave_timestep = 60
@@ -20,6 +24,11 @@ var enemy_list = []
 func _ready() -> void:
 	enemy_list.append(enemy)
 	enemy_list.append(enemy2)
+
+	enemy_list.append(enemy3)
+	enemy_list.append(enemy4)
+	#enemy_list.append(boss)
+
 	
 	world_timer = $Player/UI/TimerText
 	spawn_timer = $Enemy_Spawn_Timer
@@ -34,6 +43,7 @@ func _ready() -> void:
 
 	check_timer.connect("timeout", _check_condition)
 	
+
 	get_tree().paused = false # makes sure game is not paused when starting level
 	randomize()
 	
