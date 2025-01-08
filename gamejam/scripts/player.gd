@@ -2,7 +2,7 @@ extends CharacterBody2D
 var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 const SPEED = 200.0
 const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
-@export var SCORE: int = 10
+@export var SCORE: int = 0 # This is the score and the exp of the player
 @export var HEALTH = 1000.0
 
 var projectile_scene: PackedScene 
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 
 func player_death() -> void:
 	get_tree().paused = true # freezes game
-	_on_death.emit()
+	emit_signal("_on_death")
 
 
 func take_damage(damage: int) -> void:
@@ -41,6 +41,9 @@ func take_damage(damage: int) -> void:
 	
 func add_health(added_health: int) -> void:
 	HEALTH += added_health
+	
+func add_score(added_score: int) -> void:
+	SCORE += added_score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

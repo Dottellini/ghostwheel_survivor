@@ -32,7 +32,7 @@ offset_top = 408.0
 offset_right = 648.0
 offset_bottom = 472.0
 theme_override_font_sizes/font_size = 20
-text = "Exit"
+text = "Quit"
 
 [node name="ScoreLabel" type="Label" parent="."]
 offset_left = 488.0
