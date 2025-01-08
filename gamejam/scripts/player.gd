@@ -3,7 +3,8 @@ var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up",
 const SPEED = 200.0
 const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 @export var SCORE: int = 0 # This is the score and the exp of the player
-@export var HEALTH = 1000.0
+@export var MAX_HEALTH: int = 1000
+var HEALTH: int = 1000
 
 var projectile_scene: PackedScene 
 
@@ -11,7 +12,7 @@ signal _on_death
 
 func _physics_process(delta: float) -> void:
 	if HEALTH <= 0:
-		HEALTH = 0.0
+		HEALTH = 0
 		player_death()
 	var direction_x = Input.get_axis("ui_left", "ui_right")
 	var direction_y = Input.get_axis("ui_up", "ui_down")
@@ -39,8 +40,15 @@ func player_death() -> void:
 func take_damage(damage: int) -> void:
 	HEALTH -= damage
 	
-func add_health(added_health: int) -> void:
-	HEALTH += added_health
+func add_health_percentage(health_percentage: float) -> void:
+	if health_percentage < 0 or health_percentage > 1:
+		print("Health_percentage must be between 0 and 1")
+		return
+	add_health_fix(MAX_HEALTH * health_percentage)
+	
+func add_health_fix(added_health: int) -> void:
+	var health_to_be = HEALTH + added_health
+	HEALTH = MAX_HEALTH if health_to_be >= MAX_HEALTH else health_to_be
 	
 func add_score(added_score: int) -> void:
 	SCORE += added_score
