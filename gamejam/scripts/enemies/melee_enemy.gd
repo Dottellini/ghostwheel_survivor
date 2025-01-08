@@ -42,7 +42,12 @@ func die():
 	is_dying = true
 	$CollisionShape2D.set_deferred("disabled",true)
 	$AnimatedSprite2D.play("dying")
-
+	
+	if self.has_node("Mage_Dying"):
+		$Mage_Dying.play("dying")
+		await $Mage_Dying.animation_finished
+		emit_signal("_on_enemy_death", experience)
+		queue_free()
 	if not has_dropped_coin:
 		var coin = dropped_coin.instantiate()
 		get_parent().add_child(coin)
