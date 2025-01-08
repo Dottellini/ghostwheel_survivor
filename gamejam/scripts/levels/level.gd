@@ -103,5 +103,5 @@ func pick_enemy_based_on_wave(wave: int) -> PackedScene:
 		if roll <= cumulative_chance:
 			return enemy_scenes[enemy]
 	
-	# Fallback (sollte nie auftreten)
+	# Fallback
 	return enemy_scenes[enemies.ENEMY_ONE]
