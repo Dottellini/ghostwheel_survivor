@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ceo2g6rbb2re3"]
+[gd_scene load_steps=27 format=3 uid="uid://ceo2g6rbb2re3"]
 
 [ext_resource type="Script" path="res://scripts/enemies/shooting_enemy.gd" id="1_hdpjg"]
 [ext_resource type="PackedScene" uid="uid://ccxa2ehy0un2s" path="res://scenes/Items/medium_coin_pickup.tscn" id="2_8tnoe"]
@@ -79,19 +79,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_dh5yv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_4cyrd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_4iy2q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_l6gpy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_gp3v1")
+"texture": null
 }],
 "loop": false,
 "name": &"dying",
@@ -151,6 +139,37 @@ height = 54.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4su6"]
 radius = 389.005
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_oostr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dh5yv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4cyrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4iy2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l6gpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gp3v1")
+}],
+"loop": false,
+"name": &"dying",
+"speed": 5.0
+}]
+
 [node name="Enemy_Mage" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_hdpjg")
 experience = 500
@@ -158,7 +177,7 @@ dropped_coin = ExtResource("2_8tnoe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_26jjb")
-animation = &"dying"
+animation = &"moving"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mqro5")
@@ -169,6 +188,10 @@ shape = SubResource("CapsuleShape2D_mqro5")
 shape = SubResource("CircleShape2D_g4su6")
 
 [node name="Shoot_Cooldown" type="Timer" parent="."]
+
+[node name="Mage_Dying" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_oostr")
 
 [connection signal="body_entered" from="Attack_Range" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Attack_Range" to="." method="_on_attack_range_body_exited"]

@@ -42,7 +42,12 @@ func die():
 	is_dying = true
 	$CollisionShape2D.set_deferred("disabled",true)
 	$AnimatedSprite2D.play("dying")
-
+	
+	if self.has_node("Mage_Dying"):
+		$Mage_Dying.play("dying")
+		await $Mage_Dying.animation_finished
+		emit_signal("_on_enemy_death", experience)
+		queue_free()
 	if not has_dropped_coin:
 		var coin = dropped_coin.instantiate()
 		get_parent().add_child(coin)
@@ -71,7 +76,6 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		player_body = body
 		body.take_damage(damage)
 		$AnimatedSprite2D.play("attacking")
-		await $AnimatedSprite2D.animation_finished 
 		is_attacking = false
 		$Hit_Timer.start() 
 
@@ -79,12 +83,8 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func _on_hit_timer_timeout() -> void:
 	if health > 0 && is_in_hitbox:
 		is_attacking = true
-		$AnimatedSprite2D.play("attacking")
-		await get_tree().create_timer(1.0).timeout
-		is_attacking = false
 		player_body.take_damage(damage)
 		$AnimatedSprite2D.play("attacking")
-		await $AnimatedSprite2D.animation_finished 
 		is_attacking = false
 		$Hit_Timer.start(0.5)
 
