@@ -24,7 +24,7 @@ var base_chances = {
 }
 
 @export var spawn_timestep = 0.5
-@export var wave_timestep = 10
+@export var wave_timestep = 60
 
 var current_wave = 0
 
