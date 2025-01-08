@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyhg5ajt25yb2"]
+[gd_scene load_steps=13 format=3 uid="uid://b2rc2fd1yveoi"]
 
 [ext_resource type="Texture2D" uid="uid://6n7fkxtrw5we" path="res://icon.svg" id="1_l181h"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_umwlv"]
+[ext_resource type="Texture2D" uid="uid://c670p1hulaq6o" path="res://assets/Explosion_sprites/Explosion_8/Explosion_5.png" id="3_dm8s6"]
+[ext_resource type="Texture2D" uid="uid://dnqbfwm7v1a8d" path="res://assets/Explosion_sprites/Explosion_1/Explosion_6.png" id="3_lylj2"]
 [ext_resource type="PackedScene" uid="uid://dka7irgxdwi72" path="res://scenes/Interface/UserInterface.tscn" id="3_ti7xd"]
 [ext_resource type="PackedScene" uid="uid://r3g5iskx00f" path="res://scenes/Interface/game_over.tscn" id="4_lm08u"]
+[ext_resource type="Texture2D" uid="uid://dsyfiw68vgmnk" path="res://assets/Explosion_sprites/Explosion_7/1/Explosion_4.png" id="5_2wbpl"]
 [ext_resource type="PackedScene" uid="uid://b7pdtr22euuev" path="res://scenes/weapons/fireball/fireball.tscn" id="5_ltn07"]
+[ext_resource type="Texture2D" uid="uid://jopn3ltqb78j" path="res://assets/Explosion_sprites/Explosion_4/2/Explosion_1_5.png" id="6_scnrt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iaxgc"]
 animations = [{
@@ -16,9 +20,36 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dm8s6")
+}],
 "loop": true,
-"name": &"new_animation",
+"name": &"skin_big",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lylj2")
+}],
+"loop": true,
+"name": &"skin_burning",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2wbpl")
+}],
+"loop": true,
+"name": &"skin_fast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_scnrt")
+}],
+"loop": true,
+"name": &"skin_metal",
 "speed": 5.0
 }]
 
@@ -72,4 +103,8 @@ visible = false
 show_behind_parent = true
 num_projectiles = 8
 
+[node name="Buff_Timer" type="Timer" parent="."]
+wait_time = 30.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Buff_Timer" to="." method="_on_buff_timer_timeout"]
