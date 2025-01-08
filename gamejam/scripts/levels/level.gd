@@ -5,8 +5,6 @@ var enemy_scenes = {
 	"ENEMY_MAGE": preload("res://scenes/Enemies/enemy_mage.tscn")
 }
 
-#var enemy = preload("res://scenes/Enemies/enemy_one.tscn")
-#var enemy2 = preload("res://scenes/Enemies/enemy_mage.tscn")
 
 # 0.5 and 50 takes 10 minutes until youre at max wave
 @export var spawn_timestep = 0.5
@@ -73,9 +71,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	add_child(instance)
 
 func pick_enemy_based_on_wave(wave: int) -> PackedScene:
-	# Wahrscheinlichkeitsverteilung für Enemy-Typen
-	# Höhere Wellen erhöhen die Chance für enemy2
-	var chance_enemy_mage = min(wave * 10, 55)  # max 55% Wahrscheinlichkeit
+	var chance_enemy_mage = min(wave * 5, 55)  # max 55% Wahrscheinlichkeit
 	var chance_enemy_one = 100 - chance_enemy_mage
 	
 	var rng = RandomNumberGenerator.new()
