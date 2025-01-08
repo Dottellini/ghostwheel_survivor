@@ -25,6 +25,7 @@ var base_chances = {
 
 @export var spawn_timestep = 0.5
 @export var wave_timestep = 60
+@export var initial_enemy_spawn_time = 5
 
 var current_wave = 0
 
@@ -38,6 +39,8 @@ func _ready() -> void:
 	world_timer = $Player/UI/TimerText
 	spawn_timer = $Enemy_Spawn_Timer
 	wave_label = $Player/UI/WaveText
+	
+	spawn_timer.wait_time = initial_enemy_spawn_time
 	
 	check_timer = Timer.new()
 	check_timer.wait_time = 1.0
