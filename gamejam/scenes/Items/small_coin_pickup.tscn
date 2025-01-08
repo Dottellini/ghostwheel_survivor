@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2l8ounhnowoi"]
+
+[ext_resource type="Script" path="res://scripts/items/small_coin_pickup.gd" id="1_o2hb1"]
+[ext_resource type="Texture2D" uid="uid://cbfrclu0dnoxu" path="res://assets/items/coin/small_coin.png" id="2_ibx1y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ha3q"]
+atlas = ExtResource("2_ibx1y")
+region = Rect2(0, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rd0w"]
+atlas = ExtResource("2_ibx1y")
+region = Rect2(800, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd1o2"]
+atlas = ExtResource("2_ibx1y")
+region = Rect2(1600, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgarn"]
+atlas = ExtResource("2_ibx1y")
+region = Rect2(0, 800, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic1at"]
+atlas = ExtResource("2_ibx1y")
+region = Rect2(800, 800, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t28ir"]
+atlas = ExtResource("2_ibx1y")
+region = Rect2(1600, 800, 800, 800)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxqx2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ha3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rd0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd1o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgarn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic1at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t28ir")
+}],
+"loop": true,
+"name": &"exist",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2wr08"]
+radius = 300.0
+
+[node name="coin_pickup" type="Node2D"]
+scale = Vector2(0.03, 0.03)
+script = ExtResource("1_o2hb1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_cxqx2")
+animation = &"exist"
+frame_progress = 0.555063
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2wr08")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

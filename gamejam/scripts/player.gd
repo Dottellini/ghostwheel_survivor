@@ -3,6 +3,7 @@ var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up",
 var SPEED = 200.0
 const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 @export var SCORE: int = 0 # This is the score and the exp of the player
+@export var COINS = 0
 @export var MAX_HEALTH: int = 1000
 var HEALTH: int = 1000
 var initial_health = 0
@@ -93,9 +94,6 @@ func shoot_projectile() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$HealthText.text = str("Health: ", HEALTH)
-	pass
-
-func player():
 	pass
 
 
@@ -205,3 +203,7 @@ func _on_buff_timer_timeout() -> void:
 	elif is_speed_buff:
 		is_speed_buff = false
 		SPEED -= 500
+
+func _on_coin_pickup(amount: int):
+	print("worth in player", amount)
+	COINS += amount
