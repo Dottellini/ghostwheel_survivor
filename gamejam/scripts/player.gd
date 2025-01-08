@@ -8,7 +8,7 @@ const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 var HEALTH: int = 1000
 var initial_health = 0
 
-var damage_buff = 0
+var damage_buff: int = 1000
 var defence: float = 0
 
 var is_speed_buff = false
@@ -23,6 +23,7 @@ var is_flickering = false
 signal _on_death
 
 func _physics_process(delta: float) -> void:
+	Globaly.buff=damage_buff
 	if HEALTH <= 0:
 		HEALTH = 0
 		player_death()
