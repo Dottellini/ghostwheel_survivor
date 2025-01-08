@@ -1,7 +1,12 @@
 extends Node2D
 
-var enemy = preload("res://scenes/Enemies/enemy_one.tscn")
-var enemy2 = preload("res://scenes/Enemies/enemy_mage.tscn")
+var enemy_scenes = {
+	"ENEMY_ONE": preload("res://scenes/Enemies/enemy_one.tscn"),
+	"ENEMY_MAGE": preload("res://scenes/Enemies/enemy_mage.tscn")
+}
+
+#var enemy = preload("res://scenes/Enemies/enemy_one.tscn")
+#var enemy2 = preload("res://scenes/Enemies/enemy_mage.tscn")
 
 # 0.5 and 50 takes 10 minutes until youre at max wave
 @export var spawn_timestep = 0.5
@@ -18,8 +23,10 @@ var check_timer: Timer
 var enemy_list = []
 
 func _ready() -> void:
-	enemy_list.append(enemy)
-	enemy_list.append(enemy2)
+	for scene in enemy_scenes:
+		enemy_list.append(scene)
+	#enemy_list.append(enemy)
+	#enemy_list.append(enemy2)
 	
 	world_timer = $Player/UI/TimerText
 	spawn_timer = $Enemy_Spawn_Timer
@@ -59,8 +66,23 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	rng.randomize()
 	
 	$Player/Enemy_Spawn_Area/PathFollow2D.progress = rng.randi_range(0, 3962)
-	var unit = enemy_list.pick_random()
+	var unit = pick_enemy_based_on_wave(current_wave)  # Wähle den Gegner basierend auf der aktuellen Welle
 	var instance = unit.instantiate()
 	
 	instance.global_position = $Player/Enemy_Spawn_Area/PathFollow2D/Marker2D.global_position
 	add_child(instance)
+
+func pick_enemy_based_on_wave(wave: int) -> PackedScene:
+	# Wahrscheinlichkeitsverteilung für Enemy-Typen
+	# Höhere Wellen erhöhen die Chance für enemy2
+	var chance_enemy_mage = min(wave * 10, 55)  # max 55% Wahrscheinlichkeit
+	var chance_enemy_one = 100 - chance_enemy_mage
+	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var roll = rng.randi_range(1, 100)
+	
+	if roll <= chance_enemy_mage:
+		return enemy_scenes["ENEMY_MAGE"]
+	else:
+		return enemy_scenes["ENEMY_ONE"]

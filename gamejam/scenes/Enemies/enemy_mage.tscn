@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://ceo2g6rbb2re3"]
 
 [ext_resource type="Script" path="res://scripts/enemies/shooting_enemy.gd" id="1_hdpjg"]
-[ext_resource type="PackedScene" path="res://scenes/Items/medium_coin_pickup.tscn" id="2_8tnoe"]
+[ext_resource type="PackedScene" uid="uid://ccxa2ehy0un2s" path="res://scenes/Items/medium_coin_pickup.tscn" id="2_8tnoe"]
 [ext_resource type="Texture2D" uid="uid://bks02xhoxg2ib" path="res://assets/Explosion_sprites/Explosion_6/Explosion_6.png" id="2_dh5yv"]
 [ext_resource type="Texture2D" uid="uid://dle1nwk7yb5lx" path="res://assets/Explosion_sprites/Explosion_6/Explosion_7.png" id="3_4cyrd"]
 [ext_resource type="Texture2D" uid="uid://c6w28q4mfvcqk" path="res://assets/Explosion_sprites/Explosion_6/Explosion_8.png" id="4_4iy2q"]
