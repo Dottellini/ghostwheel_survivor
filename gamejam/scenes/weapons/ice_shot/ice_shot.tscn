@@ -154,6 +154,7 @@ shape = SubResource("CapsuleShape2D_cda4n")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="damage_area" type="Area2D" parent="."]
+scale = Vector2(3, 3)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="damage_area"]
 
