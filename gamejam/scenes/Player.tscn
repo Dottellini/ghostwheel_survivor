@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dnqbfwm7v1a8d" path="res://assets/Explosion_sprites/Explosion_1/Explosion_6.png" id="3_lylj2"]
 [ext_resource type="PackedScene" uid="uid://dka7irgxdwi72" path="res://scenes/Interface/UserInterface.tscn" id="3_ti7xd"]
 [ext_resource type="PackedScene" uid="uid://r3g5iskx00f" path="res://scenes/Interface/game_over.tscn" id="4_lm08u"]
+
 [ext_resource type="Texture2D" uid="uid://dsyfiw68vgmnk" path="res://assets/Explosion_sprites/Explosion_7/1/Explosion_4.png" id="5_2wbpl"]
-[ext_resource type="PackedScene" uid="uid://b7pdtr22euuev" path="res://scenes/weapons/fireball/fireball.tscn" id="5_ltn07"]
 [ext_resource type="Texture2D" uid="uid://jopn3ltqb78j" path="res://assets/Explosion_sprites/Explosion_4/2/Explosion_1_5.png" id="6_scnrt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iaxgc"]
@@ -64,6 +64,7 @@ point_count = 5
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_umwlv")
+COINS = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -99,9 +100,6 @@ rotation = -0.00714841
 process_mode = 2
 visible = false
 
-[node name="Fireball" parent="." instance=ExtResource("5_ltn07")]
-show_behind_parent = true
-num_projectiles = 8
 
 [node name="Buff_Timer" type="Timer" parent="."]
 wait_time = 30.0

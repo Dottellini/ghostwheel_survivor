@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://dupusa0442pf4"]
+
+[ext_resource type="Script" path="res://scripts/interface/shop.gd" id="1_qqis8"]
+
+[node name="shop" type="Control"]
+process_mode = 3
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qqis8")
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -66.0
+offset_top = -43.0
+offset_right = 67.0
+offset_bottom = 46.0
+
+[node name="GridContainer" type="GridContainer" parent="background"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 27.0
+offset_right = 228.0
+offset_bottom = 97.0
+scale = Vector2(0.5, 0.5)
+columns = 4
+
+[node name="Button1" type="Button" parent="background/GridContainer"]
+layout_mode = 2
+text = "Buy 1"
+
+[node name="Button2" type="Button" parent="background/GridContainer"]
+layout_mode = 2
+text = "Buy 2"
+
+[node name="Button3" type="Button" parent="background/GridContainer"]
+layout_mode = 2
+text = "Buy 3"
+
+[node name="Button4" type="Button" parent="background/GridContainer"]
+layout_mode = 2
+text = "Buy 4"
+
+[node name="Button5" type="Button" parent="background/GridContainer"]
+layout_mode = 2
+text = "Buy 5"
+
+[node name="Button6" type="Button" parent="background/GridContainer"]
+layout_mode = 2
+text = "Buy 6"
+
+[node name="Button7" type="Button" parent="background/GridContainer"]
+layout_mode = 2
+text = "Buy 7"
+
+[node name="Button8" type="Button" parent="background/GridContainer"]
+layout_mode = 2
+text = "Buy 8"
+
+[node name="Label" type="Label" parent="background"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 71.0
+offset_right = 275.0
+offset_bottom = 94.0
+scale = Vector2(0.3, 0.3)
+text = "Press 'E' to open and close shop"
+
+[connection signal="pressed" from="background/GridContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="background/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="background/GridContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="background/GridContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="background/GridContainer/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="background/GridContainer/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="background/GridContainer/Button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="background/GridContainer/Button8" to="." method="_on_button_8_pressed"]

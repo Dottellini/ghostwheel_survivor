@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dka7irgxdwi72"]
+[gd_scene load_steps=7 format=3 uid="uid://dka7irgxdwi72"]
 
 [ext_resource type="Script" path="res://scripts/interface/ui.gd" id="1_stct0"]
 [ext_resource type="Script" path="res://scripts/interface/timer.gd" id="2_cebdb"]
 [ext_resource type="Script" path="res://scripts/interface/menu_button.gd" id="3_ey3y7"]
+[ext_resource type="PackedScene" uid="uid://dupusa0442pf4" path="res://scenes/Interface/shop.tscn" id="4_ogtrq"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_owckq"]
 device = -1
@@ -57,5 +58,12 @@ offset_right = 331.0
 offset_bottom = 31.0
 text = "Wave: 00"
 horizontal_alignment = 1
+
+[node name="shop" parent="." instance=ExtResource("4_ogtrq")]
+offset_left = 573.0
+offset_top = 320.0
+offset_right = -505.0
+offset_bottom = -273.0
+scale = Vector2(4, 4)
 
 [connection signal="toggled" from="MenuButton" to="." method="_on_menu_button_toggled"]
