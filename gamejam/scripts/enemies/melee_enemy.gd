@@ -39,9 +39,9 @@ func _physics_process(delta: float) -> void:
 
 func die():
 	is_dying = true
-	$CollisionShape2D.set_deferred("monitoring",false)
+	$CollisionShape2D.set_deferred("disabled",true)
 	$AnimatedSprite2D.play("dying")
-	await get_tree().create_timer(1.0).timeout 
+	await $AnimatedSprite2D.animation_finished 
 	emit_signal("_on_enemy_death", experience)
 	queue_free()
 
@@ -57,28 +57,29 @@ func take_damage(damage: int) -> void:
 
 # if the player has entered the body
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.has_method("player") and health > 0:
+	if body.is_in_group("player") and health > 0:
 		is_in_hitbox = true
 		is_attacking = true
+		player_body = body
+		body.take_damage(damage)
 		$AnimatedSprite2D.play("attacking")
 		await $AnimatedSprite2D.animation_finished 
 		is_attacking = false
-		player_body = body
-		body.take_damage(damage)
 		$Hit_Timer.start() 
 
 # cooldown for hitting of the enemy
 func _on_hit_timer_timeout() -> void:
 	if health > 0 && is_in_hitbox:
 		is_attacking = true
-		$AnimatedSprite2D.play("attacking")
-		await get_tree().create_timer(1.0).timeout 
-		is_attacking = false
 		player_body.take_damage(damage)
+		$AnimatedSprite2D.play("attacking")
+		await $AnimatedSprite2D.animation_finished 
+		is_attacking = false
 		$Hit_Timer.start(0.5)
 
 # if body left
 func _on_hitbox_body_exited(body: Node2D) -> void:
-	is_in_hitbox = false
-	is_attacking = false
-	$Hit_Timer.stop()
+	if body.is_in_group("player"):
+		is_in_hitbox = false
+		is_attacking = false
+		$Hit_Timer.stop()
