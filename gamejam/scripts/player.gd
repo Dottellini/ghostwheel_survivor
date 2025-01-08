@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
+var dir = Vector2(Input.get_axis("ui_Left", "ui_Right"), Input.get_axis("ui_Up", "ui_Down"))
 var SPEED = 200.0
 const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 @export var SCORE: int = 0 # This is the score and the exp of the player
@@ -28,10 +28,10 @@ func _physics_process(delta: float) -> void:
 		HEALTH = 0
 		player_death()
 		
-	var direction_x = Input.get_axis("ui_left", "ui_right")
-	var direction_y = Input.get_axis("ui_up", "ui_down")
-	if Input.get_axis("ui_left", "ui_right") != 0  or Input.get_axis("ui_up", "ui_down") !=0:
-		dir=Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
+	var direction_x = Input.get_axis("ui_Left", "ui_Right")
+	var direction_y = Input.get_axis("ui_Up", "ui_Down")
+	if Input.get_axis("ui_Left", "ui_Right") != 0  or Input.get_axis("ui_Up", "ui_Down") !=0:
+		dir=Vector2(Input.get_axis("ui_Left", "ui_Right"), Input.get_axis("ui_Up", "ui_Down"))
 	if direction_x:
 		velocity.x = direction_x * SPEED
 	else:
