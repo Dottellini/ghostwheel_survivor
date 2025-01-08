@@ -3,6 +3,7 @@ var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up",
 const SPEED = 200.0
 const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 @export var SCORE: int = 0 # This is the score and the exp of the player
+@export var COINS = 0
 @export var MAX_HEALTH: int = 1000
 var HEALTH: int = 1000
 
@@ -80,7 +81,7 @@ func _process(delta: float) -> void:
 	$HealthText.text = str("Health: ", HEALTH)
 	pass
 
-func player():
+func player(): # only here so enemy projectiles know what they hit (has_method(player))
 	pass
 
 
@@ -115,3 +116,7 @@ func _on_gambling_hit(index: int):
 			pass
 	$wheel_of_fortune.visible = false
 	get_tree().paused = false
+
+func _on_coin_pickup(amount: int):
+	print("worth in player", amount)
+	COINS += amount

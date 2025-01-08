@@ -16,9 +16,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$ScoreText.text = "Score: %d" % player.SCORE
+	$coin_text.text = "Coins %d" % player.COINS
 
 
 func _on_menu_button_toggled(toggled_on: bool) -> void:
 	get_tree().paused = !get_tree().paused # freezes game when menu is opened and unfreezes when closed
-	if get_tree().paused: emit_signal("_on_pause")
-	else: emit_signal("_on_unpause")
+	if get_tree().paused: emit_signal("_on_pause") # calls _on_pause in music node to muffle sound
+	else: emit_signal("_on_unpause") # undoes the muffling
