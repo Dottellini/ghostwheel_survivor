@@ -10,6 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$AnimatedSprite2D.play("default")
+	rotation = direction.angle()
 	position += direction * speed * delta
 
 

@@ -7,6 +7,7 @@ var direction: Vector2 = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	$AnimatedSprite2D.play("default")
+	rotation = direction.angle()
 	position += direction * speed * delta
 	#if not get_viewport_rect().has_point(global_position):
 		#queue_free()
