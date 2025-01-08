@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var damage = 100
 @export var experience = 100
 
+var is_in_hitbox = false
 var is_attacking = false
 var is_damaged = false
 var in_range = false
@@ -52,25 +53,27 @@ func take_damage(damage: int) -> void:
 # if the player has entered the body
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("player") and health > 0:
+		is_in_hitbox = true
 		is_attacking = true
 		$AnimatedSprite2D.play("attacking")
 		await get_tree().create_timer(1.0).timeout 
 		is_attacking = false
 		player_body = body
-		body.take_damage(damage)
+		body.take_damage(damage, "Bat")
 		$Hit_Timer.start() 
 
 # cooldown for hitting of the enemy
 func _on_hit_timer_timeout() -> void:
-	if health > 0:
+	if health > 0 && is_in_hitbox:
 		is_attacking = true
 		$AnimatedSprite2D.play("attacking")
 		await get_tree().create_timer(1.0).timeout 
 		is_attacking = false
-		player_body.take_damage(damage)
+		player_body.take_damage(damage, "Bat")
 		$Hit_Timer.start(0.5)
 
 # if body left
 func _on_hitbox_body_exited(body: Node2D) -> void:
+	is_in_hitbox = false
 	is_attacking = false
 	$Hit_Timer.stop()

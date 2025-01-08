@@ -37,7 +37,8 @@ func player_death() -> void:
 	emit_signal("_on_death")
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, enemy: String) -> void:
+	print(enemy)
 	HEALTH -= damage
 	
 func add_health_percentage(health_percentage: float) -> void:
