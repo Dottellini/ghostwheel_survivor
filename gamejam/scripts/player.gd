@@ -18,6 +18,7 @@ var is_damage_buff = false
 var last_skin_index = 0
 
 var projectile_scene: PackedScene 
+var is_flickering = false
 
 signal _on_death
 
@@ -25,11 +26,11 @@ func _physics_process(delta: float) -> void:
 	if HEALTH <= 0:
 		HEALTH = 0
 		player_death()
+		
 	var direction_x = Input.get_axis("ui_left", "ui_right")
 	var direction_y = Input.get_axis("ui_up", "ui_down")
 	if Input.get_axis("ui_left", "ui_right") != 0  or Input.get_axis("ui_up", "ui_down") !=0:
 		dir=Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
-	
 	if direction_x:
 		velocity.x = direction_x * SPEED
 	else:
@@ -40,6 +41,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
+	if is_flickering:
+		$AnimatedSprite2D.set_visible(randi_range(0,1))
+	else:
+		$AnimatedSprite2D.set_visible(true)
+	
 	move_and_slide()
 	
 
@@ -49,12 +55,18 @@ func player_death() -> void:
 
 
 func take_damage(damage: int) -> void:
+	is_flickering = true
+	
 	if defence > 0:
 		HEALTH -= (damage * (defence*100)) / 100
 	elif defence < 0:
 		HEALTH += -damage + ((damage * (defence*100)) / 100)
 	else:
 		HEALTH -= damage
+	
+	await get_tree().create_timer(0.2).timeout
+	is_flickering = false
+
 
 func add_health_percentage(health_percentage: float) -> void:
 	if health_percentage < 0 or health_percentage > 1:
