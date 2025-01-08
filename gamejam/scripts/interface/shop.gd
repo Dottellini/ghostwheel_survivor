@@ -1,5 +1,9 @@
 extends Control
 
+@export var shuriken_price = 100
+@export var ice_bomb_price = 100
+@export var ring_of_fire_price = 200
+
 var button1
 var button2
 var button3
@@ -12,6 +16,7 @@ var button8
 var shuriken = preload("res://scenes/weapons/shuriken/shuriken.tscn")
 var ice_bomb = preload("res://scenes/weapons/ice_shot/ice_shot.tscn")
 var ring_of_fire = preload("res://scenes/weapons/fireball/fireball.tscn")
+var player
 
 var shown = true
 
@@ -25,21 +30,32 @@ func _ready() -> void:
 	button6 = $background/GridContainer/Button6
 	button7 = $background/GridContainer/Button7
 	button8 = $background/GridContainer/Button8
+	player = get_tree().get_first_node_in_group("player")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_manage_shop()
+	$background/coin_background/coin_amount.text = "%d" % player.COINS
 
 func _on_button_1_pressed() -> void: # buy shuriken
-	Globaly.scene_list.append(shuriken)
+	if player.COINS - shuriken_price >= 0:
+		Globaly.scene_list.append(shuriken)
+		player.COINS -= shuriken_price
+	else: _show_warning()
 
 
 func _on_button_2_pressed() -> void: # buy ice bomb
-	Globaly.scene_list.append(ice_bomb)
+	if player.COINS - ice_bomb_price >= 0:
+		Globaly.scene_list.append(ice_bomb)
+		player.COINS -= ice_bomb_price
+	else: _show_warning()
 
 
 func _on_button_3_pressed() -> void: # buy ring of fire
-	get_tree().get_first_node_in_group("player").add_child(ring_of_fire.instantiate())
+	if player.COINS - ring_of_fire_price >= 0:
+		player.add_child(ring_of_fire.instantiate())
+		player.COINS -= ring_of_fire_price
+	else: _show_warning()
 
 
 func _on_button_4_pressed() -> void: # buy death beam
@@ -79,3 +95,24 @@ func _manage_shop():
 					shown = true
 				else: node.visible = true
 			get_tree().paused = true
+
+func _show_warning():
+	var panel = $background/coin_background
+	var tempStyle = panel.get_theme_stylebox("panel").duplicate()
+	tempStyle.set("bg_color", Color(1.0, 0.0, 0.0))
+	panel.add_theme_stylebox_override("panel", tempStyle)
+	await get_tree().create_timer(0.2).timeout
+	tempStyle.set("bg_color", Color(0.0, 0.0, 0.0))
+	panel.add_theme_stylebox_override("panel", tempStyle)
+	await get_tree().create_timer(0.2).timeout
+	tempStyle.set("bg_color", Color(1.0, 0.0, 0.0))
+	panel.add_theme_stylebox_override("panel", tempStyle)
+	await get_tree().create_timer(0.2).timeout
+	tempStyle.set("bg_color", Color(0.0, 0.0, 0.0))
+	panel.add_theme_stylebox_override("panel", tempStyle)
+	await get_tree().create_timer(0.2).timeout
+	tempStyle.set("bg_color", Color(1.0, 0.0, 0.0))
+	panel.add_theme_stylebox_override("panel", tempStyle)
+	await get_tree().create_timer(0.2).timeout
+	tempStyle.set("bg_color", Color(0.0, 0.0, 0.0))
+	panel.add_theme_stylebox_override("panel", tempStyle)
