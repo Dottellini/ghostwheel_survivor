@@ -147,9 +147,7 @@ damage = 50
 position = Vector2(13.5, 13.5)
 scale = Vector2(2.6875, 2.6875)
 sprite_frames = SubResource("SpriteFrames_btwo8")
-animation = &"dying"
-frame = 3
-frame_progress = 1.0
+animation = &"moving"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(13, 13)
