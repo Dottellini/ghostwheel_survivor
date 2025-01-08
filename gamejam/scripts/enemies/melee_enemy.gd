@@ -71,7 +71,6 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		player_body = body
 		body.take_damage(damage)
 		$AnimatedSprite2D.play("attacking")
-		await $AnimatedSprite2D.animation_finished 
 		is_attacking = false
 		$Hit_Timer.start() 
 
@@ -79,12 +78,8 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func _on_hit_timer_timeout() -> void:
 	if health > 0 && is_in_hitbox:
 		is_attacking = true
-		$AnimatedSprite2D.play("attacking")
-		await get_tree().create_timer(1.0).timeout
-		is_attacking = false
 		player_body.take_damage(damage)
 		$AnimatedSprite2D.play("attacking")
-		await $AnimatedSprite2D.animation_finished 
 		is_attacking = false
 		$Hit_Timer.start(0.5)
 
