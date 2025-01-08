@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhpfpqvlc70vi"]
+[gd_scene load_steps=10 format=3 uid="uid://dhpfpqvlc70vi"]
 
 [ext_resource type="Script" path="res://scripts/interface/main_menu.gd" id="1_jf4qk"]
 [ext_resource type="Texture2D" uid="uid://dlww2febgc55m" path="res://assets/menu_background.webp" id="2_17rub"]
+[ext_resource type="AudioStream" uid="uid://2l7nahi2bwpo" path="res://assets/Sound/Zwei Räder sind krass (main theme).mp3" id="3_wxq4b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3rt4"]
 bg_color = Color(0.703829, 0.0884444, 0, 1)
@@ -53,6 +54,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_uhspn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g8gkg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_fkk0c")
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wxq4b")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
