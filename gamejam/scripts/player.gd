@@ -80,9 +80,6 @@ func _process(delta: float) -> void:
 	$HealthText.text = str("Health: ", HEALTH)
 	pass
 
-func player():
-	pass
-
 
 func _on_timer_timeout() -> void:
 	shoot_projectile()

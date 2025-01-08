@@ -150,7 +150,7 @@ height = 54.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4su6"]
 radius = 389.005
 
-[node name="Enemy_Mage" type="CharacterBody2D"]
+[node name="Enemy_Mage" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_hdpjg")
 experience = 500
 
