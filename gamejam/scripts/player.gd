@@ -81,9 +81,6 @@ func _process(delta: float) -> void:
 	$HealthText.text = str("Health: ", HEALTH)
 	pass
 
-func player(): # only here so enemy projectiles know what they hit (has_method(player))
-	pass
-
 
 func _on_timer_timeout() -> void:
 	shoot_projectile()
