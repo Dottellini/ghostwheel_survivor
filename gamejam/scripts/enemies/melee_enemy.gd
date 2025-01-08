@@ -5,21 +5,25 @@ extends CharacterBody2D
 @export var SPEED = 150.0
 @export var health = 100
 @export var damage = 100
+@export var experience = 100
 
 var is_attacking = false
 var is_damaged = false
 var in_range = false
 var player_body
 
+signal _on_enemy_death
+
+func _ready() -> void:
+	_on_enemy_death.connect(get_tree().get_first_node_in_group("player").add_score)
+	
+
 func _physics_process(delta: float) -> void:
 	if !is_attacking:
 		$AnimatedSprite2D.play("moving")
 	
 	if health <= 0:
-		$CollisionShape2D.set_deferred("monitoring",false)
-		$AnimatedSprite2D.play("dying")
-		await get_tree().create_timer(1.0).timeout 
-		queue_free()
+		die()
 	
 	# move to Player
 	if target and !in_range:
@@ -29,6 +33,13 @@ func _physics_process(delta: float) -> void:
 		elif velocity.x > 0:
 			$AnimatedSprite2D.flip_h = false
 		move_and_collide(velocity * SPEED * delta)
+
+func die():
+	$CollisionShape2D.set_deferred("monitoring",false)
+	$AnimatedSprite2D.play("dying")
+	await get_tree().create_timer(1.0).timeout
+	emit_signal("_on_enemy_death", experience)
+	queue_free()
 
 func enemy():
 	pass

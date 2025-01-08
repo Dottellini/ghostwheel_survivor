@@ -2,10 +2,6 @@ extends "res://scripts/enemies/melee_enemy.gd"
 
 var projectile_scene = preload("res://scenes/weapons/enemy_weapons/enemy_aura.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_hit_timer_timeout() -> void:
 	pass # Replace with function body.
 
