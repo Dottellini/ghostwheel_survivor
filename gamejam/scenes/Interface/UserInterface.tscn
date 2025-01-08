@@ -34,6 +34,13 @@ offset_right = 69.0
 offset_bottom = 31.0
 text = "Score: 0"
 
+[node name="coin_text" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 33.0
+offset_right = 69.0
+offset_bottom = 56.0
+text = "Coins: 0"
+
 [node name="MenuButton" type="MenuButton" parent="."]
 process_mode = 3
 offset_left = 1040.0

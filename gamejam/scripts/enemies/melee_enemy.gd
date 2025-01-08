@@ -6,12 +6,14 @@ extends CharacterBody2D
 @export var health = 100
 @export var damage = 100
 @export var experience = 100
+@export var dropped_coin = preload("res://scenes/Items/small_coin_pickup.tscn")
 
 var is_dying = false
 var is_in_hitbox = false
 var is_attacking = false
 var is_damaged = false
 var in_range = false
+var has_dropped_coin = false
 var player_body
 
 signal _on_enemy_death
@@ -19,7 +21,6 @@ signal _on_enemy_death
 func _ready() -> void:
 	$AnimatedSprite2D.play("moving")
 	_on_enemy_death.connect(get_tree().get_first_node_in_group("player").add_score)
-	
 
 func _physics_process(delta: float) -> void:
 	if !is_attacking && !is_dying:
@@ -41,6 +42,13 @@ func die():
 	is_dying = true
 	$CollisionShape2D.set_deferred("disabled",true)
 	$AnimatedSprite2D.play("dying")
+
+	if not has_dropped_coin:
+		var coin = dropped_coin.instantiate()
+		get_parent().add_child(coin)
+		coin.position = position
+		has_dropped_coin = true
+	
 	await $AnimatedSprite2D.animation_finished 
 	emit_signal("_on_enemy_death", experience)
 	queue_free()
@@ -71,6 +79,9 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func _on_hit_timer_timeout() -> void:
 	if health > 0 && is_in_hitbox:
 		is_attacking = true
+		$AnimatedSprite2D.play("attacking")
+		await get_tree().create_timer(1.0).timeout
+		is_attacking = false
 		player_body.take_damage(damage)
 		$AnimatedSprite2D.play("attacking")
 		await $AnimatedSprite2D.animation_finished 
