@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dupusa0442pf4"]
+[gd_scene load_steps=3 format=3 uid="uid://dupusa0442pf4"]
 
 [ext_resource type="Script" path="res://scripts/interface/shop.gd" id="1_qqis8"]
+[ext_resource type="Texture2D" uid="uid://p7vagm8lf0po" path="res://assets/items/coin/Coin-7.png.png" id="2_t3bj5"]
 
 [node name="shop" type="Control"]
 process_mode = 3
@@ -31,15 +32,48 @@ columns = 4
 
 [node name="Button1" type="Button" parent="background/GridContainer"]
 layout_mode = 2
-text = "Buy 1"
+text = "100"
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button1"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 6.0
+offset_right = 70.0
+offset_bottom = 46.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_t3bj5")
+expand_mode = 1
 
 [node name="Button2" type="Button" parent="background/GridContainer"]
 layout_mode = 2
-text = "Buy 2"
+text = "100"
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button2"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 6.0
+offset_right = 71.0
+offset_bottom = 46.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_t3bj5")
+expand_mode = 1
 
 [node name="Button3" type="Button" parent="background/GridContainer"]
 layout_mode = 2
-text = "Buy 3"
+text = "200"
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button3"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 6.0
+offset_right = 70.0
+offset_bottom = 46.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_t3bj5")
+expand_mode = 1
 
 [node name="Button4" type="Button" parent="background/GridContainer"]
 layout_mode = 2
@@ -61,14 +95,51 @@ text = "Buy 7"
 layout_mode = 2
 text = "Buy 8"
 
-[node name="Label" type="Label" parent="background"]
+[node name="shop_prompt" type="Label" parent="background"]
 layout_mode = 0
-offset_left = 30.0
+offset_left = 6.0
 offset_top = 71.0
-offset_right = 275.0
+offset_right = 251.0
 offset_bottom = 94.0
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.5, 0.5)
 text = "Press 'E' to open and close shop"
+
+[node name="coin_background" type="Panel" parent="background"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 108.0
+offset_bottom = 22.0
+
+[node name="coin_text" type="Label" parent="background/coin_background"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 3.0
+offset_right = 73.0
+offset_bottom = 26.0
+scale = Vector2(0.5, 0.5)
+text = "Coins:"
+horizontal_alignment = 1
+
+[node name="coin_texture" type="TextureRect" parent="background/coin_background"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 43.0
+offset_bottom = 43.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_t3bj5")
+expand_mode = 1
+
+[node name="coin_amount" type="Label" parent="background/coin_background"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 1.0
+offset_right = 99.0
+offset_bottom = 24.0
+scale = Vector2(0.7, 0.7)
+text = "0"
+horizontal_alignment = 2
 
 [connection signal="pressed" from="background/GridContainer/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="background/GridContainer/Button2" to="." method="_on_button_2_pressed"]
