@@ -1,11 +1,21 @@
 extends CharacterBody2D
 var dir = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
-const SPEED = 200.0
+var SPEED = 200.0
 const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 @export var SCORE: int = 0 # This is the score and the exp of the player
 @export var COINS = 0
 @export var MAX_HEALTH: int = 1000
 var HEALTH: int = 1000
+var initial_health = 0
+
+var damage_buff = 0
+var defence: float = 0
+
+var is_speed_buff = false
+var is_defence_buff = false
+var is_damage_buff = false
+
+var last_skin_index = 0
 
 var projectile_scene: PackedScene 
 var is_flickering = false
@@ -46,11 +56,18 @@ func player_death() -> void:
 
 func take_damage(damage: int) -> void:
 	is_flickering = true
-	HEALTH -= damage
+	
+	if defence > 0:
+		HEALTH -= (damage * (defence*100)) / 100
+	elif defence < 0:
+		HEALTH += -damage + ((damage * (defence*100)) / 100)
+	else:
+		HEALTH -= damage
 	
 	await get_tree().create_timer(0.2).timeout
 	is_flickering = false
-	
+
+
 func add_health_percentage(health_percentage: float) -> void:
 	if health_percentage < 0 or health_percentage > 1:
 		print("Health_percentage must be between 0 and 1")
@@ -103,26 +120,101 @@ func _on_gambling_pickup(): # shows the wheel of fortune and pauses the game
 func _on_gambling_hit(index: int):
 	print(index)
 	await get_tree().create_timer(3.0).timeout
-	#TODO insert logic for giving the player new skins in the cases below
+	# logic for giving the player new skins and buffs in the cases below
 	match index:
 		1:
-			pass
+			#TODO: Großer Reifen SKIN
+			$AnimatedSprite2D.play("skin_big")
+			skin_ability(index)
 		2:
-			pass
+			is_defence_buff = true
+			defence += 0.5
+			$Buff_Timer.start()
 		3:
-			pass
+			#TODO: Brennender Reifen SKIN
+			$AnimatedSprite2D.play("skin_burning")
+			skin_ability(index)
 		4:
-			pass
+			# Damage Buff
+			is_damage_buff = true
+			damage_buff += 100
+			$Buff_Timer.start()
 		5:
-			pass
+			#TODO: Skin Fast Wheel
+			$AnimatedSprite2D.play("skin_fast")
+			skin_ability(index)
 		6:
-			pass
+			# Healing Buff
+			add_health_percentage(0.5)
 		7:
-			pass
+			#TODO: Metal Skin
+			$AnimatedSprite2D.play("skin_metal")
+			skin_ability(index)
 		8:
-			pass
+			# Speed Buff
+			SPEED += 500
+			is_speed_buff = true
+			$Buff_Timer.start()
+			
 	$wheel_of_fortune.visible = false
 	get_tree().paused = false
+
+# Change Ability of the player based on the skin
+func skin_ability(skin_number: int):
+	# Remove the last skin ability
+	if last_skin_index > 0 and last_skin_index != skin_number:
+		match last_skin_index:
+			1:
+				# less max health
+				MAX_HEALTH = initial_health
+				if HEALTH > MAX_HEALTH:
+					HEALTH = MAX_HEALTH
+			3:
+				# less damage
+				if damage_buff > 50:
+					damage_buff -= 50
+				else:
+					damage_buff = 0
+			5:
+				# more speed, less defence
+				SPEED += 100
+				defence -= 0.3
+			7:
+				# less speed, more defence
+				SPEED -= 200
+				defence += 0.3
+	# Add skin ability
+	if last_skin_index != skin_number:
+		match skin_number:
+			1:
+				# more max health
+				initial_health = MAX_HEALTH
+				MAX_HEALTH += 500
+				HEALTH = MAX_HEALTH
+				last_skin_index = skin_number
+			3:
+				# more damage
+				damage_buff += 50
+			5:
+				# more defence, less speed
+				SPEED -= 100
+				defence += 0.3
+			7:
+				#mehr speed, weniger defence
+				SPEED += 200
+				defence -= 0.3
+
+func _on_buff_timer_timeout() -> void:
+	$Buff_Timer.stop()
+	if is_defence_buff:
+		is_defence_buff = false
+		defence = 0
+	elif is_damage_buff:
+		is_damage_buff = false
+		damage_buff = 0
+	elif is_speed_buff:
+		is_speed_buff = false
+		SPEED -= 500
 
 func _on_coin_pickup(amount: int):
 	print("worth in player", amount)
