@@ -212,7 +212,6 @@ tile_map_data = PackedByteArray("AAADAAIAAAAFAAIAAAACAAQAAAAGAAIAAAAKAAwAAAAGAAI
 tile_set = SubResource("TileSet_o3xb2")
 
 [node name="Enemy_Spawn_Timer" type="Timer" parent="."]
-wait_time = 5.0
 autostart = true
 
 [node name="HealthItem" parent="." instance=ExtResource("4_4loui")]

@@ -11,7 +11,11 @@ func _ready() -> void:
 	player = get_parent()
 	_on_pause.connect(get_tree().get_first_node_in_group("music")._muffle_music)
 	_on_unpause.connect(get_tree().get_first_node_in_group("music")._unmuffle_music)
-
+	for node in get_children():
+		if node.name != "shop":
+			node.visible = false
+	await get_tree().create_timer(0.5).timeout
+	get_tree().paused = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
