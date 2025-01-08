@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1vm7emxy0tg7"
+path="res://.godot/imported/Kämpfende Räder sind krass (battle theme 3).mp3-f9d513666c2a427beb59b14b46167cd9.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound/Kämpfende Räder sind krass (battle theme 3).mp3"
+dest_files=["res://.godot/imported/Kämpfende Räder sind krass (battle theme 3).mp3-f9d513666c2a427beb59b14b46167cd9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

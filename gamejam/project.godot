@@ -30,6 +30,9 @@ project/assembly_name="gamejam"
 [global_group]
 
 player=""
+music=""
+enemy=""
+timer=""
 
 [rendering]
 

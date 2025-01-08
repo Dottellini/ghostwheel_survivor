@@ -2,10 +2,6 @@ extends "res://scripts/enemies/melee_enemy.gd"
 
 var projectile_scene = preload("res://scenes/weapons/enemy_weapons/enemy_aura.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_hit_timer_timeout() -> void:
 	pass # Replace with function body.
 
@@ -23,14 +19,14 @@ func shoot_projectile() -> void:
 		print("Projectile scene is not assigned.")
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
-	if body.has_method("player"):
+	if body.is_in_group("player"):
 		in_range  = true
 		velocity = Vector2(0, 0)
 		$Shoot_Cooldown.start()
 
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
-	if body.has_method("player"):
+	if body.is_in_group("player"):
 		in_range = false
 		velocity = global_position.direction_to(target.global_position)
 		$Shoot_Cooldown.stop()

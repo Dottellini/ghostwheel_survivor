@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2l7nahi2bwpo"
+path="res://.godot/imported/Zwei Räder sind krass (main theme).mp3-858e9029e4090bbbd5416c622c87af4b.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound/Zwei Räder sind krass (main theme).mp3"
+dest_files=["res://.godot/imported/Zwei Räder sind krass (main theme).mp3-858e9029e4090bbbd5416c622c87af4b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
