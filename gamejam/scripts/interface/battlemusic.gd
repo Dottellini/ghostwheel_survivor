@@ -9,6 +9,7 @@ var current_song = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	self.volume_db = Globaly.volume_in_db
 	var nr = randi_range(0,2)
 	match nr:
 		0:

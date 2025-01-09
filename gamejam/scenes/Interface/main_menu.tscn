@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhpfpqvlc70vi"]
+[gd_scene load_steps=19 format=3 uid="uid://dhpfpqvlc70vi"]
 
 [ext_resource type="Script" path="res://scripts/interface/main_menu.gd" id="1_jf4qk"]
 [ext_resource type="Texture2D" uid="uid://dlww2febgc55m" path="res://assets/menu_background.webp" id="2_17rub"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dpp5jlj07o4kt" path="res://assets/conrtrols/controller_4.png" id="4_kh4ok"]
 [ext_resource type="PackedScene" uid="uid://bx6oqdxwnu77h" path="res://scenes/Interface/controls.tscn" id="5_5f60b"]
 [ext_resource type="Texture2D" uid="uid://mkhwwara6h4e" path="res://assets/conrtrols/controller_3.png" id="5_8w1ub"]
+[ext_resource type="Script" path="res://scripts/interface/audio_control.gd" id="8_q0n8q"]
+[ext_resource type="PackedScene" uid="uid://3rcewbngpkmo" path="res://scenes/Interface/volume_slider.tscn" id="9_ywa6w"]
+[ext_resource type="Texture2D" uid="uid://dfanmqcya2fcf" path="res://assets/Sound/music_note.png" id="10_c266b"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_1gfby"]
 frames = 7
@@ -57,9 +60,9 @@ expand_mode = 1
 
 [node name="ControlsButton" type="TextureButton" parent="."]
 offset_left = 1056.0
-offset_top = 16.0
+offset_top = 64.0
 offset_right = 1080.0
-offset_bottom = 40.0
+offset_bottom = 88.0
 scale = Vector2(3.24, 3.24)
 texture_normal = SubResource("AnimatedTexture_1gfby")
 texture_hover = ExtResource("4_kh4ok")
@@ -91,9 +94,28 @@ stream = ExtResource("3_wxq4b")
 volume_db = -5.0
 autoplay = true
 parameters/looping = true
+script = ExtResource("8_q0n8q")
 
 [node name="Controls" parent="." instance=ExtResource("5_5f60b")]
-position = Vector2(784, 64)
+position = Vector2(784, 112)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 944.0
+offset_top = 16.0
+offset_right = 1144.0
+offset_bottom = 48.0
+color = Color(0.713726, 0.0745098, 0.0823529, 0.788235)
+
+[node name="VolumeSlider" parent="." instance=ExtResource("9_ywa6w")]
+offset_left = 976.0
+offset_top = 24.0
+offset_right = 1134.0
+offset_bottom = 40.0
+
+[node name="MusicNote" type="Sprite2D" parent="VolumeSlider"]
+position = Vector2(-16, 8)
+scale = Vector2(1.44, 1.44)
+texture = ExtResource("10_c266b")
 
 [connection signal="mouse_entered" from="ControlsButton" to="." method="_on_controls_button_mouse_entered"]
 [connection signal="mouse_exited" from="ControlsButton" to="." method="_on_controls_button_mouse_exited"]
