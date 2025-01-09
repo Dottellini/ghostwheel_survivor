@@ -68,6 +68,7 @@ _data = {
 point_count = 5
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 2
 script = ExtResource("1_umwlv")
 COINS = 100
 
