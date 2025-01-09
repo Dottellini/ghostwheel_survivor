@@ -11,12 +11,16 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("player") or body.is_in_group("player"):
 		$Damage.set_monitoring(true)
 
+func take_damage(damage: int) -> void:
+	pass
 
 func _on_damage_body_entered(body: Node2D) -> void:
-	if body != self:
-		$Damage/AnimatedSprite2D.play("dying")
+	if body != self && !is_dying:
+		$AnimatedSprite2D.queue_free()
+		is_dying = true
 		body.take_damage(damage)
-		await $Damage/AnimatedSprite2D.animation_finished 
+		$ExplosionDeath.play("explosion")
+		await $ExplosionDeath.animation_finished
 		emit_signal("_on_enemy_death", experience)
 		queue_free()
 	
