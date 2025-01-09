@@ -8,6 +8,9 @@ extends CharacterBody2D
 @export var experience = 100
 @export var dropped_coin = preload("res://scenes/Items/small_coin_pickup.tscn")
 
+var health_item = preload("res://scenes/Items/health_item.tscn")
+@export var health_drop_chance = 0.05 # 5% drop chance
+
 var is_dying = false
 var is_in_hitbox = false
 var is_attacking = false
@@ -19,6 +22,7 @@ var player_body
 signal _on_enemy_death
 
 func _ready() -> void:
+	randomize()
 	$AnimatedSprite2D.play("moving")
 	_on_enemy_death.connect(get_tree().get_first_node_in_group("player").add_score)
 
@@ -56,6 +60,9 @@ func die():
 	
 	await $AnimatedSprite2D.animation_finished 
 	emit_signal("_on_enemy_death", experience)
+	var rnd = randf()
+	if rnd <= health_drop_chance:
+		get_tree().get_first_node_in_group("level").spawn_item(health_item, position)
 	queue_free()
 
 

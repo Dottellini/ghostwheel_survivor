@@ -39,10 +39,10 @@ alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button1"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 6.0
-offset_right = 70.0
-offset_bottom = 46.0
+offset_left = 34.0
+offset_top = 2.0
+offset_right = 74.0
+offset_bottom = 42.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_t3bj5")
 expand_mode = 1
@@ -55,10 +55,10 @@ alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button2"]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 6.0
-offset_right = 71.0
-offset_bottom = 46.0
+offset_left = 33.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 42.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_t3bj5")
 expand_mode = 1
@@ -71,10 +71,10 @@ alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button3"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 6.0
-offset_right = 70.0
-offset_bottom = 46.0
+offset_left = 34.0
+offset_top = 2.0
+offset_right = 74.0
+offset_bottom = 42.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_t3bj5")
 expand_mode = 1
@@ -107,9 +107,9 @@ text = "Buy 8"
 [node name="shop_prompt" type="Label" parent="background"]
 layout_mode = 0
 offset_left = 7.0
-offset_top = 73.0
+offset_top = 80.0
 offset_right = 298.0
-offset_bottom = 97.0
+offset_bottom = 104.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_b2uxf")
 text = "Press 'E' to open and close shop"
