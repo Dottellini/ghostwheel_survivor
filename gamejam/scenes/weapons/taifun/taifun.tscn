@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckfwygxrliulm"]
+
+[ext_resource type="Script" path="res://scripts/weapons/taifun.gd" id="1_yhi5q"]
+[ext_resource type="PackedScene" uid="uid://cds6f146xx5we" path="res://scenes/weapons/taifun/taifun_projectile.tscn" id="2_c62a1"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_yhi5q")
+projectile_scene = ExtResource("2_c62a1")
+time_dead = 10

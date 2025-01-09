@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://2l6clhyeg3h"]
+
+[ext_resource type="Script" path="res://scripts/weapons/storm.gd" id="1_wf1op"]
+[ext_resource type="PackedScene" uid="uid://vkjddy0py57a" path="res://scenes/weapons/storm/storm_projectile.tscn" id="2_lmfo0"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_wf1op")
+projectile_scene = ExtResource("2_lmfo0")
+num_projectiles = 11
+time_dead = 10

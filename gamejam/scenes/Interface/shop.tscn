@@ -81,28 +81,23 @@ expand_mode = 1
 
 [node name="Button4" type="Button" parent="background/GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_b2uxf")
-text = "Buy 4"
+text = "300"
 
 [node name="Button5" type="Button" parent="background/GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_b2uxf")
-text = "Buy 5"
+text = "1000"
 
 [node name="Button6" type="Button" parent="background/GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_b2uxf")
-text = "Buy 6"
+text = "2000"
 
 [node name="Button7" type="Button" parent="background/GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_b2uxf")
-text = "Buy 7"
+text = "3000"
 
 [node name="Button8" type="Button" parent="background/GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_b2uxf")
-text = "Buy 8"
+text = "4000"
 
 [node name="shop_prompt" type="Label" parent="background"]
 layout_mode = 0
