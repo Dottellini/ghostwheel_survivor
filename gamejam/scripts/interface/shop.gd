@@ -4,6 +4,8 @@ extends Control
 @export var ice_bomb_price = 100
 @export var ring_of_fire_price = 200
 @export var flamethrower_price = 100
+@export var taifun_price = 100
+@export var laser_price = 100
 
 var button1
 var button2
@@ -18,6 +20,8 @@ var shuriken = preload("res://scenes/weapons/shuriken/shuriken.tscn")
 var ice_bomb = preload("res://scenes/weapons/ice_shot/ice_shot.tscn")
 var ring_of_fire = preload("res://scenes/weapons/fireball/fireball.tscn")
 var flamethrower = preload("res://scenes/weapons/flamethrower/flamethrower.tscn")
+var taifun = preload("res://scenes/weapons/taifun/taifun.tscn")
+var laser = preload("res://scenes/weapons/laser/laser.tscn")
 var player
 
 var shown = true
@@ -70,11 +74,17 @@ func _on_button_4_pressed() -> void: # buy death beam
 
 
 func _on_button_5_pressed() -> void:
-	pass # Replace with function body.
+	if player.COINS - taifun_price >= 0:
+		player.add_child(taifun.instantiate())
+		player.COINS -= taifun_price
+	else: _show_warning()
 
 
 func _on_button_6_pressed() -> void:
-	pass # Replace with function body.
+	if player.COINS - laser_price >= 0:
+		player.add_child(laser.instantiate())
+		player.COINS -= laser_price
+	else: _show_warning()
 
 
 func _on_button_7_pressed() -> void:

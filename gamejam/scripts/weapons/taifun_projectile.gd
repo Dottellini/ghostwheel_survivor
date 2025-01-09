@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var damage: int = 200
+@export var damage: int = 20
 var angle: float = 0.0
 var radius: float = 100.0
 var angular_speed: float = 90.0
@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 	angle += angular_speed * delta
 	angle = fmod(angle, 360)  # Winkel innerhalb von 0-360 Grad halten
 	position = Vector2(
-		fix_angle * cos(deg_to_rad(angle)),
-		fix_angle * sin(deg_to_rad(angle))
+		fix_angle * cos(deg_to_rad(angle + fix_angle)),
+		fix_angle * sin(deg_to_rad(angle - fix_angle))
 	)
 	
 func _on_body_exited(body: Node2D) -> void:
@@ -33,3 +33,11 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+
+
+#fix_angle / cos(deg_to_rad(angle + fix_angle)), # blau, Vogelschwarm
+#fix_angle / sin(deg_to_rad(angle + fix_angle))
+#fix_angle / cos(deg_to_rad(angle - fix_angle)), # pinK?, laser
+#fix_angle / sin(deg_to_rad(angle - fix_angle))
+#fix_angle * cos(deg_to_rad(angle - fix_angle)), # Lila, Insect Sturm
+#fix_angle * sin(deg_to_rad(angle * fix_angle))

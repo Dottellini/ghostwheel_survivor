@@ -41,7 +41,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8csct"]
 radius = 11.3308
-height = 24.6939
+height = 35.9185
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_850oq")
@@ -50,7 +50,6 @@ script = ExtResource("1_850oq")
 sprite_frames = SubResource("SpriteFrames_v5j8i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
 scale = Vector2(1.58858, 0.890907)
 shape = SubResource("CapsuleShape2D_8csct")
 
