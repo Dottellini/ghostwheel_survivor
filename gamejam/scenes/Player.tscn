@@ -1,19 +1,35 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2rc2fd1yveoi"]
+[gd_scene load_steps=18 format=3 uid="uid://b2rc2fd1yveoi"]
 
 [ext_resource type="Texture2D" uid="uid://6n7fkxtrw5we" path="res://icon.svg" id="1_l181h"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_umwlv"]
-[ext_resource type="Texture2D" uid="uid://c670p1hulaq6o" path="res://assets/Explosion_sprites/Explosion_8/Explosion_5.png" id="3_dm8s6"]
-[ext_resource type="Texture2D" uid="uid://dnqbfwm7v1a8d" path="res://assets/Explosion_sprites/Explosion_1/Explosion_6.png" id="3_lylj2"]
 [ext_resource type="PackedScene" uid="uid://dka7irgxdwi72" path="res://scenes/Interface/UserInterface.tscn" id="3_ti7xd"]
+[ext_resource type="Texture2D" uid="uid://byhknf0rhngis" path="res://assets/ein Rad dessen reifen aus feuer besteht und dieses ist silber die felge ist schwarz(1).png" id="4_jkaxq"]
 [ext_resource type="PackedScene" uid="uid://r3g5iskx00f" path="res://scenes/Interface/game_over.tscn" id="4_lm08u"]
-[ext_resource type="Texture2D" uid="uid://dsyfiw68vgmnk" path="res://assets/Explosion_sprites/Explosion_7/1/Explosion_4.png" id="5_2wbpl"]
-[ext_resource type="Texture2D" uid="uid://jopn3ltqb78j" path="res://assets/Explosion_sprites/Explosion_4/2/Explosion_1_5.png" id="6_scnrt"]
+[ext_resource type="Texture2D" uid="uid://du7nsi87wfd1g" path="res://assets/ein Rad dessen reifen aus metall besteht und dieses ist silber die felge ist schwarz(1).png" id="4_sqa6p"]
+[ext_resource type="Texture2D" uid="uid://ykocqstac25v" path="res://assets/ein Rad dessen reifen weiß ist und dieses ist silber die radkappe ist schwarz.png" id="5_w5vop"]
+[ext_resource type="Texture2D" uid="uid://clolhsngep1yb" path="res://assets/ein Rad dessen reifen aus metall besteht und dieses ist silber die felge ist schwarz.png" id="6_2jnli"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxhfd"]
+atlas = ExtResource("4_sqa6p")
+region = Rect2(512, 409, 256, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pisi8"]
+atlas = ExtResource("4_jkaxq")
+region = Rect2(523, 376, 249, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7on6l"]
+atlas = ExtResource("5_w5vop")
+region = Rect2(512, 409, 256, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cft4y"]
+atlas = ExtResource("6_2jnli")
+region = Rect2(512, 409, 256, 123)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iaxgc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_l181h")
+"texture": SubResource("AtlasTexture_gxhfd")
 }],
 "loop": true,
 "name": &"default",
@@ -21,7 +37,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dm8s6")
+"texture": ExtResource("1_l181h")
 }],
 "loop": true,
 "name": &"skin_big",
@@ -29,7 +45,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_lylj2")
+"texture": SubResource("AtlasTexture_pisi8")
 }],
 "loop": true,
 "name": &"skin_burning",
@@ -37,7 +53,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_2wbpl")
+"texture": SubResource("AtlasTexture_7on6l")
 }],
 "loop": true,
 "name": &"skin_fast",
@@ -45,10 +61,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_scnrt")
+"texture": SubResource("AtlasTexture_cft4y")
 }],
 "loop": true,
-"name": &"skin_metal",
+"name": &"skin_metal_side",
 "speed": 5.0
 }]
 

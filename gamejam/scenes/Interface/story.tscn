@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0ipgov8bebmk"]
+
+[ext_resource type="Script" path="res://scripts/interface/story.gd" id="1_50dgy"]
+
+[node name="Story" type="Node2D"]
+script = ExtResource("1_50dgy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 743.0
+offset_bottom = 149.0
+text = "The highway roars with chaos, the flames of vengeance burning brighter than ever. 
+Once a loyal companion to Ghost Rider’s infernal bike, you
+– the fiery, cursed tire –
+have been cast aside, abandoned in a freak accident during a high-speed pursuit of justice."
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 1121.0
+offset_bottom = 293.0
+text = "Now, stranded and alone, you awaken to a chilling realization: the forces of darkness have taken notice. 
+Swarms of shadowy bats blot out the sky, sinister mages conjure spells to shatter your defenses,
+and ghastly flying demon heads hunt you with an insatiable hunger for destruction.
+They crave the infernal energy that courses through your rubber frame."
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 344.0
+offset_right = 1025.0
+offset_bottom = 419.0
+text = "But you are no ordinary tire. Fueled by the flames of damnation and the will to survive,
+you will spin, bounce, and crush through the endless waves of darkness.
+Your journey isn’t just about survival – it’s about proving that even a discarded piece of hellfire machinery can become a legend."
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 464.0
+offset_right = 1069.0
+offset_bottom = 487.0
+text = "The road ahead is broken, but your resolve is not. The question is: how long can you keep rolling?"
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 328.0
+offset_top = 536.0
+offset_right = 834.0
+offset_bottom = 570.0
+theme_override_font_sizes/font_size = 24
+text = "Get ready, survivor. The underworld awaits."
+
+[node name="ContinueLabel" type="Label" parent="."]
+offset_left = 472.0
+offset_top = 600.0
+offset_right = 671.0
+offset_bottom = 623.0
+text = "- Press Enter to continue -"
+
+[node name="SkipLabel" type="Label" parent="."]
+offset_left = 1040.0
+offset_top = 616.0
+offset_right = 1138.0
+offset_bottom = 639.0
+theme_override_font_sizes/font_size = 12
+text = "Skip with \"Enter\""
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="BlinkingTimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="DisclaimerTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Disclaimer" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Disclaimer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="Label" type="Label" parent="Disclaimer"]
+offset_left = 112.0
+offset_top = 248.0
+offset_right = 1042.0
+offset_bottom = 375.0
+text = "Ghost Rider ist ein eingetragenes Markenzeichen und geistiges Eigentum von Marvel Entertainment, LLC. 
+Alle Rechte an der Figur, dem Namen und den damit verbundenen Inhalten liegen bei Marvel. 
+Diese Parodie ist ein nicht-kommerzielles, kreatives Werk und steht in keiner Verbindung zu Marvel Entertainment, LLC. 
+Sie ist als satirische oder transformative Darstellung gedacht, die im Rahmen der geltenden Urheberrechtsgesetze und 
+des Rechts auf freie Meinungsäußerung erlaubt ist."
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BlinkingTimer" to="." method="_on_blinking_timer_timeout"]
+[connection signal="timeout" from="DisclaimerTimer" to="." method="_on_disclaimer_timer_timeout"]

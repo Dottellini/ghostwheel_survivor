@@ -13,6 +13,7 @@ static var shuriken = preload("res://scenes/weapons/shuriken/shuriken.tscn")
 static var ice_bomb = preload("res://scenes/weapons/ice_shot/ice_shot.tscn")
 static var ring_of_fire = preload("res://scenes/weapons/fireball/fireball.tscn")
 
+var volume_in_db: float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
