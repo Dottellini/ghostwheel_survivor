@@ -185,7 +185,7 @@ texture = ExtResource("3_2uo5l")
 [sub_resource type="TileSet" id="TileSet_o3xb2"]
 sources/0 = SubResource("TileSetAtlasSource_3y3r6")
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_5ga0r")
 
 [node name="Player" parent="." instance=ExtResource("2_ssus4")]
