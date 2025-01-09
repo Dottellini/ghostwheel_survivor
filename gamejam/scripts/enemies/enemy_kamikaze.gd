@@ -12,7 +12,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		$Damage.set_monitoring(true)
 
 func take_damage(damage: int) -> void:
-	pass
+	health -= damage
 
 func _on_damage_body_entered(body: Node2D) -> void:
 	if body != self && !is_dying:
