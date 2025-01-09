@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmja8s3pxga2m"]
+[gd_scene load_steps=3 format=3 uid="uid://d0ipgov8bebmk"]
 
 [ext_resource type="Script" path="res://scripts/interface/story.gd" id="1_50dgy"]
 [ext_resource type="FontFile" uid="uid://bls4rqss5cc7j" path="res://assets/Font/ScareEmAway.ttf" id="2_5du3g"]

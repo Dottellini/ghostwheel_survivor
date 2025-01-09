@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvtpinfsukqnh"]
+[gd_scene load_steps=4 format=3 uid="uid://dupusa0442pf4"]
 
 [ext_resource type="Script" path="res://scripts/interface/shop.gd" id="1_qqis8"]
 [ext_resource type="FontFile" uid="uid://bls4rqss5cc7j" path="res://assets/Font/ScareEmAway.ttf" id="2_b2uxf"]
@@ -144,10 +144,10 @@ expand_mode = 1
 
 [node name="coin_amount" type="Label" parent="background/coin_background"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 1.0
-offset_right = 99.0
-offset_bottom = 24.0
+offset_left = 43.0
+offset_top = 5.0
+offset_right = 100.0
+offset_bottom = 21.0
 scale = Vector2(0.7, 0.7)
 theme_override_fonts/font = ExtResource("2_b2uxf")
 text = "0"
