@@ -57,7 +57,7 @@ func player_death() -> void:
 
 func take_damage(damage: int) -> void:
 	is_flickering = true
-	
+	$HitSoundPlayer.play()
 	if defence > 0:
 		HEALTH -= (damage * (defence*100)) / 100
 	elif defence < 0:
