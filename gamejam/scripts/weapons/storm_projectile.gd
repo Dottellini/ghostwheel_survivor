@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 	angle += angular_speed * delta
 	angle = fmod(angle, 360)  # Winkel innerhalb von 0-360 Grad halten
 	position = Vector2(
-		fix_angle / cos(deg_to_rad(angle - fix_angle)),
-		fix_angle / sin(deg_to_rad(angle - fix_angle))
+		fix_angle * cos(deg_to_rad(angle - fix_angle)), 
+		fix_angle * sin(deg_to_rad(angle * fix_angle))
 	)
 	
 func _on_body_exited(body: Node2D) -> void:

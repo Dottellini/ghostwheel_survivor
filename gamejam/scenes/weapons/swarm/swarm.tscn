@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cctsi3fo4cbcv"]
+
+[ext_resource type="Script" path="res://scripts/weapons/swarm.gd" id="1_4lkh4"]
+[ext_resource type="PackedScene" uid="uid://c1r2lvi2qsgac" path="res://scenes/weapons/swarm/swarm_projectile.tscn" id="2_5u33d"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4lkh4")
+projectile_scene = ExtResource("2_5u33d")

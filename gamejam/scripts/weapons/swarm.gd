@@ -1,14 +1,14 @@
 extends Node2D
 
 @export var projectile_scene: PackedScene  # Die Szene für ein Projektil
-@export var num_projectiles: int = 100  # Anzahl der Projektile
+@export var num_projectiles: int = 10  # Anzahl der Projektile
 @export var radius: float = 10.0  # Der Radius der Kreisbahn
 @export var angular_speed: float = 90.0  # Winkelgeschwindigkeit in Grad pro Sekunde
 
 var timer = 0.0
 var alive = true
-@export var time_alive = 4 # in seconds
-@export var time_dead = 120 # in seconds
+@export var time_alive = 5 # in seconds
+@export var time_dead = 5 # in seconds
 
 func _ready() -> void:
 	spawn_projectiles()
