@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var dropped_coin = preload("res://scenes/Items/small_coin_pickup.tscn")
 
 var health_item = preload("res://scenes/Items/health_item.tscn")
-@export var health_drop_chance = 0.05 # 5% drop chance
+@export var health_drop_chance = 0.015 # 1.5% drop chance
 
 var is_dying = false
 var is_in_hitbox = false
