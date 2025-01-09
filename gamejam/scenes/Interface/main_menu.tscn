@@ -110,6 +110,7 @@ position = Vector2(376, 88)
 scale = Vector2(0.789819, 0.789819)
 texture = ExtResource("18_8kxqx")
 
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="mouse_entered" from="ControlsButton" to="." method="_on_controls_button_mouse_entered"]
 [connection signal="mouse_exited" from="ControlsButton" to="." method="_on_controls_button_mouse_exited"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
