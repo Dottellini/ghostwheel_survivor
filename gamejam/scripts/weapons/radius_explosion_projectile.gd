@@ -5,6 +5,8 @@ extends "res://scripts/weapons/melee_projectile.gd"
 func _ready() -> void:
 	$damage_area/AnimatedSprite2D.play("leer")
 	$damage_area.set_deferred("monitoring",false)
+	#var player2 = get_node("res://scenes/Player.tscn")
+	#buff = player2.damage_buff
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,4 +27,5 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.take_damage(damage)
+		#var buff: int = player.instantiate().damage_buff
+		body.take_damage(damage+Globaly.buff)

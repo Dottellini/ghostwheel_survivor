@@ -69,7 +69,7 @@ func take_damage(damage: int) -> void:
 
 # if the player has entered the body
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.has_method("player") and health > 0:
+	if body.is_in_group("player") and health > 0:
 		is_attacking = true
 		$AnimatedSprite2D.play("attacking")
 		await get_tree().create_timer(1.0).timeout 
@@ -107,7 +107,7 @@ func shoot_projectile() -> void:
 		print("Projectile scene is not assigned.")
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
-	if body.has_method("player"):
+	if body.is_in_group("player"):
 		$AnimatedSprite2D.play("shooting")
 		in_range  = true
 		velocity = Vector2(0, 0)
@@ -115,7 +115,7 @@ func _on_attack_range_body_entered(body: Node2D) -> void:
 
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
-	if body.has_method("player"):
+	if body.is_in_group("player"):
 		in_range = false
 		velocity = global_position.direction_to(target.global_position)
 		$Shoot_Cooldown.stop()
