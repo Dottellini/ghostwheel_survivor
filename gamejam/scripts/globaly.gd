@@ -1,12 +1,12 @@
 extends Node
+# [0] = shuriken; [1] = ice bomb; [2] = ring of fire
 static var scene_list: Array = [null, null, null, null, null, null, null, null]
-static var array_size: int = scene_list.size()
-# [0] = shuriken; [1] = 
 static var cooldowns: Array [float] = [2.0, 3.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 static var current_cooldowns: Array [float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 static var weapons_acquired: Array [bool] = [false, false, false, false, false, false, false, false]
+static var array_size: int = scene_list.size()
 var buff: int
-var player
+var player: CharacterBody2D
 var got_player: bool
 
 static var shuriken = preload("res://scenes/weapons/shuriken/shuriken.tscn")
@@ -27,10 +27,14 @@ func _process(delta: float) -> void:
 				current_cooldowns[i] += delta
 				if current_cooldowns[i] >= cooldowns[i]:
 					var projectile = scene_list[i].instantiate()
-					projectile.global_position.x = player.global_position.x  # Assuming this script is on a Node2D
-					projectile.global_position.y = player.global_position.y  # Assuming this script is on a Node2D
-					projectile.set_direction(player.dir)  # Ensure 'velocity' is defined
-					player.owner.add_child.call_deferred(projectile)
+					match i:
+						0, 1:
+							projectile.global_position.x = player.global_position.x  # Assuming this script is on a Node2D
+							projectile.global_position.y = player.global_position.y  # Assuming this script is on a Node2D
+							projectile.set_direction(player.dir)  # Ensure 'velocity' is defined
+							player.owner.add_child.call_deferred(projectile)
+						2:
+							player.add_child(projectile)
 					current_cooldowns[i] = 0.0
 
 func _try_get_player() -> void:

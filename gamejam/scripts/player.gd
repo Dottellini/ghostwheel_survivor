@@ -87,27 +87,10 @@ func _ready() -> void:
 	$Game_over.visible = false
 	$Timer.start()
 
-func shoot_projectile() -> void:
-	for weapon in Globaly.scene_list:
-		if weapon.current_cooldown >= weapon.cooldown:
-			var projectile = weapon.instantiate()
-			if projectile:
-				projectile.global_position = self.global_position  # Assuming this script is on a Node2D
-				projectile.set_direction(dir)  # Ensure 'velocity' is defined
-				get_tree().current_scene.add_child.call_deferred(projectile)
-				#move_and_slide()
-			else:
-				print("Failed to instantiate projectile.")
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$HealthBar.max_value = MAX_HEALTH
 	$HealthBar.value = HEALTH
-
-#func _on_timer_timeout() -> void:
-#	shoot_projectile()
-#	$Timer.start()
 
 func _on_gambling_pickup(): # shows the wheel of fortune and pauses the game
 	$wheel_of_fortune.visible = true

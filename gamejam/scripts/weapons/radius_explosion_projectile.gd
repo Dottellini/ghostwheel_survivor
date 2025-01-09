@@ -14,10 +14,6 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.play("default")
 	rotation = direction.angle()
 	position += direction * speed * delta
-	
-	if current_cooldown >= cooldown:
-		current_cooldown = 0.0
-	current_cooldown += delta
 
 
 func _on_body_entered(body: Node2D) -> void:
