@@ -3,7 +3,8 @@ extends Node
 enum ItemId {
 	LEVEL1,
 	LEVEL2,
-	LEVEL3
+	LEVEL3,
+	LEVEL4
 }
 
 # Called when the node enters the scene tree for the first time.

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx6oqdxwnu77h"]
+
+[ext_resource type="Texture2D" uid="uid://03ue13e1r1bu" path="res://assets/conrtrols/controls_bg.png" id="1_sfnis"]
+
+[node name="Controls" type="Node2D"]
+
+[node name="ControlsBg" type="Sprite2D" parent="."]
+position = Vector2(136, 136)
+scale = Vector2(0.5445, 0.5445)
+texture = ExtResource("1_sfnis")
