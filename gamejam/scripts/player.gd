@@ -8,7 +8,7 @@ const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 var HEALTH: int = 1000
 var initial_health = 0
 
-var damage_buff: int = 1000
+var damage_buff: int = 0
 var defence: float = 0
 
 var is_speed_buff = false
