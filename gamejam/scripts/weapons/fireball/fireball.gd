@@ -4,34 +4,19 @@ extends Node2D
 @export var num_projectiles: int = 2  # Anzahl der Projektile
 @export var radius: float = 100.0  # Der Radius der Kreisbahn
 @export var angular_speed: float = 90.0  # Winkelgeschwindigkeit in Grad pro Sekunde
+@export var cooldown: float = 240.0
+@export var current_cooldown: float = 0.0
 
 var timer = 0.0
-var alive = true
-@export var time_alive = 7 # in seconds
-@export var time_dead = 10 # in seconds
+@export var time_alive = 5 # in seconds
 
 func _ready() -> void:
 	spawn_projectiles()
-	alive = true
 
 func _process(delta: float) -> void:
 	timer += delta
-	if alive:
-		if timer >= time_alive:
-			set_dead()
-	else:
-		if timer >= time_dead:
-			set_alive()
-
-func set_alive():
-	spawn_projectiles()
-	alive = true
-	timer = 0.0
-	
-func set_dead():
-	despawn_projectiles()
-	alive = false
-	timer = 0.0	
+	if timer >= time_alive:
+		despawn_projectiles()
 
 func spawn_projectiles() -> void:
 	for i in range(num_projectiles):
@@ -43,5 +28,4 @@ func spawn_projectiles() -> void:
 func despawn_projectiles() -> void:
 	for child in get_children():
 		child.queue_free()
-		
-	
+	queue_free()

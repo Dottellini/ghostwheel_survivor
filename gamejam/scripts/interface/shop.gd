@@ -4,6 +4,8 @@ extends Control
 @export var ice_bomb_price = 100
 @export var ring_of_fire_price = 200
 
+var player
+
 var button1
 var button2
 var button3
@@ -12,11 +14,6 @@ var button5
 var button6
 var button7
 var button8
-
-var shuriken = preload("res://scenes/weapons/shuriken/shuriken.tscn")
-var ice_bomb = preload("res://scenes/weapons/ice_shot/ice_shot.tscn")
-var ring_of_fire = preload("res://scenes/weapons/fireball/fireball.tscn")
-var player
 
 var shown = true
 var shop_is_open = false
@@ -41,21 +38,22 @@ func _process(delta: float) -> void:
 
 func _on_button_1_pressed() -> void: # buy shuriken
 	if player.COINS - shuriken_price >= 0:
-		Globaly.scene_list.append(shuriken)
+		print("i am in on button pressed")
+		Globaly.acquire_shuriken()
 		player.COINS -= shuriken_price
 	else: _show_warning()
 
 
 func _on_button_2_pressed() -> void: # buy ice bomb
 	if player.COINS - ice_bomb_price >= 0:
-		Globaly.scene_list.append(ice_bomb)
+		Globaly.acquire_ice_bomb()
 		player.COINS -= ice_bomb_price
 	else: _show_warning()
 
 
 func _on_button_3_pressed() -> void: # buy ring of fire
 	if player.COINS - ring_of_fire_price >= 0:
-		player.add_child(ring_of_fire.instantiate())
+		Globaly.acquire_ring_of_fire()
 		player.COINS -= ring_of_fire_price
 	else: _show_warning()
 

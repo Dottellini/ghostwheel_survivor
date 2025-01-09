@@ -76,7 +76,7 @@ theme_override_font_sizes/font_size = 12
 text = "Skip with \"Enter\""
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 5.0
 
 [node name="BlinkingTimer" type="Timer" parent="."]
 wait_time = 0.7
