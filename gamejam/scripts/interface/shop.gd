@@ -28,7 +28,6 @@ var taifun = preload("res://scenes/weapons/taifun/taifun.tscn")
 var laser = preload("res://scenes/weapons/laser/laser.tscn")
 var storm = preload("res://scenes/weapons/storm/storm.tscn")
 var swarm = preload("res://scenes/weapons/swarm/swarm.tscn")
-var player
 
 var shown = true
 var shop_is_open = false
