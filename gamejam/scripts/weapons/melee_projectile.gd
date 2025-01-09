@@ -1,6 +1,8 @@
 extends Area2D
 @export var damage: int = 90
 @export var speed: float = 300.0
+@export var cooldown: float = 120.0
+@export var current_cooldown: float = 0.0
 var player: PackedScene = preload("res://scenes/Player.tscn")
 var direction: Vector2 = Vector2.ZERO
 
@@ -10,6 +12,9 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.play("default")
 	rotation = direction.angle()
 	position += direction * speed * delta
+	if current_cooldown >= cooldown:
+		current_cooldown = 0.0
+	current_cooldown += delta
 	#if not get_viewport_rect().has_point(global_position):
 		#queue_free()
 

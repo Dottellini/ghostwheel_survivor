@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://2l7nahi2bwpo" path="res://assets/Sound/Zwei Räder sind krass (main theme).mp3" id="3_wxq4b"]
 [ext_resource type="Texture2D" uid="uid://bbainiue76bm8" path="res://assets/conrtrols/controller_2.png" id="4_ckb7g"]
 [ext_resource type="Texture2D" uid="uid://dpp5jlj07o4kt" path="res://assets/conrtrols/controller_4.png" id="4_kh4ok"]
-[ext_resource type="PackedScene" uid="uid://bx6oqdxwnu77h" path="res://scenes/Interface/controls.tscn" id="5_5f60b"]
+[ext_resource type="PackedScene" path="res://scenes/Interface/controls.tscn" id="5_5f60b"]
 [ext_resource type="Texture2D" uid="uid://mkhwwara6h4e" path="res://assets/conrtrols/controller_3.png" id="5_8w1ub"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_1gfby"]
@@ -95,6 +95,7 @@ parameters/looping = true
 [node name="Controls" parent="." instance=ExtResource("5_5f60b")]
 position = Vector2(784, 64)
 
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="mouse_entered" from="ControlsButton" to="." method="_on_controls_button_mouse_entered"]
 [connection signal="mouse_exited" from="ControlsButton" to="." method="_on_controls_button_mouse_exited"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

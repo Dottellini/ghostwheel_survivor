@@ -68,7 +68,6 @@ scale = Vector2(30, 30)
 texture = ExtResource("2_6yfa5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_cxqx2")
 animation = &"exist"
 frame_progress = 0.119453

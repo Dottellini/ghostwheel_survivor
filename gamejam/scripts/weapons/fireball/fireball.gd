@@ -4,6 +4,8 @@ extends Node2D
 @export var num_projectiles: int = 2  # Anzahl der Projektile
 @export var radius: float = 100.0  # Der Radius der Kreisbahn
 @export var angular_speed: float = 90.0  # Winkelgeschwindigkeit in Grad pro Sekunde
+@export var cooldown: float = 240.0
+@export var current_cooldown: float = 0.0
 
 var timer = 0.0
 var alive = true
