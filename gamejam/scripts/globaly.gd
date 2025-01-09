@@ -1,9 +1,9 @@
 extends Node
 # [0] = shuriken; [1] = ice bomb; [2] = ring of fire
-static var scene_list: Array = [null, null, null, null, null, null, null, null]
-static var cooldowns: Array [float] = [2.0, 3.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-static var current_cooldowns: Array [float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-static var weapons_acquired: Array [bool] = [false, false, false, false, false, false, false, false]
+static var scene_list: Array
+static var cooldowns: Array [float]
+static var current_cooldowns: Array [float]
+static var weapons_acquired: Array [bool]
 static var array_size: int = scene_list.size()
 var buff: int
 var player: CharacterBody2D
@@ -46,7 +46,6 @@ func _try_get_player() -> void:
 static func acquire_shuriken() -> void:
 	scene_list[0] = shuriken
 	weapons_acquired[0] = true
-	print("i am in acquire shuriken, scene_list:", scene_list)
 
 static func acquire_ice_bomb() -> void:
 	scene_list[1] = ice_bomb
@@ -55,3 +54,10 @@ static func acquire_ice_bomb() -> void:
 static func acquire_ring_of_fire() -> void:
 	scene_list[2] = ring_of_fire
 	weapons_acquired[2] = true
+
+static func reset_global_state() -> void:
+	scene_list = [null, null, null, null, null, null, null, null]
+	cooldowns = [2.0, 3.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+	current_cooldowns = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+	weapons_acquired = [false, false, false, false, false, false, false, false]
+	array_size = 0

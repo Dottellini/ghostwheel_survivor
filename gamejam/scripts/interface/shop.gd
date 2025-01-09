@@ -38,7 +38,6 @@ func _process(delta: float) -> void:
 
 func _on_button_1_pressed() -> void: # buy shuriken
 	if player.COINS - shuriken_price >= 0:
-		print("i am in on button pressed")
 		Globaly.acquire_shuriken()
 		player.COINS -= shuriken_price
 	else: _show_warning()
