@@ -287,13 +287,13 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6cjt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lpkip"]
-radius = 13.8316
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_f245p"]
 radius = 40.7508
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ah6po"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lpkip"]
+radius = 13.8316
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kcair"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -335,8 +335,8 @@ animations = [{
 "texture": ExtResource("12_cdoya")
 }],
 "loop": false,
-"name": &"dying",
-"speed": 9.0
+"name": &"explosion",
+"speed": 15.0
 }]
 
 [node name="skull_blue" type="CharacterBody2D" groups=["enemy"]]
@@ -347,10 +347,15 @@ dropped_coin = ExtResource("2_b7nyr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0fqwh")
-animation = &"moving"
+animation = &"attacking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_l6cjt")
+
+[node name="Damage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
+shape = SubResource("CircleShape2D_f245p")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -360,16 +365,10 @@ shape = SubResource("CircleShape2D_lpkip")
 
 [node name="Hit_Timer" type="Timer" parent="."]
 
-[node name="Damage" type="Area2D" parent="."]
+[node name="ExplosionDeath" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.148666, 0.148666)
+sprite_frames = SubResource("SpriteFrames_kcair")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
-shape = SubResource("CircleShape2D_f245p")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Damage"]
-position = Vector2(-0.5, 1)
-scale = Vector2(0.319727, 0.279492)
-sprite_frames = SubResource("SpriteFrames_ah6po")
-
+[connection signal="body_entered" from="Damage" to="." method="_on_damage_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
-[connection signal="body_entered" from="Damage" to="." method="_on_damage_body_entered"]
