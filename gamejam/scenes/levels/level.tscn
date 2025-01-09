@@ -220,6 +220,7 @@ position = Vector2(336, 208)
 
 [node name="battlemusic_player" type="AudioStreamPlayer" parent="." groups=["music"]]
 process_mode = 3
+volume_db = -5.0
 script = ExtResource("7_wxbkf")
 
 [node name="gambling_pickup" parent="." instance=ExtResource("4_0hyij")]

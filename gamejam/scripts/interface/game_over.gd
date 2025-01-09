@@ -1,4 +1,5 @@
 extends Node
+signal muffle
 
 @export var score: int
 @export var time: float
@@ -13,6 +14,8 @@ func _ready() -> void:
 	
 	var player = get_parent()
 	player._on_death.connect(_show_screen)
+	
+	muffle.connect(get_tree().get_first_node_in_group("music")._muffle_music)
 
 func _show_screen():
 	$".".visible = true
@@ -22,6 +25,10 @@ func _show_screen():
 	
 	scoreLabel.text = "Score: %d" % score
 	timeLabel.text = "Time survived: %02d:%02d:%02d" % [time / 60 / 60, fmod(time / 60,  60), fmod(time, 60)]
+	
+	emit_signal("muffle")
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

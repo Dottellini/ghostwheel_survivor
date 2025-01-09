@@ -216,5 +216,4 @@ func _on_buff_timer_timeout() -> void:
 		SPEED -= 500
 
 func _on_coin_pickup(amount: int):
-	print("worth in player", amount)
 	COINS += amount
