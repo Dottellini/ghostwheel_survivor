@@ -34,6 +34,7 @@ func next_label() -> void:
 	labels[current_label].show()
 	
 	if current_label >= 4:
+		$SkipLabel.hide()
 		labels[5].show()
 		$BlinkingTimer.start()
 		$Timer.stop()
