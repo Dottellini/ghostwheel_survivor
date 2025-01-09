@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2l8ounhnowoi"]
+[gd_scene load_steps=12 format=3 uid="uid://b2l8ounhnowoi"]
 
 [ext_resource type="Script" path="res://scripts/items/small_coin_pickup.gd" id="1_o2hb1"]
+[ext_resource type="Texture2D" uid="uid://cvql5cj6h426a" path="res://assets/items/coin/glow.png" id="2_6yfa5"]
 [ext_resource type="Texture2D" uid="uid://cbfrclu0dnoxu" path="res://assets/items/coin/small_coin.png" id="2_ibx1y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ha3q"]
@@ -50,7 +51,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"exist",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2wr08"]
@@ -62,10 +63,15 @@ script = ExtResource("1_o2hb1")
 
 [node name="Area2D" type="Area2D" parent="."]
 
+[node name="glow" type="Sprite2D" parent="Area2D"]
+scale = Vector2(30, 30)
+texture = ExtResource("2_6yfa5")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_cxqx2")
 animation = &"exist"
-frame_progress = 0.555063
+frame_progress = 0.119453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_2wr08")
