@@ -3,6 +3,7 @@ extends Control
 @export var shuriken_price = 100
 @export var ice_bomb_price = 100
 @export var ring_of_fire_price = 200
+@export var flamethrower_price = 100
 
 var button1
 var button2
@@ -16,6 +17,7 @@ var button8
 var shuriken = preload("res://scenes/weapons/shuriken/shuriken.tscn")
 var ice_bomb = preload("res://scenes/weapons/ice_shot/ice_shot.tscn")
 var ring_of_fire = preload("res://scenes/weapons/fireball/fireball.tscn")
+var flamethrower = preload("res://scenes/weapons/flamethrower/flamethrower.tscn")
 var player
 
 var shown = true
@@ -61,7 +63,10 @@ func _on_button_3_pressed() -> void: # buy ring of fire
 
 
 func _on_button_4_pressed() -> void: # buy death beam
-	pass
+	if player.COINS - flamethrower_price >= 0:
+		player.add_child(flamethrower.instantiate())
+		player.COINS -= flamethrower_price
+	else: _show_warning()
 
 
 func _on_button_5_pressed() -> void:
