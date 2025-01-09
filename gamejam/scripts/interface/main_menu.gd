@@ -5,6 +5,9 @@ extends Node
 func _ready() -> void:
 	$Controls.hide()
 	get_tree().paused = false
+	Globaly.player = null
+	Globaly.got_player = false
+	Globaly.reset_global_state()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
