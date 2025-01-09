@@ -7,8 +7,8 @@ extends Node2D
 
 var timer = 0.0
 var alive = true
-@export var time_alive = 7 # in seconds
-@export var time_dead = 10 # in seconds
+@export var time_alive = 3 # in seconds
+@export var time_dead = 30 # in seconds
 
 func _ready() -> void:
 	spawn_projectiles()
