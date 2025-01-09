@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/interface/ui.gd" id="1_stct0"]
 [ext_resource type="Script" path="res://scripts/interface/timer.gd" id="2_cebdb"]
 [ext_resource type="Script" path="res://scripts/interface/menu_button.gd" id="3_ey3y7"]
-[ext_resource type="PackedScene" path="res://scenes/Interface/shop.tscn" id="4_ogtrq"]
+[ext_resource type="PackedScene" uid="uid://dupusa0442pf4" path="res://scenes/Interface/shop.tscn" id="4_ogtrq"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_owckq"]
 device = -1

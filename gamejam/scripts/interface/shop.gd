@@ -19,9 +19,11 @@ var ring_of_fire = preload("res://scenes/weapons/fireball/fireball.tscn")
 var player
 
 var shown = true
+var shop_is_open = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	shop_is_open = true
 	button1 = $background/GridContainer/Button1
 	button2 = $background/GridContainer/Button2
 	button3 = $background/GridContainer/Button3
@@ -78,23 +80,25 @@ func _on_button_8_pressed() -> void:
 	pass # Replace with function body.
 
 func _manage_shop():
-	if Input.is_action_just_released("open_shop"):
-		var ui = get_parent()
-		
-		if shown:
-			for node in ui.get_children(false):
-				if node.name != "shop":
-					node.visible = true
-					shown = false
-				else: node.visible = false
-			get_tree().paused = false
-		else:
-			for node in ui.get_children(false):
-				if node.name != "shop":
-					node.visible = false
-					shown = true
-				else: node.visible = true
-			get_tree().paused = true
+	if !get_tree().paused or shop_is_open:
+		if Input.is_action_just_released("open_shop"):
+			var ui = get_parent()
+			if shown:
+				shop_is_open = false
+				for node in ui.get_children(false):
+					if node.name != "shop":
+						node.visible = true
+						shown = false
+					else: node.visible = false
+				get_tree().paused = false
+			else:
+				shop_is_open = true
+				for node in ui.get_children(false):
+					if node.name != "shop":
+						node.visible = false
+						shown = true
+					else: node.visible = true
+				get_tree().paused = true
 
 func _show_warning():
 	var panel = $background/coin_background
