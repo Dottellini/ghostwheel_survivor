@@ -157,6 +157,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6cjt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lpkip"]
+radius = 13.8316
 
 [node name="skull_blue" type="CharacterBody2D"]
 scale = Vector2(4, 4)
