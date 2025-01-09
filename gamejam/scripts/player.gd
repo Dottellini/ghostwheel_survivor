@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var dir = Vector2(Input.get_axis("ui_Left", "ui_Right"), Input.get_axis("ui_Up", "ui_Down"))
+@export var dir = Vector2(Input.get_axis("ui_Left", "ui_Right"), Input.get_axis("ui_Up", "ui_Down"))
 var SPEED = 200.0
 const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 @export var SCORE: int = 0 # This is the score and the exp of the player
@@ -8,7 +8,7 @@ const gambling = preload("res://scenes/gambling/wheel_of_fortune.tscn")
 var HEALTH: int = 1000
 var initial_health = 0
 
-var damage_buff: int = 1000
+var damage_buff: int = 0
 var defence: float = 0
 
 var is_speed_buff = false
@@ -57,7 +57,7 @@ func player_death() -> void:
 
 func take_damage(damage: int) -> void:
 	is_flickering = true
-	
+	$HitSoundPlayer.play()
 	if defence > 0:
 		HEALTH -= (damage * (defence*100)) / 100
 	elif defence < 0:
@@ -85,32 +85,12 @@ func add_score(added_score: int) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Game_over.visible = false
-	shoot_projectile()
 	$Timer.start()
-
-func shoot_projectile() -> void:
-	for i in Globaly.scene_list:
-		var projectile = i.instantiate()
-		if projectile:
-			projectile.global_position = self.global_position  # Assuming this script is on a Node2D
-			projectile.set_direction(dir)  # Ensure 'velocity' is defined
-			get_tree().current_scene.add_child.call_deferred(projectile)
-			#move_and_slide()
-		else:
-			print("Failed to instantiate projectile.")
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$HealthBar.max_value = MAX_HEALTH
 	$HealthBar.value = HEALTH
-	pass
-
-
-func _on_timer_timeout() -> void:
-	shoot_projectile()
-	$Timer.start()
 
 func _on_gambling_pickup(): # shows the wheel of fortune and pauses the game
 	$wheel_of_fortune.visible = true
@@ -216,5 +196,4 @@ func _on_buff_timer_timeout() -> void:
 		SPEED -= 500
 
 func _on_coin_pickup(amount: int):
-	print("worth in player", amount)
 	COINS += amount

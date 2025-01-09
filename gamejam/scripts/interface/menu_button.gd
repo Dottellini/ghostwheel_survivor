@@ -3,7 +3,8 @@ extends Node
 enum ItemId {
 	LEVEL1,
 	LEVEL2,
-	LEVEL3
+	LEVEL3,
+	LEVEL4
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -19,8 +20,14 @@ func _on_item_menu_pressed(id: int):
 	match id:
 		ItemId.LEVEL1:
 			get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
+			Globaly.player = null
+			Globaly.got_player = false
+			Globaly.reset_global_state()
 		ItemId.LEVEL2:
 			get_tree().change_scene_to_file("res://scenes/interface/main_menu.tscn")
+			Globaly.player = null
+			Globaly.got_player = false
+			Globaly.reset_global_state()
 		ItemId.LEVEL3:
 			get_tree().quit()
 	

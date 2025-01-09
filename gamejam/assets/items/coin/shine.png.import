@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlww2febgc55m"
-path="res://.godot/imported/menu_background.webp-bc7aa7384904103f587af1125be3a1a1.ctex"
+uid="uid://c5hbiodwtw7ol"
+path="res://.godot/imported/shine.png-938c6bd995d6040bf14264dc6ddddcfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/menu_background.webp"
-dest_files=["res://.godot/imported/menu_background.webp-bc7aa7384904103f587af1125be3a1a1.ctex"]
+source_file="res://assets/items/coin/shine.png"
+dest_files=["res://.godot/imported/shine.png-938c6bd995d6040bf14264dc6ddddcfc.ctex"]
 
 [params]
 

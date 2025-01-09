@@ -185,7 +185,7 @@ texture = ExtResource("3_2uo5l")
 [sub_resource type="TileSet" id="TileSet_o3xb2"]
 sources/0 = SubResource("TileSetAtlasSource_3y3r6")
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_5ga0r")
 
 [node name="Player" parent="." instance=ExtResource("2_ssus4")]
@@ -220,6 +220,7 @@ position = Vector2(336, 208)
 
 [node name="battlemusic_player" type="AudioStreamPlayer" parent="." groups=["music"]]
 process_mode = 3
+volume_db = -5.0
 script = ExtResource("7_wxbkf")
 
 [node name="gambling_pickup" parent="." instance=ExtResource("4_0hyij")]

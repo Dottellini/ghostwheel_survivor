@@ -14,19 +14,19 @@ var in_range = false
 var player_body
 
 func mode1():
-	$Attack_Range/CollisionShape2D.set_deferred("monitoring",false)
-	$Hitbox/CollisionShape2D.set_deferred("monitoring",true)
+	$Attack_Range.set_monitoring(false)
+	$Hitbox.set_monitoring(true)
 
 func mode2():
-	$Attack_Range/CollisionShape2D.set_deferred("monitoring",true)
-	$Hitbox/CollisionShape2D.set_deferred("monitoring",false)
+	$Attack_Range.set_monitoring(true)
+	$Hitbox.set_monitoring(false)
 
 func mode3():
 	$Shoot_Cooldown.wait_time=1
 
 func mode4():
-	$Attack_Range/CollisionShape2D.set_deferred("monitoring",false)
-	$Hitbox/CollisionShape2D.set_deferred("monitoring",true)
+	$Attack_Range.set_monitoring(false)
+	$Hitbox.set_monitoring(true)
 	$Hit_Timer.wait_time=0.3
 
 func health_status():
@@ -40,6 +40,7 @@ func health_status():
 		mode4()
 
 func _physics_process(delta: float) -> void:
+	$ProgressBar.value=health
 	health_status()
 	if !is_attacking:
 		$AnimatedSprite2D.play("moving")
@@ -66,6 +67,7 @@ func enemy():
 func take_damage(damage: int) -> void:
 	$AnimatedSprite2D.play("damaged")
 	health -= damage
+	
 
 # if the player has entered the body
 func _on_hitbox_body_entered(body: Node2D) -> void:

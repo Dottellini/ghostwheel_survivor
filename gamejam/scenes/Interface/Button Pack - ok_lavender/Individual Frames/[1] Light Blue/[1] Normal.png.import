@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rq3glwrc73v6"
-path="res://.godot/imported/high_def.webp-d6aaee3d8c1edf417f3d6ef55def16a6.ctex"
+uid="uid://ccupgovixcx0v"
+path="res://.godot/imported/[1] Normal.png-c201f6f950de0d278729980a550c7693.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/high_def.webp"
-dest_files=["res://.godot/imported/high_def.webp-d6aaee3d8c1edf417f3d6ef55def16a6.ctex"]
+source_file="res://scenes/Interface/Button Pack - ok_lavender/Individual Frames/[1] Light Blue/[1] Normal.png"
+dest_files=["res://.godot/imported/[1] Normal.png-c201f6f950de0d278729980a550c7693.ctex"]
 
 [params]
 

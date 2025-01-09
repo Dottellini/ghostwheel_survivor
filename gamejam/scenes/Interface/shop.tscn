@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dupusa0442pf4"]
+[gd_scene load_steps=4 format=3 uid="uid://dupusa0442pf4"]
 
 [ext_resource type="Script" path="res://scripts/interface/shop.gd" id="1_qqis8"]
+[ext_resource type="FontFile" uid="uid://bls4rqss5cc7j" path="res://assets/Font/ScareEmAway.ttf" id="2_b2uxf"]
 [ext_resource type="Texture2D" uid="uid://p7vagm8lf0po" path="res://assets/items/coin/Coin-7.png.png" id="2_t3bj5"]
 
 [node name="shop" type="Control"]
@@ -16,61 +17,64 @@ script = ExtResource("1_qqis8")
 
 [node name="background" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -66.0
-offset_top = -43.0
-offset_right = 67.0
-offset_bottom = 46.0
+offset_left = -77.0
+offset_top = -44.0
+offset_right = 85.0
+offset_bottom = 58.0
 
 [node name="GridContainer" type="GridContainer" parent="background"]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 27.0
-offset_right = 228.0
-offset_bottom = 97.0
+offset_left = 23.0
+offset_top = 28.0
+offset_right = 249.0
+offset_bottom = 98.0
 scale = Vector2(0.5, 0.5)
 columns = 4
 
 [node name="Button1" type="Button" parent="background/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b2uxf")
 text = "100"
 alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button1"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 6.0
-offset_right = 70.0
-offset_bottom = 46.0
+offset_left = 34.0
+offset_top = 2.0
+offset_right = 74.0
+offset_bottom = 42.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_t3bj5")
 expand_mode = 1
 
 [node name="Button2" type="Button" parent="background/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b2uxf")
 text = "100"
 alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button2"]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 6.0
-offset_right = 71.0
-offset_bottom = 46.0
+offset_left = 33.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 42.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_t3bj5")
 expand_mode = 1
 
 [node name="Button3" type="Button" parent="background/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b2uxf")
 text = "200"
 alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button3"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 6.0
-offset_right = 70.0
-offset_bottom = 46.0
+offset_left = 34.0
+offset_top = 2.0
+offset_right = 74.0
+offset_bottom = 42.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_t3bj5")
 expand_mode = 1
@@ -97,18 +101,19 @@ text = "4000"
 
 [node name="shop_prompt" type="Label" parent="background"]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 71.0
-offset_right = 251.0
-offset_bottom = 94.0
+offset_left = 7.0
+offset_top = 80.0
+offset_right = 298.0
+offset_bottom = 104.0
 scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_b2uxf")
 text = "Press 'E' to open and close shop"
 
 [node name="coin_background" type="Panel" parent="background"]
 layout_mode = 0
-offset_left = 24.0
+offset_left = 40.0
 offset_top = 4.0
-offset_right = 108.0
+offset_right = 124.0
 offset_bottom = 22.0
 
 [node name="coin_text" type="Label" parent="background/coin_background"]
@@ -118,6 +123,7 @@ offset_top = 3.0
 offset_right = 73.0
 offset_bottom = 26.0
 scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_b2uxf")
 text = "Coins:"
 horizontal_alignment = 1
 
@@ -133,11 +139,12 @@ expand_mode = 1
 
 [node name="coin_amount" type="Label" parent="background/coin_background"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 1.0
-offset_right = 99.0
-offset_bottom = 24.0
+offset_left = 43.0
+offset_top = 5.0
+offset_right = 100.0
+offset_bottom = 21.0
 scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("2_b2uxf")
 text = "0"
 horizontal_alignment = 2
 

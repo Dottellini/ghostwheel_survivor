@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccxa2ehy0un2s"]
+[gd_scene load_steps=12 format=3 uid="uid://ccxa2ehy0un2s"]
 
 [ext_resource type="Texture2D" uid="uid://i44218002i8j" path="res://assets/items/coin/medium_coin.png" id="2_cmclb"]
 [ext_resource type="Script" path="res://scripts/items/medium_coin_pickup.gd" id="2_hgu08"]
+[ext_resource type="Texture2D" uid="uid://cvql5cj6h426a" path="res://assets/items/coin/glow.png" id="2_trt28"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hfcqs"]
 atlas = ExtResource("2_cmclb")
@@ -50,7 +51,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"exist",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2wr08"]
@@ -61,6 +62,10 @@ scale = Vector2(0.04, 0.04)
 script = ExtResource("2_hgu08")
 
 [node name="Area2D" type="Area2D" parent="."]
+
+[node name="glow" type="Sprite2D" parent="Area2D"]
+scale = Vector2(33, 33)
+texture = ExtResource("2_trt28")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_cxqx2")

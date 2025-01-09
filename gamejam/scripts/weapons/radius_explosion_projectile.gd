@@ -29,3 +29,4 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		#var buff: int = player.instantiate().damage_buff
 		body.take_damage(damage+Globaly.buff)
+		
