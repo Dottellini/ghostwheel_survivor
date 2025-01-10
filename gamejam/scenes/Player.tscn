@@ -89,7 +89,6 @@ collision_mask = 2
 script = ExtResource("1_umwlv")
 SCORE = null
 COINS = 100
-MAX_HEALTH = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

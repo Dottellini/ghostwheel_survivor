@@ -190,6 +190,8 @@ script = ExtResource("1_5ga0r")
 
 [node name="Player" parent="." instance=ExtResource("2_ssus4")]
 position = Vector2(112, 79)
+SCORE = 0
+MAX_HEALTH = 1000
 
 [node name="wheel_of_fortune" parent="Player" instance=ExtResource("3_m3o8b")]
 visible = false
