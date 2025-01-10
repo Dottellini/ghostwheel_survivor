@@ -7,7 +7,12 @@ var volume_slider
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var current_volume = db_to_slider_value(self.volume_db)
+	var current_volume
+	if Globaly.volume_in_db == null:
+		current_volume = db_to_slider_value(self.volume_db)
+	else:
+		current_volume = db_to_slider_value(Globaly.volume_in_db)
+		self.volume_db = Globaly.volume_in_db
 	volume_slider = get_parent().get_node("VolumeSlider")
 	volume_slider.set_value(current_volume)
 	volume_slider._volume_change.connect(_change_volume)

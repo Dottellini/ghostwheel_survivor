@@ -13,7 +13,7 @@ static var shuriken = preload("res://scenes/weapons/shuriken/shuriken.tscn")
 static var ice_bomb = preload("res://scenes/weapons/ice_shot/ice_shot.tscn")
 static var ring_of_fire = preload("res://scenes/weapons/fireball/fireball.tscn")
 
-var volume_in_db: float
+var volume_in_db = null
 var is_sound_muted = null
 
 # Called when the node enters the scene tree for the first time.
