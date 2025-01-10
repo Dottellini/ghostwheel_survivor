@@ -1,5 +1,6 @@
 extends CharacterBody2D
 var projectile_scene = preload("res://scenes/weapons/enemy_weapons/enemy_aura.tscn")
+var projectile_big=preload("res://scenes/weapons/enemy_weapons/boss_projectile.tscn")
 @onready var target = get_parent().get_node("Player")
 
 var chest = preload("res://scenes/gambling/gambling_pickup.tscn")
@@ -7,8 +8,9 @@ var chest = preload("res://scenes/gambling/gambling_pickup.tscn")
 @export var SPEED = 150.0
 @export var base_health = 2000
 @export var damage = 100
-var health=base_health
-var procent=base_health%health
+var health=2000
+var pr=health*10
+var procent
 
 var is_attacking = false
 var is_damaged = false
@@ -18,32 +20,43 @@ var player_body
 func mode1():
 	$Attack_Range.set_monitoring(false)
 	$Hitbox.set_monitoring(true)
+	print("mode1")
 
 func mode2():
 	$Attack_Range.set_monitoring(true)
 	$Hitbox.set_monitoring(false)
+	print("mode2")
 
 func mode3():
 	$Shoot_Cooldown.wait_time=1
+	print("mode3")
 
 func mode4():
 	$Attack_Range.set_monitoring(false)
 	$Hitbox.set_monitoring(true)
 	$Hit_Timer.wait_time=0.3
+	print("mode4")
 
+func mode5():
+	projectile_scene=projectile_big
+	print("mode5")
+	
 func health_status():
+	procent=(float(health)*100.0)/base_health
 	if procent>80:
 		mode1()
-	elif procent>60:
+	elif procent<=80 and procent>60:
 		mode2()
-	elif procent<20 and procent >10:
+	elif procent<=60 and procent>20:
+		mode5()
+	elif procent<=20 and procent >10:
 		mode3()
-	elif procent<10:
+	elif procent<=10:
 		mode4()
 
 func _physics_process(delta: float) -> void:
-	$ProgressBar.value=health
 	health_status()
+	$ProgressBar.value=health
 	if !is_attacking:
 		$AnimatedSprite2D.play("moving")
 	
