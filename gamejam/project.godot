@@ -14,7 +14,7 @@ config/name="gamejam"
 run/main_scene="res://scenes/Interface/story.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://assets/main_menu/high_def.png"
-config/icon="res://icon.svg"
+config/icon="res://assets/Player/sprites/standard_wheel_horizontal_moving1.png"
 
 [autoload]
 
