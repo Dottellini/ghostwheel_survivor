@@ -22,7 +22,6 @@ func _ready() -> void:
 		Globaly.is_sound_muted = is_muted
 		set_music_player_mute()
 	else:
-		is_not_user_press_of_button = true # This is needed because otherwise settings the button_pressed variable will register as if the user pressed the button and change the sound
 		is_muted = Globaly.is_sound_muted
 		set_music_player_mute()
 		$VolumeSlider/MuteButton.button_pressed = is_muted
@@ -55,10 +54,7 @@ func set_music_player_mute():
 		$main_theme_player.play()
 
 func _on_mute_button_toggled(toggled_on: bool) -> void:
-	if is_not_user_press_of_button: # See comment above to know why this is important
-		is_not_user_press_of_button = false
-		return
-	is_muted = !is_muted
+	is_muted = toggled_on
 	Globaly.is_sound_muted = is_muted
 	set_music_player_mute()
 
