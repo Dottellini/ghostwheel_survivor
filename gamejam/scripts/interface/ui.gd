@@ -18,7 +18,8 @@ func _ready() -> void:
 		if node.name != "shop":
 			node.visible = false
 	await get_tree().create_timer(0.5).timeout
-
+	pause_manager.request_pause("shop") # initial pause for the first shop 
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$ScoreText.text = "Score: %d" % player.SCORE
