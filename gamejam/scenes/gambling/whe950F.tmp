@@ -174,5 +174,3 @@ text = "SPIN!"
 label_settings = SubResource("LabelSettings_42k6y")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="area_entered" from="Panel/pointer/pointer_body" to="Panel" method="_on_pointer_body_area_entered"]

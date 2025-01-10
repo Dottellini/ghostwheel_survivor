@@ -9,7 +9,7 @@ var current_song = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.volume_db = Globaly.volume_in_db
+	self.volume_db = self.volume_db if Globaly.volume_in_db == null else Globaly.volume_in_db
 	var is_muted = Globaly.is_sound_muted
 	
 	if is_muted:
