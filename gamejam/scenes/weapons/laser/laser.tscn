@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://71vdsk15e26u"]
+
+[ext_resource type="Script" path="res://scripts/weapons/laser.gd" id="1_lvumx"]
+[ext_resource type="PackedScene" uid="uid://bn3t4suhd8r8l" path="res://scenes/weapons/laser/laser_projectile.tscn" id="2_w74rn"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lvumx")
+projectile_scene = ExtResource("2_w74rn")
+time_dead = 10

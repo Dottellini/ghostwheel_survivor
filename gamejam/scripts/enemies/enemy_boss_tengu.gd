@@ -2,6 +2,8 @@ extends CharacterBody2D
 var projectile_scene = preload("res://scenes/weapons/enemy_weapons/enemy_aura.tscn")
 @onready var target = get_parent().get_node("Player")
 
+var chest = preload("res://scenes/gambling/gambling_pickup.tscn")
+
 @export var SPEED = 150.0
 @export var base_health = 2000
 @export var damage = 100
@@ -49,6 +51,7 @@ func _physics_process(delta: float) -> void:
 		$CollisionShape2D.set_deferred("monitoring",false)
 		$AnimatedSprite2D.play("dying")
 		await get_tree().create_timer(1.0).timeout 
+		get_tree().get_first_node_in_group("level").spawn_item(chest, position)
 		queue_free()
 	
 	# move to Player

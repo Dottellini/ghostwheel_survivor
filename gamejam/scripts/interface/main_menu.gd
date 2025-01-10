@@ -1,15 +1,28 @@
 extends Node
 
-var credit_pos
+var is_muted = false
+var is_not_user_press_of_button = false
+
+var pause_manager = PauseManager
+
+signal _mute_sound_toggle
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Controls.hide()
-	get_tree().paused = false
+	pause_manager.release_pause("main_menu")
 	Globaly.player = null
 	Globaly.got_player = false
 	Globaly.reset_global_state()
-	credit_pos = $credits/credts_text.global_position
+	
+	if Globaly.is_sound_muted == null:
+		Globaly.is_sound_muted = is_muted
+		set_music_player_mute()
+	else:
+		is_not_user_press_of_button = true # This is needed because otherwise settings the button_pressed variable will register as if the user pressed the button and change the sound
+		is_muted = Globaly.is_sound_muted
+		set_music_player_mute()
+		$VolumeSlider/MuteButton.button_pressed = is_muted
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,18 +45,16 @@ func _on_controls_button_mouse_entered() -> void:
 func _on_controls_button_mouse_exited() -> void:
 	$Controls.hide()
 
+func set_music_player_mute():
+	if is_muted:
+		$main_theme_player.stop()
+	elif !is_muted:
+		$main_theme_player.play()
 
-func _on_credits_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/Interface/credits.tscn")
-
-
-func _on_credits_button_down() -> void:
-	$credits/credts_text.global_position.y += 5
-
-
-func _on_credits_button_up() -> void:
-	$credits/credts_text.global_position = credit_pos
-
-
-func _on_credits_mouse_exited() -> void:
-	$credits/credts_text.global_position = credit_pos
+func _on_mute_button_toggled(toggled_on: bool) -> void:
+	if is_not_user_press_of_button: # See comment above to know why this is important
+		is_not_user_press_of_button = false
+		return
+	is_muted = !is_muted
+	Globaly.is_sound_muted = is_muted
+	set_music_player_mute()

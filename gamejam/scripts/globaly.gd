@@ -13,7 +13,9 @@ static var shuriken = preload("res://scenes/weapons/shuriken/shuriken.tscn")
 static var ice_bomb = preload("res://scenes/weapons/ice_shot/ice_shot.tscn")
 static var ring_of_fire = preload("res://scenes/weapons/fireball/fireball.tscn")
 
-var volume_in_db: float
+var volume_in_db = null
+var is_sound_muted = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -32,7 +34,7 @@ func _process(delta: float) -> void:
 						0, 1:
 							projectile.global_position.x = player.global_position.x  # Assuming this script is on a Node2D
 							projectile.global_position.y = player.global_position.y  # Assuming this script is on a Node2D
-							projectile.set_direction(player.dir)  # Ensure 'velocity' is defined
+							projectile.set_direction(player.dir if player.dir != Vector2(0,0) else Vector2(1, 0))  # Ensure 'velocity' is defined
 							player.owner.add_child.call_deferred(projectile)
 						2:
 							player.add_child(projectile)
