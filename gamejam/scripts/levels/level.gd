@@ -24,7 +24,7 @@ var base_chances = {
 }
 
 @export var spawn_timestep = 0.5
-@export var wave_timestep = 60
+@export var wave_timestep = 60 # 60
 @export var initial_enemy_spawn_time = 5
 
 var current_wave = 0
@@ -133,7 +133,7 @@ func _spawn_boss() -> void:
 		
 		# Signal verbinden, um Boss-Tod zu erkennen
 		if boss_instance.has_signal("died"):
-			boss_instance.connect("died", self, "_on_boss_died")
+			boss_instance.connect("died", _on_boss_died)
 
 func _on_boss_died() -> void:
 	boss_active = false

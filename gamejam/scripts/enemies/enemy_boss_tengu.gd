@@ -5,6 +5,8 @@ var projectile_big=preload("res://scenes/weapons/enemy_weapons/boss_projectile.t
 
 var chest = preload("res://scenes/gambling/gambling_pickup.tscn")
 
+signal died
+
 @export var SPEED = 150.0
 @export var base_health = 2000
 @export var damage = 100
@@ -60,6 +62,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("dying")
 		await get_tree().create_timer(1.0).timeout 
 		get_tree().get_first_node_in_group("level").spawn_item(chest, position)
+		emit_signal("died")
 		queue_free()
 	
 	# move to Player
