@@ -342,6 +342,7 @@ animations = [{
 [node name="skull_blue" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(4, 4)
 script = ExtResource("1_yb54h")
+health = 1
 damage = 800
 dropped_coin = ExtResource("2_b7nyr")
 
