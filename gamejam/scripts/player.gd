@@ -22,6 +22,10 @@ var is_flickering = false
 
 var pause_manager = PauseManager
 
+var animator: AnimatedSprite2D
+var current_skin: String = "default"
+var big: bool
+
 signal _on_death
 
 func _physics_process(delta: float) -> void:
@@ -30,17 +34,15 @@ func _physics_process(delta: float) -> void:
 		HEALTH = 0
 		player_death()
 		
-	var direction_x = Input.get_axis("ui_Left", "ui_Right")
-	var direction_y = Input.get_axis("ui_Up", "ui_Down")
-	if Input.get_axis("ui_Left", "ui_Right") != 0  or Input.get_axis("ui_Up", "ui_Down") !=0:
-		dir=Vector2(Input.get_axis("ui_Left", "ui_Right"), Input.get_axis("ui_Up", "ui_Down"))
-	if direction_x:
-		velocity.x = direction_x * SPEED
+	dir = Vector2(Input.get_axis("ui_Left", "ui_Right"), Input.get_axis("ui_Up", "ui_Down"))
+	
+	if dir.x:
+		velocity.x = dir.x * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if direction_y:
-		velocity.y = direction_y * SPEED
+	if dir.y:
+		velocity.y = dir.y * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
@@ -49,6 +51,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.set_visible(true)
 	
+	_handle_animations(dir.x, dir.y)
 	move_and_slide()
 	
 
@@ -88,6 +91,8 @@ func add_score(added_score: int) -> void:
 func _ready() -> void:
 	$Game_over.visible = false
 	$Timer.start()
+	animator = $AnimatedSprite2D
+	animator.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -105,16 +110,17 @@ func _on_gambling_hit(index: int):
 	# logic for giving the player new skins and buffs in the cases below
 	match index:
 		1:
-			#TODO: Großer Reifen SKIN
-			$AnimatedSprite2D.play("skin_big")
+			$AnimatedSprite2D.play("default")
+			current_skin = "default"
+			big = true
 			skin_ability(index)
 		2:
 			is_defence_buff = true
 			defence += 0.5
 			$Buff_Timer.start()
 		3:
-			#TODO: Brennender Reifen SKIN
-			$AnimatedSprite2D.play("skin_burning")
+			current_skin = "skin_burning"
+			big = false
 			skin_ability(index)
 		4:
 			# Damage Buff
@@ -122,15 +128,15 @@ func _on_gambling_hit(index: int):
 			damage_buff += 100
 			$Buff_Timer.start()
 		5:
-			#TODO: Skin Fast Wheel
-			$AnimatedSprite2D.play("skin_fast")
+			current_skin = "skin_fast"
+			big = false
 			skin_ability(index)
 		6:
 			# Healing Buff
 			add_health_percentage(0.5)
 		7:
-			#TODO: Metal Skin
-			$AnimatedSprite2D.play("skin_metal")
+			current_skin = "skin_metal"
+			big = false
 			skin_ability(index)
 		8:
 			# Speed Buff
@@ -200,3 +206,49 @@ func _on_buff_timer_timeout() -> void:
 
 func _on_coin_pickup(amount: int):
 	COINS += amount
+
+func _handle_animations(x: float, y: float) -> void:
+	var factor: float = 1.0
+	if big:
+		factor = 1.5
+		animator.speed_scale = 0.6
+	else:
+		animator.speed_scale = 1
+	if y == 0 and x != 0: # if going horizontally
+		animator.scale.x = 2 * factor
+		animator.scale.y = 2 * factor
+		if x < 0: # if going left
+			animator.flip_h = false
+			animator.play(current_skin + "_go_horizontal")
+		if x > 0: # if going right
+			animator.flip_h = true
+			animator.play(current_skin + "_go_horizontal")
+	elif x == 0 and y != 0: # if going vertically
+		animator.scale.x = 2.3 * factor
+		animator.scale.y = 2.3 * factor
+		if y < 0: # if going up
+			animator.play(current_skin + "_go_vertical_away")
+		if y > 0: # if going down
+			animator.play(current_skin + "_go_vertical_towards")
+	elif x == 0 and y == 0: # if not moving
+		animator.scale.x = 2 * factor
+		animator.scale.y = 2 * factor
+		animator.play(current_skin + "_idle")
+	else: # if going diagonally
+		animator.scale.x = 2.3 * factor
+		animator.scale.y = 2.3 * factor
+		if y < 0: # going north
+			if x > 0: # if going north-east
+				animator.flip_h = true
+				animator.play(current_skin + "_go_diagonal_away")
+			else: # if going north-west
+				animator.flip_h = false
+				animator.play(current_skin + "_go_diagonal_away")
+		if y > 0: # going south
+			if x > 0: # going south-east
+				animator.flip_h = false
+				animator.play(current_skin + "_go_diagonal_towards")
+			else:
+				animator.flip_h = true
+				animator.play(current_skin + "_go_diagonal_towards")
+				

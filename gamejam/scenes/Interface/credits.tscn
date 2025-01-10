@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://jo7cvvssfn15"]
+[gd_scene load_steps=3 format=3 uid="uid://cl1ynrrgblu7g"]
 
 [ext_resource type="Script" path="res://scripts/interface/credits.gd" id="1_4j5gr"]
-[ext_resource type="AudioStream" path="res://assets/credits/Ghostwheel survivor.mp3" id="2_lk7a2"]
+[ext_resource type="AudioStream" uid="uid://dk43uqkvabuuo" path="res://assets/credits/Ghostwheel survivor.mp3" id="2_lk7a2"]
 
 [node name="credits" type="CanvasLayer"]
 script = ExtResource("1_4j5gr")
@@ -29,10 +29,10 @@ offset_bottom = 777.0
 [node name="credits_text" type="Label" parent="CenterContainer2"]
 layout_mode = 2
 text = "Team:
-Bastian Röth
-Idehen Idahor
-Julian Dauenhauer
-Kevin Klauser"
+Bastian Röth   -   Programmierung & Mord
+Idehen Idahor   -   Direkt auf master committen & Gewalt
+Julian Dauenhauer   -   Git zerstören & Kunst
+Kevin Klauser   -   Programmierung & Git reparieren"
 horizontal_alignment = 1
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
