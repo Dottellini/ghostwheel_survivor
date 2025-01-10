@@ -10,7 +10,7 @@ signal _mute_sound_toggle
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Controls.hide()
-	pause_manager.release_pause("main_menu")
+	pause_manager.clear_requests()
 	Globaly.player = null
 	Globaly.got_player = false
 	Globaly.reset_global_state()
