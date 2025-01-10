@@ -105,7 +105,6 @@ func _on_gambling_pickup(): # shows the wheel of fortune and pauses the game
 	pause_manager.request_pause("player")
 
 func _on_gambling_hit(index: int):
-	print(index)
 	await get_tree().create_timer(3.0).timeout
 	# logic for giving the player new skins and buffs in the cases below
 	match index:

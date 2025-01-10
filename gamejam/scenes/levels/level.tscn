@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://bskmjffj2qv7x"]
+[gd_scene load_steps=11 format=4 uid="uid://bskmjffj2qv7x"]
 
 [ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_5ga0r"]
 [ext_resource type="PackedScene" uid="uid://b2rc2fd1yveoi" path="res://scenes/Player.tscn" id="2_ssus4"]
 [ext_resource type="Texture2D" uid="uid://dgbe61k7s0rft" path="res://assets/16x16 Pixel Cave/Separated/GroundTileset.png" id="3_2uo5l"]
-[ext_resource type="PackedScene" uid="uid://bn7jxy2gpcpev" path="res://scenes/gambling/gambling_pickup.tscn" id="4_0hyij"]
-[ext_resource type="PackedScene" uid="uid://dyflhl1hguc0y" path="res://scenes/Items/health_item.tscn" id="4_4loui"]
+[ext_resource type="PackedScene" uid="uid://dyvdo1vxfmu6l" path="res://scenes/gambling/wheel_of_fortune.tscn" id="3_m3o8b"]
 [ext_resource type="Script" path="res://scripts/interface/battlemusic.gd" id="7_wxbkf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_wi8u6"]
@@ -190,13 +189,9 @@ script = ExtResource("1_5ga0r")
 [node name="Player" parent="." instance=ExtResource("2_ssus4")]
 position = Vector2(112, 79)
 
-
 [node name="wheel_of_fortune" parent="Player" instance=ExtResource("3_m3o8b")]
 process_mode = 2
 visible = false
-
-SCORE = 0
-
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(2, 2)
@@ -219,16 +214,10 @@ tile_set = SubResource("TileSet_o3xb2")
 wait_time = 5.0
 autostart = true
 
-[node name="HealthItem" parent="." instance=ExtResource("4_4loui")]
-position = Vector2(336, 208)
-
 [node name="battlemusic_player" type="AudioStreamPlayer" parent="." groups=["music"]]
 process_mode = 3
 volume_db = -5.0
 script = ExtResource("7_wxbkf")
-
-[node name="gambling_pickup" parent="." instance=ExtResource("4_0hyij")]
-position = Vector2(403, 242)
 
 [connection signal="timeout" from="Enemy_Spawn_Timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="finished" from="battlemusic_player" to="battlemusic_player" method="_on_finished"]

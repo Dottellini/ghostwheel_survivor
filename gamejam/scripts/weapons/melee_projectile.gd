@@ -34,7 +34,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 
 #func _on_timer_timeout() -> void:
-	#print("Timer")
 	#var instance = player.instantiate()
 	#instance.shoot_projectile()
 	#$Timer.start()
