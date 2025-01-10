@@ -18,5 +18,5 @@ func clear_requests() -> void:
 
 # Aktualisiert den Pausenzustand
 func _update_pause_state() -> void:
-	print(pause_requests)
+	#print(pause_requests)
 	get_tree().paused = pause_requests.size() > 0
