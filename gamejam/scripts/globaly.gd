@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 						0, 1:
 							projectile.global_position.x = player.global_position.x  # Assuming this script is on a Node2D
 							projectile.global_position.y = player.global_position.y  # Assuming this script is on a Node2D
-							projectile.set_direction(player.dir if player.dir != Vector2(0,0) else Vector2(1, 0))  # Ensure 'velocity' is defined
+							projectile.set_direction(player.last_dir)  # Ensure 'velocity' is defined
 							player.owner.add_child.call_deferred(projectile)
 						2:
 							player.add_child(projectile)

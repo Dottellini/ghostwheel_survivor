@@ -8,6 +8,7 @@ var is_pressed
 var rotation_speed
 var deceleration
 var rotation_angle
+var info
 
 var current_hit_area
 var spin_over = false
@@ -22,6 +23,8 @@ func _ready() -> void:
 	button = $Button
 	wheel = $wheel
 	pointer = $pointer/pointer_body
+	info = $info/info_text
+	$info.visible = false
 	button.disabled = true
 	pointer.set_monitoring(false)
 	# wheel.rotation = deg_to_rad(randf_range(0, 360)) # Zufällige Startposition
@@ -40,22 +43,31 @@ func _process(delta: float) -> void:
 			stopped = true
 			spin_over = true
 		if rotation_speed == 0.0 and spin_over: # if 0, emits a signal to the player with the index of the area it landed on
+			$info.visible = true
 			match current_hit_area.name:
 				"first area":
+					info.text = "Big Wheel: More HP"
 					emit_signal("hit", 1)
 				"second area":
+					info.text = "Temporary Defense Buff!"
 					emit_signal("hit", 2)
 				"third area":
+					info.text = "Burning Wheel: More Damage"
 					emit_signal("hit", 3)
-				"forth area":
+				"fourth area":
+					info.text = "Temporary Damage Buff"
 					emit_signal("hit", 4)
 				"fifth area":
-					emit_signal("hit", 5)
+					info.text = "Fast Wheel: More Speed"
+					emit_signal("hit", 7)
 				"sixth area":
+					info.text = "50% HP restored!"
 					emit_signal("hit", 6)
 				"seventh area":
-					emit_signal("hit", 7)
+					info.text = "Metal Wheel: More Defense"
+					emit_signal("hit", 5)
 				"eighth area":
+					info.text = "Temporary Speed Buff!"
 					emit_signal("hit", 8)
 			_reset_to_default() # resets the wheel so it can be spun again later
 			
@@ -80,3 +92,10 @@ func _reset_to_default():
 	rotation_angle = 0.0
 	button.disabled = true
 	pointer.set_monitoring(false)
+
+
+func _on_wheel_of_fortune_visibility_changed() -> void:
+	if wheel.visible:
+		$info.visible = false
+	else:
+		$info.visible = true

@@ -55,13 +55,13 @@ func _ready() -> void:
 	randomize()
 	
 func _process(delta: float) -> void:
-	wave_label.text = "Wave: %02d" % current_wave
+	wave_label.text = "Difficulty: %02d" % current_wave
 	
 func _check_condition() -> void:
 	if spawn_timer.wait_time < (spawn_timestep * 2):
 		spawn_timer.wait_time = 0.1
 		current_wave += 1
-		print("Check-Timer deactivated: Limit reached.")
+		#print("Check-Timer deactivated: Limit reached.")
 		check_timer.stop()
 		return
 		
@@ -122,7 +122,6 @@ func pick_enemy_based_on_wave(wave: int) -> PackedScene:
 	return enemy_scenes[enemies.ENEMY_ONE]
 
 func _spawn_boss() -> void:
-	print("Spawning Boss")
 	if !boss_active:
 		boss_active = true
 		spawn_timer.stop()  # Stoppt das normale Spawnen
@@ -137,7 +136,6 @@ func _spawn_boss() -> void:
 			boss_instance.connect("died", self, "_on_boss_died")
 
 func _on_boss_died() -> void:
-	print("Boss defeated")
 	boss_active = false
 	current_boss = null
 	current_wave=boss_wave_stop

@@ -20,26 +20,21 @@ var player_body
 func mode1():
 	$Attack_Range.set_monitoring(false)
 	$Hitbox.set_monitoring(true)
-	print("mode1")
 
 func mode2():
 	$Attack_Range.set_monitoring(true)
 	$Hitbox.set_monitoring(false)
-	print("mode2")
 
 func mode3():
 	$Shoot_Cooldown.wait_time=1
-	print("mode3")
 
 func mode4():
 	$Attack_Range.set_monitoring(false)
 	$Hitbox.set_monitoring(true)
 	$Hit_Timer.wait_time=0.3
-	print("mode4")
 
 func mode5():
 	projectile_scene=projectile_big
-	print("mode5")
 	
 func health_status():
 	procent=(float(health)*100.0)/base_health
