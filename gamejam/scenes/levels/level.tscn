@@ -192,6 +192,7 @@ script = ExtResource("1_5ga0r")
 position = Vector2(112, 79)
 
 [node name="wheel_of_fortune" parent="Player" instance=ExtResource("3_m3o8b")]
+process_mode = 2
 visible = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

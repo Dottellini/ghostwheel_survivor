@@ -1,72 +1,323 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2rc2fd1yveoi"]
+[gd_scene load_steps=58 format=3 uid="uid://b2rc2fd1yveoi"]
 
-[ext_resource type="Texture2D" uid="uid://6n7fkxtrw5we" path="res://icon.svg" id="1_l181h"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_umwlv"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_diagonal_away_moving1.png" id="2_o5y56"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_diagonal_away_moving2.png" id="3_n2smm"]
 [ext_resource type="PackedScene" uid="uid://dka7irgxdwi72" path="res://scenes/Interface/UserInterface.tscn" id="3_ti7xd"]
-[ext_resource type="Texture2D" uid="uid://byhknf0rhngis" path="res://assets/ein Rad dessen reifen aus feuer besteht und dieses ist silber die felge ist schwarz(1).png" id="4_jkaxq"]
 [ext_resource type="PackedScene" uid="uid://r3g5iskx00f" path="res://scenes/Interface/game_over.tscn" id="4_lm08u"]
-[ext_resource type="Texture2D" uid="uid://du7nsi87wfd1g" path="res://assets/ein Rad dessen reifen aus metall besteht und dieses ist silber die felge ist schwarz(1).png" id="4_sqa6p"]
-[ext_resource type="Texture2D" uid="uid://ykocqstac25v" path="res://assets/ein Rad dessen reifen weiß ist und dieses ist silber die radkappe ist schwarz.png" id="5_w5vop"]
-[ext_resource type="Texture2D" uid="uid://clolhsngep1yb" path="res://assets/ein Rad dessen reifen aus metall besteht und dieses ist silber die felge ist schwarz.png" id="6_2jnli"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_diagonal_towards_moving1.png" id="4_o06er"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_diagonal_towards_moving2.png" id="5_pnbqb"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_horizontal_moving1.png" id="6_cwg2f"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_horizontal_moving2.png" id="7_p7h1n"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_vertical_away_moving1.png" id="8_ai2iw"]
 [ext_resource type="AudioStream" uid="uid://biawlph5lqr72" path="res://assets/Player/hit.mp3" id="9_qoqmr"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gxhfd"]
-atlas = ExtResource("4_sqa6p")
-region = Rect2(512, 409, 256, 123)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pisi8"]
-atlas = ExtResource("4_jkaxq")
-region = Rect2(523, 376, 249, 158)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7on6l"]
-atlas = ExtResource("5_w5vop")
-region = Rect2(512, 409, 256, 123)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cft4y"]
-atlas = ExtResource("6_2jnli")
-region = Rect2(512, 409, 256, 123)
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_vertical_away_moving2.png" id="9_yl3xj"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_vertical_towards_moving1.png" id="10_0obkn"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_vertical_towards_moving2.png" id="11_8t4iv"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_idle1.png" id="12_x1nol"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/standard_wheel_idle2.png" id="13_jp0mb"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_diagonal_away_moving1.png" id="14_yuj3v"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_diagonal_away_moving2.png" id="15_rpabq"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_diagonal_towards_moving1.png" id="16_yucyu"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_diagonal_towards_moving2.png" id="17_niv0x"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_horizontal_moving1.png" id="18_reu2a"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_horizontal_moving2.png" id="19_g28lm"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_vertical_away_moving1.png" id="20_f0syv"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_vertical_away_moving2.png" id="21_b8ann"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_vertical_towards_moving1.png" id="22_sj8y0"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_vertical_towards_moving2.png" id="23_gplob"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_idle1.png" id="24_pyb1g"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/burning_wheel_idle2.png" id="25_y4ly3"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_diagonal_away_moving1.png" id="26_0axpj"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_diagonal_away_moving2.png" id="27_hq8oi"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_diagonal_towards_moving1.png" id="28_fk2mo"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_diagonal_towards_moving2.png" id="29_5reyn"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_horizontal_moving1.png" id="30_mbc4v"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_horizontal_moving2.png" id="31_jjd4y"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_vertical_away_moving1.png" id="32_s62lr"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_vertical_away_moving2.png" id="33_43gfw"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_vertical_towards_moving1.png" id="34_0t6gj"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_vertical_towards_moving2.png" id="35_qholf"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_idle1.png" id="36_cyijh"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/fast_wheel_idle2.png" id="37_walmf"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_diagonal_away_moving1.png" id="38_klg7t"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_diagonal_away_moving2.png" id="39_5n4om"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_diagonal_towards_moving1.png" id="40_xd8wh"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_diagonal_towards_moving2.png" id="41_yvagy"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_horizontal_moving1.png" id="42_i1oci"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_horizontal_moving2.png" id="43_03gqk"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_vertical_away_moving1.png" id="44_ykcm3"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_vertical_away_moving2.png" id="45_yxi4h"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_vertical_towards_moving1.png" id="46_8tmuf"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_vertical_towards_moving2.png" id="47_2gvdr"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_idle1.png" id="48_e7yhd"]
+[ext_resource type="Texture2D" path="res://assets/Player/sprites/metal_wheel_idle2.png" id="49_mgxqi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iaxgc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gxhfd")
+"texture": ExtResource("2_o5y56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n2smm")
 }],
 "loop": true,
-"name": &"default",
+"name": &"default_go_diagonal_away",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_o06er")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pnbqb")
+}],
+"loop": true,
+"name": &"default_go_diagonal_towards",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_cwg2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p7h1n")
+}],
+"loop": true,
+"name": &"default_go_horizontal",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ai2iw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yl3xj")
+}],
+"loop": true,
+"name": &"default_go_vertical_away",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0obkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8t4iv")
+}],
+"loop": true,
+"name": &"default_go_vertical_towards",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_x1nol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jp0mb")
+}],
+"loop": true,
+"name": &"default_idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_yuj3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rpabq")
+}],
+"loop": true,
+"name": &"skin_burning_go_diagonal_away",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_yucyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_niv0x")
+}],
+"loop": true,
+"name": &"skin_burning_go_diagonal_towards",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_reu2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_g28lm")
+}],
+"loop": true,
+"name": &"skin_burning_go_horizontal",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_f0syv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_b8ann")
+}],
+"loop": true,
+"name": &"skin_burning_go_vertical_away",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_sj8y0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_gplob")
+}],
+"loop": true,
+"name": &"skin_burning_go_vertical_towards",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_pyb1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_y4ly3")
+}],
+"loop": true,
+"name": &"skin_burning_idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_0axpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_hq8oi")
+}],
+"loop": true,
+"name": &"skin_fast_go_diagonal_away",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_fk2mo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_5reyn")
+}],
+"loop": true,
+"name": &"skin_fast_go_diagonal_towards",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_mbc4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_jjd4y")
+}],
+"loop": true,
+"name": &"skin_fast_go_horizontal",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_s62lr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_43gfw")
+}],
+"loop": true,
+"name": &"skin_fast_go_vertical_away",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_0t6gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_qholf")
+}],
+"loop": true,
+"name": &"skin_fast_go_vertical_towards",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_cyijh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_walmf")
+}],
+"loop": true,
+"name": &"skin_fast_idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_l181h")
+"texture": ExtResource("38_klg7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_5n4om")
 }],
 "loop": true,
-"name": &"skin_big",
-"speed": 5.0
+"name": &"skin_metal_go_diagonal_away",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pisi8")
+"texture": ExtResource("40_xd8wh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_yvagy")
 }],
 "loop": true,
-"name": &"skin_burning",
-"speed": 5.0
+"name": &"skin_metal_go_diagonal_towards",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7on6l")
+"texture": ExtResource("42_i1oci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_03gqk")
 }],
 "loop": true,
-"name": &"skin_fast",
-"speed": 5.0
+"name": &"skin_metal_go_horizontal",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cft4y")
+"texture": ExtResource("44_ykcm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_yxi4h")
 }],
 "loop": true,
-"name": &"skin_metal_side",
-"speed": 5.0
+"name": &"skin_metal_go_vertical_away",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_8tmuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_2gvdr")
+}],
+"loop": true,
+"name": &"skin_metal_go_vertical_towards",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_e7yhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_mgxqi")
+}],
+"loop": true,
+"name": &"skin_metal_idle",
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpt6k"]
@@ -87,11 +338,15 @@ point_count = 5
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 2
 script = ExtResource("1_umwlv")
+SCORE = null
 COINS = 100
+MAX_HEALTH = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_iaxgc")
+animation = &"default_go_diagonal_towards"
+offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)

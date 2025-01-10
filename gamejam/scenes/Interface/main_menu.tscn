@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dqowsic4i2sck" path="res://assets/main_menu/Button_Pack/Individual Frames/Play/[2] Clicked.png" id="8_ofxpu"]
 [ext_resource type="Script" path="res://scripts/interface/audio_control.gd" id="8_q0n8q"]
 [ext_resource type="Texture2D" uid="uid://bdgx3mvhqtycp" path="res://assets/main_menu/Button_Pack/Individual Frames/Play/[3] Hover.png" id="9_niyuw"]
-[ext_resource type="PackedScene" uid="uid://3rcewbngpkmo" path="res://scenes/Interface/volume_slider.tscn" id="9_ywa6w"]
+[ext_resource type="PackedScene" path="res://scenes/Interface/volume_slider.tscn" id="9_ywa6w"]
 [ext_resource type="Texture2D" uid="uid://cf2u7wvw15k7c" path="res://assets/main_menu/Button_Pack/Individual Frames/Quit/[1] Normal.png" id="10_hta0f"]
 [ext_resource type="Texture2D" uid="uid://busy1k51im00c" path="res://assets/main_menu/Button_Pack/Individual Frames/Quit/[2] Clicked.png" id="11_trklg"]
 [ext_resource type="Texture2D" uid="uid://budethpwfx167" path="res://assets/main_menu/Button_Pack/Individual Frames/Quit/[3] Hover.png" id="12_bdtq2"]
