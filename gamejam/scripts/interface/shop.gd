@@ -46,6 +46,7 @@ func _ready() -> void:
 	button7 = $background/GridContainer/Button7
 	button8 = $background/GridContainer/Button8
 	player = get_tree().get_first_node_in_group("player")
+	pause_manager.request_pause("shop") # initial pause for the first shop 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

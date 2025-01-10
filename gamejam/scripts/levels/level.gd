@@ -52,8 +52,6 @@ func _ready() -> void:
 	check_timer.autostart = true
 	add_child(check_timer)
 	check_timer.connect("timeout", _check_condition)
-
-	PauseManager.clear_requests()
 	randomize()
 	
 func _process(delta: float) -> void:
