@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2rc2fd1yveoi"]
+[gd_scene load_steps=20 format=3 uid="uid://b2rc2fd1yveoi"]
 
 [ext_resource type="Texture2D" uid="uid://6n7fkxtrw5we" path="res://icon.svg" id="1_l181h"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_umwlv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ykocqstac25v" path="res://assets/ein Rad dessen reifen weiß ist und dieses ist silber die radkappe ist schwarz.png" id="5_w5vop"]
 [ext_resource type="Texture2D" uid="uid://clolhsngep1yb" path="res://assets/ein Rad dessen reifen aus metall besteht und dieses ist silber die felge ist schwarz.png" id="6_2jnli"]
 [ext_resource type="AudioStream" uid="uid://biawlph5lqr72" path="res://assets/Player/hit.mp3" id="9_qoqmr"]
+[ext_resource type="PackedScene" uid="uid://dyvdo1vxfmu6l" path="res://scenes/gambling/wheel_of_fortune.tscn" id="10_36vks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxhfd"]
 atlas = ExtResource("4_sqa6p")
@@ -131,6 +132,9 @@ wait_time = 30.0
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_qoqmr")
+
+[node name="wheel_of_fortune" parent="." instance=ExtResource("10_36vks")]
+visible = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Buff_Timer" to="." method="_on_buff_timer_timeout"]
