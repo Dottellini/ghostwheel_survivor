@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhdvnfb0ri5a2"]
+
+[ext_resource type="Script" path="res://scripts/weapons/flamethrower.gd" id="1_rwaxp"]
+[ext_resource type="PackedScene" uid="uid://r1da7xuqiqwv" path="res://scenes/weapons/flamethrower/flamethrower_projectile.tscn" id="2_k53ba"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_rwaxp")
+projectile_scene = ExtResource("2_k53ba")

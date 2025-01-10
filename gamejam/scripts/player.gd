@@ -23,6 +23,8 @@ var is_flickering = false
 var animator: AnimatedSprite2D
 var current_skin: String = "default"
 var big: bool
+var pause_manager = PauseManager
+
 signal _on_death
 
 func _physics_process(delta: float) -> void:
@@ -53,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	
 
 func player_death() -> void:
-	get_tree().paused = true # freezes game
+	pause_manager.request_pause("player")
 	emit_signal("_on_death")
 
 
@@ -98,7 +100,8 @@ func _process(delta: float) -> void:
 
 func _on_gambling_pickup(): # shows the wheel of fortune and pauses the game
 	$wheel_of_fortune.visible = true
-	get_tree().paused = true
+	$wheel_of_fortune/Panel/Button.disabled = false
+	pause_manager.request_pause("player")
 
 func _on_gambling_hit(index: int):
 	print(index)
@@ -144,7 +147,7 @@ func _on_gambling_hit(index: int):
 			$Buff_Timer.start()
 			
 	$wheel_of_fortune.visible = false
-	get_tree().paused = false
+	pause_manager.release_pause("player")
 
 # Change Ability of the player based on the skin
 func skin_ability(skin_number: int):

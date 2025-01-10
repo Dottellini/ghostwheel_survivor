@@ -3,6 +3,11 @@ extends Control
 @export var shuriken_price = 100
 @export var ice_bomb_price = 100
 @export var ring_of_fire_price = 200
+@export var flamethrower_price = 300
+@export var taifun_price = 1000
+@export var laser_price = 600
+@export var storm_price = 700
+@export var swarm_price = 100
 
 var player
 
@@ -14,6 +19,17 @@ var button5
 var button6
 var button7
 var button8
+
+var shuriken = preload("res://scenes/weapons/shuriken/shuriken.tscn")
+var ice_bomb = preload("res://scenes/weapons/ice_shot/ice_shot.tscn")
+var ring_of_fire = preload("res://scenes/weapons/fireball/fireball.tscn")
+var flamethrower = preload("res://scenes/weapons/flamethrower/flamethrower.tscn")
+var taifun = preload("res://scenes/weapons/taifun/taifun.tscn")
+var laser = preload("res://scenes/weapons/laser/laser.tscn")
+var storm = preload("res://scenes/weapons/storm/storm.tscn")
+var swarm = preload("res://scenes/weapons/swarm/swarm.tscn")
+
+var pause_manager = PauseManager
 
 var shown = true
 var shop_is_open = false
@@ -30,6 +46,7 @@ func _ready() -> void:
 	button7 = $background/GridContainer/Button7
 	button8 = $background/GridContainer/Button8
 	player = get_tree().get_first_node_in_group("player")
+	pause_manager.request_pause("shop") # initial pause for the first shop 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -58,23 +75,38 @@ func _on_button_3_pressed() -> void: # buy ring of fire
 
 
 func _on_button_4_pressed() -> void: # buy death beam
-	pass
+	if player.COINS - flamethrower_price >= 0:
+		player.add_child(flamethrower.instantiate())
+		player.COINS -= flamethrower_price
+	else: _show_warning()
 
 
 func _on_button_5_pressed() -> void:
-	pass # Replace with function body.
+	if player.COINS - taifun_price >= 0:
+		player.add_child(taifun.instantiate())
+		player.COINS -= taifun_price
+	else: _show_warning()
 
 
 func _on_button_6_pressed() -> void:
-	pass # Replace with function body.
+	if player.COINS - laser_price >= 0:
+		player.add_child(laser.instantiate())
+		player.COINS -= laser_price
+	else: _show_warning()
 
 
 func _on_button_7_pressed() -> void:
-	pass # Replace with function body.
+	if player.COINS - storm_price >= 0:
+		player.add_child(storm.instantiate())
+		player.COINS -= storm_price
+	else: _show_warning()
 
 
 func _on_button_8_pressed() -> void:
-	pass # Replace with function body.
+	if player.COINS - swarm_price >= 0:
+		player.add_child(swarm.instantiate())
+		player.COINS -= swarm_price
+	else: _show_warning()
 
 func _manage_shop():
 	if !get_tree().paused or shop_is_open:
@@ -87,7 +119,7 @@ func _manage_shop():
 						node.visible = true
 						shown = false
 					else: node.visible = false
-				get_tree().paused = false
+				pause_manager.release_pause("shop")
 			else:
 				shop_is_open = true
 				for node in ui.get_children(false):
@@ -95,7 +127,7 @@ func _manage_shop():
 						node.visible = false
 						shown = true
 					else: node.visible = true
-				get_tree().paused = true
+				pause_manager.request_pause("shop")
 
 func _show_warning():
 	var panel = $background/coin_background

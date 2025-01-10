@@ -6,6 +6,9 @@ signal _on_unpause
 var score: int = 0
 var player: CharacterBody2D
 
+var menu_toggled = false
+var pause_manager = PauseManager
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_parent()
@@ -14,9 +17,8 @@ func _ready() -> void:
 	for node in get_children():
 		if node.name != "shop":
 			node.visible = false
-	await get_tree().create_timer(0.5).timeout
-	get_tree().paused = true
-
+			
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$ScoreText.text = "Score: %d" % player.SCORE
@@ -24,6 +26,10 @@ func _process(delta: float) -> void:
 
 
 func _on_menu_button_toggled(toggled_on: bool) -> void:
-	get_tree().paused = !get_tree().paused # freezes game when menu is opened and unfreezes when closed
-	if get_tree().paused: emit_signal("_on_pause") # calls _on_pause in music node to muffle sound
-	else: emit_signal("_on_unpause") # undoes the muffling
+	menu_toggled = !menu_toggled # freezes game when menu is opened and unfreezes when closed
+	if menu_toggled: 
+		emit_signal("_on_pause") # calls _on_pause in music node to muffle sound
+		pause_manager.request_pause("menu_button")
+	else: 
+		emit_signal("_on_unpause") # undoes the muffling
+		pause_manager.release_pause("menu_button")

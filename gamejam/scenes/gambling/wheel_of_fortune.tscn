@@ -71,6 +71,11 @@ rotation = -0.392699
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_jqj7r")
 
+[node name="Faceset" type="Sprite2D" parent="Panel/wheel/wheel_body/first area"]
+position = Vector2(14.3124, 8.1046)
+scale = Vector2(0.209579, 0.209579)
+texture = ExtResource("3_8if86")
+
 [node name="second area" type="Area2D" parent="Panel/wheel/wheel_body"]
 collision_layer = 2
 collision_mask = 2
@@ -199,3 +204,5 @@ text = "SPIN!"
 label_settings = SubResource("LabelSettings_42k6y")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="area_entered" from="Panel/pointer/pointer_body" to="Panel" method="_on_pointer_body_area_entered"]

@@ -337,7 +337,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjb07"]
 radius = 98.0472
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_utxxk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0myeo"]
+radius = 18.5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ik0cb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -379,12 +382,9 @@ animations = [{
 "texture": ExtResource("12_2ci56")
 }],
 "loop": false,
-"name": &"dying",
-"speed": 9.0
+"name": &"explosion",
+"speed": 15.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0myeo"]
-radius = 18.5
 
 [node name="skull_red" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(2, 2)
@@ -395,7 +395,7 @@ damage = 300
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.375)
 sprite_frames = SubResource("SpriteFrames_ttd4r")
-animation = &"dying"
+animation = &"attacking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_si0hj")
@@ -405,17 +405,16 @@ shape = SubResource("CircleShape2D_si0hj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
 shape = SubResource("CircleShape2D_hjb07")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Damage"]
-position = Vector2(1, 3.99998)
-scale = Vector2(0.626563, 0.553516)
-sprite_frames = SubResource("SpriteFrames_utxxk")
-
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_0myeo")
 
 [node name="Hit_Timer" type="Timer" parent="."]
+
+[node name="ExplosionDeath" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.336502, 0.336502)
+sprite_frames = SubResource("SpriteFrames_ik0cb")
 
 [connection signal="body_entered" from="Damage" to="." method="_on_damage_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

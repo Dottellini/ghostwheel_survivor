@@ -52,8 +52,6 @@ func _ready() -> void:
 	check_timer.autostart = true
 	add_child(check_timer)
 	check_timer.connect("timeout", _check_condition)
-
-	get_tree().paused = false
 	randomize()
 	
 func _process(delta: float) -> void:
@@ -77,6 +75,10 @@ func _check_condition() -> void:
 		else:
 			spawn_timer.start()
 
+func spawn_item(item_type: PackedScene, position):
+	var item = item_type.instantiate()
+	item.position = position
+	add_child(item)
 
 func _on_enemy_spawn_timer_timeout() -> void:
 	if boss_active:

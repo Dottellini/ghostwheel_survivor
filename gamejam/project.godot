@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globaly="*res://scripts/globaly.gd"
+PauseManager="*res://scripts/misc/pause_manager.gd"
 
 [display]
 
@@ -34,6 +35,7 @@ player=""
 music=""
 enemy=""
 timer=""
+level=""
 
 [input]
 

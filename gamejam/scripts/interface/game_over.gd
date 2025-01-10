@@ -36,10 +36,16 @@ func _process(delta: float) -> void:
 
 
 func _on_restart_pressed() -> void:
+	Globaly.player = null
+	Globaly.got_player = false
+	Globaly.reset_global_state()
 	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
 	
 
 func _on_main_menu_pressed() -> void:
+	Globaly.player = null
+	Globaly.got_player = false
+	Globaly.reset_global_state()
 	get_tree().change_scene_to_file("res://scenes/interface/main_menu.tscn")
 
 
