@@ -55,7 +55,7 @@ func _ready() -> void:
 	randomize()
 	
 func _process(delta: float) -> void:
-	wave_label.text = "Wave: %02d" % current_wave
+	wave_label.text = "Difficulty: %02d" % current_wave
 	
 func _check_condition() -> void:
 	if spawn_timer.wait_time < (spawn_timestep * 2):
