@@ -29,6 +29,8 @@ var laser = preload("res://scenes/weapons/laser/laser.tscn")
 var storm = preload("res://scenes/weapons/storm/storm.tscn")
 var swarm = preload("res://scenes/weapons/swarm/swarm.tscn")
 
+var pause_manager = PauseManager
+
 var shown = true
 var shop_is_open = false
 
@@ -44,6 +46,7 @@ func _ready() -> void:
 	button7 = $background/GridContainer/Button7
 	button8 = $background/GridContainer/Button8
 	player = get_tree().get_first_node_in_group("player")
+	pause_manager.request_pause("shop") # initial pause for the first shop 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -116,7 +119,7 @@ func _manage_shop():
 						node.visible = true
 						shown = false
 					else: node.visible = false
-				get_tree().paused = false
+				pause_manager.release_pause("shop")
 			else:
 				shop_is_open = true
 				for node in ui.get_children(false):
@@ -124,7 +127,7 @@ func _manage_shop():
 						node.visible = false
 						shown = true
 					else: node.visible = true
-				get_tree().paused = true
+				pause_manager.request_pause("shop")
 
 func _show_warning():
 	var panel = $background/coin_background

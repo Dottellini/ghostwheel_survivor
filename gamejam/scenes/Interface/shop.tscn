@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvtpinfsukqnh"]
+[gd_scene load_steps=12 format=3 uid="uid://dupusa0442pf4"]
 
 [ext_resource type="Script" path="res://scripts/interface/shop.gd" id="1_qqis8"]
 [ext_resource type="FontFile" uid="uid://bls4rqss5cc7j" path="res://assets/Font/ScareEmAway.ttf" id="2_b2uxf"]
@@ -25,10 +25,10 @@ script = ExtResource("1_qqis8")
 
 [node name="background" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -139.0
-offset_top = -52.0
-offset_right = 123.0
-offset_bottom = 95.0
+offset_left = -128.0
+offset_top = -72.0
+offset_right = 134.0
+offset_bottom = 75.0
 
 [node name="GridContainer" type="GridContainer" parent="background"]
 layout_mode = 0
@@ -48,6 +48,7 @@ icon = ExtResource("11_dr85w")
 alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button8"]
+layout_mode = 0
 offset_left = 126.0
 offset_top = 16.0
 offset_right = 166.0
@@ -136,6 +137,7 @@ icon = ExtResource("9_xcxbt")
 alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button6"]
+layout_mode = 0
 offset_left = 67.0
 offset_top = 18.0
 offset_right = 107.0
@@ -153,6 +155,7 @@ icon = ExtResource("10_6lox3")
 alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="background/GridContainer/Button7"]
+layout_mode = 0
 offset_left = 73.0
 offset_top = 18.0
 offset_right = 113.0
@@ -170,6 +173,7 @@ icon = ExtResource("8_3fby0")
 alignment = 0
 
 [node name="TextureRect2" type="TextureRect" parent="background/GridContainer/Button5"]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 100.0
