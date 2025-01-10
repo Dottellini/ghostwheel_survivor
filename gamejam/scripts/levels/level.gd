@@ -53,7 +53,7 @@ func _ready() -> void:
 	add_child(check_timer)
 	check_timer.connect("timeout", _check_condition)
 
-	get_tree().paused = false
+	PauseManager.clear_requests()
 	randomize()
 	
 func _process(delta: float) -> void:

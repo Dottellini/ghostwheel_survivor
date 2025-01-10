@@ -3,12 +3,14 @@ extends Node
 var is_muted = false
 var is_not_user_press_of_button = false
 
+var pause_manager = PauseManager
+
 signal _mute_sound_toggle
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Controls.hide()
-	get_tree().paused = false
+	pause_manager.release_pause("main_menu")
 	Globaly.player = null
 	Globaly.got_player = false
 	Globaly.reset_global_state()
