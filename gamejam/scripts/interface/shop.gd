@@ -3,10 +3,10 @@ extends Control
 @export var shuriken_price = 100
 @export var ice_bomb_price = 100
 @export var ring_of_fire_price = 200
-@export var flamethrower_price = 100
-@export var taifun_price = 100
-@export var laser_price = 100
-@export var storm_price = 100
+@export var flamethrower_price = 300
+@export var taifun_price = 1000
+@export var laser_price = 600
+@export var storm_price = 700
 @export var swarm_price = 100
 
 var player
