@@ -3,6 +3,7 @@ signal hit
 
 var wheel
 var pointer
+var button
 var is_pressed
 var rotation_speed
 var deceleration
@@ -18,9 +19,10 @@ func _ready() -> void:
 	rotation_speed = randf_range(720.0, 1440.0) # random spin speed for the wheel at the start
 	deceleration = 200 # how fast the wheel stops moving
 	rotation_angle = 0.0 # idfk
-	var button = $Button
+	button = $Button
 	wheel = $wheel
 	pointer = $pointer/pointer_body
+	button.disabled = true
 	pointer.set_monitoring(false)
 	# wheel.rotation = deg_to_rad(randf_range(0, 360)) # Zufällige Startposition
 	button.pressed.connect(self._button_pressed) # connects the button press signal to a function
@@ -62,7 +64,6 @@ func _process(delta: float) -> void:
 			wheel.rotation = deg_to_rad(rotation_angle) # sets rotation
 
 func _button_pressed():
-	print("pressed")
 	stopped = false
 	is_pressed = true
 	current_hit_area = null # Zurücksetzen der Treffer-Area
@@ -77,4 +78,5 @@ func _reset_to_default():
 	rotation_speed = randf_range(720.0, 1440.0)
 	deceleration = 200
 	rotation_angle = 0.0
+	button.disabled = true
 	pointer.set_monitoring(false)
