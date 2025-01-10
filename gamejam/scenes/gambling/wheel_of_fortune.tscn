@@ -1,13 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyvdo1vxfmu6l"]
+[gd_scene load_steps=8 format=3 uid="uid://dyvdo1vxfmu6l"]
 
-[ext_resource type="Texture2D" uid="uid://cvql5cj6h426a" path="res://assets/items/coin/glow.png" id="1_g75uv"]
 [ext_resource type="Script" path="res://scripts/gambling/wheel.gd" id="1_yefkf"]
 [ext_resource type="Texture2D" uid="uid://i0qouph1xsbu" path="res://assets/wheel_of_fortune/SimpleHealth1.png" id="2_okaxc"]
-[ext_resource type="Texture2D" uid="uid://b5lfwl5f15n32" path="res://assets/Player/sprites/standard_wheel_idle1.png" id="3_jqj7r"]
+[ext_resource type="Texture2D" uid="uid://d36y0nn7q8p36" path="res://assets/Skull/Faceset.png" id="3_8if86"]
 [ext_resource type="Texture2D" uid="uid://dgn5gnc8lh1j8" path="res://assets/wheel_of_fortune/pointer.png" id="3_mij07"]
-[ext_resource type="Texture2D" uid="uid://bg3i5yvujpmo7" path="res://assets/Player/sprites/burning_wheel_idle1.png" id="4_47wo5"]
-[ext_resource type="Texture2D" uid="uid://e8vlhvxhrk0n" path="res://assets/Player/sprites/fast_wheel_idle1.png" id="5_pkyxw"]
-[ext_resource type="Texture2D" uid="uid://y35t61ekr6st" path="res://assets/Player/sprites/metal_wheel_idle1.png" id="6_asnsy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3glne"]
 
@@ -17,7 +13,7 @@ radius = 0.0
 [sub_resource type="LabelSettings" id="LabelSettings_42k6y"]
 
 [node name="wheel_of_fortune" type="Control"]
-process_mode = 2
+process_mode = 3
 layout_mode = 3
 anchor_right = 0.308
 anchor_bottom = 0.673
@@ -25,16 +21,6 @@ offset_right = 0.18396
 offset_bottom = -0.104034
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="shine" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-scale = Vector2(12, 12)
-pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_g75uv")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -66,10 +52,6 @@ priority = 10
 polygon = PackedVector2Array(7, 7, 20, 20, 20, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/first area"]
-position = Vector2(13.245, 4.2)
-rotation = -0.392699
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_jqj7r")
 
 [node name="Faceset" type="Sprite2D" parent="Panel/wheel/wheel_body/first area"]
 position = Vector2(14.3124, 8.1046)
@@ -95,10 +77,6 @@ collision_priority = 10.0
 polygon = PackedVector2Array(20, 20, 33, 7, 38, 20)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/third area"]
-position = Vector2(34.46, 13.891)
-rotation = 1.1781
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_47wo5")
 
 [node name="fourth area" type="Area2D" parent="Panel/wheel/wheel_body"]
 collision_layer = 8
@@ -119,10 +97,6 @@ collision_priority = 10.0
 polygon = PackedVector2Array(20, 20, 20, 38, 33, 32)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/fifth area"]
-position = Vector2(26.427, 34.882)
-rotation = 2.74889
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_pkyxw")
 
 [node name="sixth area" type="Area2D" parent="Panel/wheel/wheel_body"]
 collision_layer = 32
@@ -143,10 +117,6 @@ collision_priority = 10.0
 polygon = PackedVector2Array(20, 20, 2, 20, 7, 33)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/wheel/wheel_body/seventh area"]
-position = Vector2(5.168, 26.294)
-rotation = 4.31969
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("6_asnsy")
 
 [node name="eighth area" type="Area2D" parent="Panel/wheel/wheel_body"]
 collision_layer = 128
