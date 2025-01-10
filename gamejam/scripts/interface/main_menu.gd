@@ -2,6 +2,7 @@ extends Node
 
 var is_muted = false
 var is_not_user_press_of_button = false
+var credit_pos
 
 var pause_manager = PauseManager
 
@@ -14,6 +15,8 @@ func _ready() -> void:
 	Globaly.player = null
 	Globaly.got_player = false
 	Globaly.reset_global_state()
+	credit_pos = $credits/credits_text.global_position
+
 	
 	if Globaly.is_sound_muted == null:
 		Globaly.is_sound_muted = is_muted
@@ -58,3 +61,18 @@ func _on_mute_button_toggled(toggled_on: bool) -> void:
 	is_muted = !is_muted
 	Globaly.is_sound_muted = is_muted
 	set_music_player_mute()
+
+func _on_credits_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/Interface/credits.tscn")
+
+
+func _on_credits_button_down() -> void:
+	$credits/credits_text.global_position.y += 5
+
+
+func _on_credits_button_up() -> void:
+	$credits/credits_text.global_position = credit_pos
+
+
+func _on_credits_mouse_exited() -> void:
+	$credits/credits_text.global_position = credit_pos
