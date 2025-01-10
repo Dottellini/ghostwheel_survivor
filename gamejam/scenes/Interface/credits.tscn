@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://fncf748kelqf"]
+
+[ext_resource type="Script" path="res://scripts/interface/credits.gd" id="1_4j5gr"]
+[ext_resource type="AudioStream" uid="uid://v0f708wa2p03" path="res://assets/credits/Ghostwheel survivor.mp3" id="2_lk7a2"]
+
+[node name="credits" type="CanvasLayer"]
+script = ExtResource("1_4j5gr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lk7a2")
+volume_db = -3.0
+autoplay = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 576.0
+offset_bottom = 62.0
+scale = Vector2(2, 2)
+
+[node name="lyrics" type="Label" parent="CenterContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+offset_top = 650.0
+offset_right = 1152.0
+offset_bottom = 777.0
+
+[node name="credits_text" type="Label" parent="CenterContainer2"]
+layout_mode = 2
+text = "Team:
+Bastian Röth
+Idehen Idahor
+Julian Dauenhauer
+Kevin Klauser"
+horizontal_alignment = 1
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
