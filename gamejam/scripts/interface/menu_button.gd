@@ -20,6 +20,7 @@ func _on_item_menu_pressed(id: int):
 	match id:
 		ItemId.LEVEL1:
 			get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
+			PauseManager.clear_requests()
 			Globaly.player = null
 			Globaly.got_player = false
 			Globaly.reset_global_state()

@@ -15,22 +15,14 @@ radius = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_42k6y"]
 
-[node name="wheel_of_fortune" type="Control"]
+[node name="wheel_of_fortune" type="CanvasLayer"]
 process_mode = 3
-layout_mode = 3
-anchor_right = 0.308
-anchor_bottom = 0.673
-offset_right = 0.18396
-offset_bottom = -0.104034
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-offset_left = -180.0
-offset_top = -197.0
-offset_right = -119.0
-offset_bottom = -122.0
+offset_left = 400.0
+offset_top = 96.0
+offset_right = 461.0
+offset_bottom = 171.0
 scale = Vector2(5.7992, 5.7992)
 script = ExtResource("1_yefkf")
 
