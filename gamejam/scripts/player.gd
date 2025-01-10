@@ -96,6 +96,7 @@ func _process(delta: float) -> void:
 
 func _on_gambling_pickup(): # shows the wheel of fortune and pauses the game
 	$wheel_of_fortune.visible = true
+	$wheel_of_fortune/Panel/Button.disabled = false
 	pause_manager.request_pause("player")
 
 func _on_gambling_hit(index: int):
