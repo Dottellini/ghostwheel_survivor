@@ -39,6 +39,7 @@ func _on_restart_pressed() -> void:
 	Globaly.player = null
 	Globaly.got_player = false
 	Globaly.reset_global_state()
+	PauseManager.clear_requests()
 	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
 	
 
