@@ -13,7 +13,6 @@ func _ready() -> void:
 	Globaly.got_player = false
 	Globaly.reset_global_state()
 	
-	print(Globaly.is_sound_muted)
 	if Globaly.is_sound_muted == null:
 		Globaly.is_sound_muted = is_muted
 		set_music_player_mute()
